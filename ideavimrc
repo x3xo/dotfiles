@@ -1,0 +1,109 @@
+noremap <space> :
+" ctrl-space as <ESC>
+
+" noremap <Nul> <Esc>
+" inoremap <Nul> <Esc>
+" cnoremap <Nul> <C-c>
+" noremap <C-Space> <Esc>
+" inoremap <C-Space> <Esc>
+" cnoremap <C-Space> <C-c>
+
+" search options
+set ignorecase
+set smartcase
+set hlsearch
+set incsearch
+
+" disable searches wrap around the end of the file
+" set nowrapscan
+
+" enabled this so that searching current word with * works without jumping around
+set wrapscan
+
+" moving around split screens
+" noremap <C-j> <C-W>j
+" noremap <C-k> <C-W>k
+" noremap <C-l> <C-W>l
+" noremap <C-h> <C-W>h
+
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+nnoremap <C-h> <C-w>h
+inoremap <C-j> <Esc>
+
+
+
+
+" this maps :ls to option-j.
+" noremap <∆> :ls<cr>
+
+
+let mapleader = ","
+let g:mapleader = ","
+let maplocalleader = "\\"
+
+" nmap <leader>f :action GotoFile<cr>
+" nmap <leader>f f)
+" nmap <leader>g :action GotoSymbol<cr>
+" nmap <leader>g :action AceAction<cr>
+
+" nmap <leader>g ma:action EditorMatchBrace<cr>
+" nmap <leader>g :action Macro.select_tag<cr>
+" nmap <leader>g f{V%
+"
+
+nmap <leader>gr :action
+
+nmap <leader>d :action GotoFile<cr>
+nmap <leader>w :action FindInPath<cr>
+nmap <leader>f :action FindInPath<cr>
+nmap <leader>c :action CommentByLineComment<cr>
+nmap <leader>l :nohl<cr>
+nmap <leader>. :nohl<cr>
+nmap <leader>v :action QuickList.git stuff<cr>
+nmap <leader>g :action QuickList.git stuff<cr>
+nmap <leader>s :action SaveAll<cr>
+nmap <leader>x :action GotoAction<cr>
+nmap <leader>m :action ShowBookmarks<cr>
+nmap <leader>b :action ViewBreakpoints<cr>
+nnoremap <leader>a %^viw"uyf{%a // <C-r>u() <esc>D
+
+
+" reload config
+nmap <leader>r :source ~/.ideavimrc<cr>
+
+
+" nnoremap <tab> :action EditorMatchBrace<cr>
+" vnoremap <tab> :action EditorMatchBrace<cr>
+" nnoremap <tab> %
+" vnoremap <tab> %
+
+
+
+
+set visualbell
+set noerrorbells
+
+
+inoremap <C-f> <right>
+inoremap <C-b> <left>
+inoremap <C-p> <up>
+inoremap <C-n> <down>
+
+set surround
+
+set clipboard=unnamed
+
+" Don't move on *
+nnoremap * *<C-o>
+" nnoremap * *#
+
+" Copy until the end of the line
+noremap Y y$
+
+
+" show mode in status line
+set showmode
+
+set multiple-cursors

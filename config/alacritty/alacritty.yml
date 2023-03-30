@@ -1,0 +1,74 @@
+window:
+  paddig:
+    x: 4
+    y: 0
+
+  dynamic_padding: true
+  decorations: buttonless
+  startup_mode: Maximized
+
+anchors:
+  # &font_family: JetBrainsMono Nerd Font Mono
+  # &font_family: M PLUS Code Latin 50
+  # &font_family: M PLUS Code Latin 60
+  &font_family Hack Nerd Font Mono
+  # &font_family SF Mono
+
+font:
+  normal:
+    family: *font_family
+    style: Regular
+  italic:
+    family: *font_family
+    style: Regular
+  bold:
+    family: *font_family
+    style: Regular
+  bold_italic:
+    family: *font_family
+    style: Regular
+
+  # Point size
+  size: 14.0
+
+  # line spacing
+  offset:
+    x: 0
+    y: 8
+
+  glyph_offset:
+    x: 0
+    y: 4
+
+# colorscheme
+import:
+  - ~/.config/alacritty/everforest.yml
+
+cursor:
+  thickness: 0.25
+
+# C-g is the tmux prefix. This is 0x07 in hex.
+# Mac OS key bindings
+key_bindings:
+  - { key: D,              mods: Command,                    chars: "\x07\x7a"             } # toggle zoom pane in tmux
+  - { key: E,              mods: Command,                    chars: "\x1b\x2c\x62"         } # show buffers in vim using telescope (vim mapping is <esc>,b)
+  - { key: G,              mods: Command,                    chars: "\x07\x07"             } # switch to last windows in tmux
+  - { key: S,              mods: Command,                    chars: "\x1b\x3a\x77\x0a"     } # save in vim (esc :w<cr>)
+  - { key: H,              mods: Command,                    chars: "\x07\x70"             } # doesn't work unless you change shortcut for alacritty in mac os settings (I set it to cmd y)
+  - { key: L,              mods: Command,                    chars: "\x07\x6e"             } # doesn't work unless you change shortcut for alacritty in mac os settings (I set it to cmd y)
+  - { key: Q,              mods: Command,                    action: Hide                  }  # doesn't work unless you change shortcut for alacritty in mac os settings (I set it to cmd f12)
+  - { key: N,              mods: Command,                    chars: "\x07\x6e"             } # next tmux window
+  - { key: P,              mods: Command,                    chars: "\x07\x70"             } # prev tmux window
+  - { key: T,              mods: Command,                    chars: "\x07\x63"             } # new window (tab) in tmux
+  - { key: W,              mods: Command,                    chars: "\x1b\x77"             } # close pane in tmux
+  - { key: F,              mods: Command,                    chars: "\x1b\x2f"             } # find in tmux
+  - { key: Key1,           mods: Command,                    chars: "\x07\x31"             } # switch to window 1
+  - { key: Key2,           mods: Command,                    chars: "\x07\x32"             } # switch to window 2
+  - { key: Key3,           mods: Command,                    chars: "\x07\x33"             } # switch to window 3
+  - { key: Key4,           mods: Command,                    chars: "\x07\x34"             }
+  - { key: Key5,           mods: Command,                    chars: "\x07\x35"             }
+  - { key: Key6,           mods: Command,                    chars: "\x07\x36"             }
+  - { key: Key7,           mods: Command,                    chars: "\x07\x37"             }
+  - { key: Key8,           mods: Command,                    chars: "\x07\x38"             }
+  - { key: Key9,           mods: Command,                    chars: "\x07\x39"             }
+

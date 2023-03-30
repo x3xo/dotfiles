@@ -1,0 +1,39 @@
+# kill startup message
+startup_message off
+
+# detach on hangup
+autodetach on
+
+# define a bigger scrollback, default is 100 lines
+defscrollback 1024
+
+# shell
+#shell -bash
+
+bindkey -k F3 prev
+bindkey -k F4 kill
+bindkey -k F5 next
+# bindkey ^[z prev
+# bindkey ^[x next
+
+bindkey ^[o only
+
+bindkey ^[c screen
+# bindkey -k F3 screen
+bindkey ^[a screen
+
+
+bindkey ^[s split
+
+bindkey ^[1 select 0
+bindkey ^[2 select 1
+bindkey ^[3 select 2
+bindkey ^[4 select 3
+bindkey ^[5 select 4
+bindkey ^[6 select 5
+bindkey ^[7 select 6
+bindkey ^[8 select 7
+bindkey ^[9 select 8
+
+caption always "%{Bk}%H %{= kb}|%{= kG} %D %Y-%02m-%02d %0C %a %{= kb}| %{= .w}%-Lw%{= .r}%50>%n%f* %t%{-}%+Lw%{= .k}%<%{= kw}"
+

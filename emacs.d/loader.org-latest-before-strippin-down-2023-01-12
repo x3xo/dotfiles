@@ -1,0 +1,1773 @@
+#+TITLE: My GNU Emacs configuration
+
+#+OPTIONS: H:5 num:nil tags:nil toc:nil timestamps:t
+#+LAYOUT: post
+#+DESCRIPTION: Loading emacs configuration using org-babel
+#+TAGS: emacs
+#+STARTUP: overview
+#+CATEGORIES: editing
+
+* Introduction
+
+This config is based on the following.
+https://github.com/credmp/emacs-config or at https://gitlab.com/buildfunthings/emacs-config.
+
+Some configs to check out https://github.com/eschulte/emacs24-starter-kit.
+
+#+BEGIN_SRC emacs-lisp
+(setq user-full-name "niko")
+(setq user-mail-address "niko@local")
+#+END_SRC
+
+* my config top part
+#+BEGIN_SRC emacs-lisp
+
+  ;transparency
+  ; (setq my-transparency 85) ; figrue out how to use variable
+  ;(set-frame-parameter (selected-frame) 'alpha '(90 . 50)) ; first number is focused window transprency, second one is for non-focused
+  ;(add-to-list 'default-frame-alist '(alpha . (90 . 50)))
+
+  ;(set-frame-parameter (selected-frame) 'alpha '(95 . 80)) ; first number is focused window transprency, second one is for non-focused
+  ;(add-to-list 'default-frame-alist '(alpha . (95 . 80)))
+
+  (setq inhibit-x-resources 1)
+  ; Allow 20MB of memory (instead of 0.76MB) before calling garbage collection. This means GC runs less often, which speeds up some operations.
+  (setq gc-cons-threshold 20000000)
+
+  ; set the default mode for scratch buffer to text-mode. Default is elisp
+  ;(setq initial-major-mode 'text-mode)
+
+  (set-keyboard-coding-system nil)
+
+  ; use M-x toggle-frame-fullscreen
+  (setq ns-use-native-fullscreen nil)
+
+  (setq frame-resize-pixelwise 1)
+
+  ; open files in same emacs frame
+  (setq ns-pop-up-frames nil)
+
+  ; https://www.emacswiki.org/emacs/HorizontalSplitting
+  ; open help etc in horizontal(vim horizontal) split
+  ;;(setq split-width-threshold 9999)
+
+  ; open help etc in horizontal(vim vertical) split
+  ; (setq split-width-threshold 0)
+
+  ; set fn key to hyper
+  ; http://ergoemacs.org/emacs/emacs_hyper_super_keys.html
+  (setq ns-function-modifier 'hyper)
+  ; (global-set-key (kbd "H-f") 'toggle-frame-fullsceen)
+
+  ; NOTES
+  ; global-set-key expects an interactive command. (lambda () (interactive) (forward-line 5)) ought to work.
+  ; By the way, C-h f commandp is a pretty good starting point for errors like that.
+  ; H-f - Hyper + f. Fn key on apple keyboard is set to Hyper key from Karabiner
+  (global-set-key (kbd "H-f") (lambda () (interactive)
+                                  (toggle-frame-fullscreen)))
+
+  (global-set-key (kbd "<C-M-return>") (lambda () (interactive)
+                                  (toggle-frame-fullscreen)))
+
+  ;; Command + f
+
+  (global-set-key (kbd "s-f") 'counsel-file-jump)
+  ;(global-set-key (kbd "s-f") (lambda () (interactive)
+  ;                                (toggle-frame-fullscreen)))
+
+  ; disable transient-mark-mode
+  ; (setq transient-mark-mode nil)
+
+  ; answer yes or no questions with just y and p
+  (defalias 'yes-or-no-p 'y-or-n-p)
+
+  ; enable/disable blinking cursor
+  (blink-cursor-mode 0)
+
+  ; make cursor in non active windows be a horizontal bar instead of the default hollow cursor
+  ;(setq cursor-in-non-selected-windows (quote (hbar . 0)))
+
+  ; vertical bar caret
+  ; (setq-default cursor-type 'bar)
+
+  ; match parens
+  (show-paren-mode 1)
+
+  ; use spaces for tabs
+  (setq-default indent-tabs-mode nil)
+  (setq tab-width 4)
+
+  ; line spacing. Default is 0. Set to 4 for mononoki line height linespace
+  ;(setq-default line-spacing nil)
+  ;(setq-default line-height 2)
+
+  ; show column number
+  (setq column-number-mode 1)
+
+  ; highlight current line
+  (global-hl-line-mode 1)
+
+  ; set default session for tramp
+  (setq tramp-defaul-session "ssh")
+
+  ; toggle line wrapping
+  (global-set-key (kbd "<f6>") 'toggle-truncate-lines)
+
+  ; start a shell
+  (global-set-key (kbd "<f5>") 'eshell)
+  ;;(global-set-key (kbd "<f5>") 'term)
+  ;;(setq explicit-shell-file-name "/usr/local/bin/zsh")
+  (setq explicit-shell-file-name "/bin/zsh")
+
+  (global-unset-key (kbd "s-,"))
+  (global-set-key (kbd "s-,") (lambda() (interactive)(find-file "~/.emacs.d/loader.org")))
+  (global-set-key (kbd "s-\\") (lambda() (interactive)(find-file "~/.emacs.d/loader.org")))
+  (global-set-key (kbd "<f12>") (lambda() (interactive)(find-file "~/org/todo.org")))
+
+  ; make cmd-left and right move to beginning and end of line
+  (global-set-key (kbd "s-<right>") 'move-end-of-line)
+  (global-set-key (kbd "s-<left>") 'move-beginning-of-line)
+
+  ; since M-< and > are tricky
+  (global-set-key (kbd "s-<") 'beginning-of-buffer)
+  (global-set-key (kbd "s->") 'end-of-buffer)
+
+  ; commenting
+  (global-set-key (kbd "s-/") 'comment-dwim)
+
+  ; kill buffer with cmd-w
+  (global-set-key (kbd "s-w") 'kill-this-buffer)
+
+  ; disable CMD-q for quitting by accident
+  (global-unset-key (kbd "s-q"))
+
+  ; hide emacs instead of quit
+  (global-set-key (kbd "s-q") 'ns-do-hide-emacs)
+
+  ;; enable CMD-OPT-h to hide other apps like in other apps
+  (global-set-key (kbd "M-s-˙") 'ns-do-hide-others)
+
+  (global-unset-key (kbd "C-w"))
+  (global-set-key (kbd "C-w k") 'kill-region)
+  (global-set-key (kbd "C-w c") 'kill-ring-save)
+
+  ; toggle full screen
+  ; (global-unset-key (kbd "<f10>"))
+  ; (global-set-key (kbd "<f10>") 'toggle-frame-fullscreen)
+  ;(global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
+
+  (global-unset-key (kbd "s-o"))
+  (global-set-key (kbd "s-o") 'other-window)
+
+  (global-unset-key (kbd "s-k"))
+
+
+
+#+END_SRC
+
+* A secure Emacs environment
+
+Great article why [[https://glyph.twistedmatrix.com/2015/11/editor-malware.html][Your editor is malware]]. The following basically sets up the configuration to adhere to the articles recommondations.
+
+#+BEGIN_SRC shell :exports none
+  python -m pip install --user certifi
+
+# use this if the one above fails
+# python3 -m pip install --user certifi
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  ;;  (if (fboundp 'gnutls-available-p)
+  ;;      (fmakunbound 'gnutls-available-p))
+
+  ;(require 'cl)
+  (setq tls-checktrust t)
+
+  ;;(setq python (or (executable-find "py.exe")
+  ;;                 (executable-find "python")
+  ;;                 ))
+
+  ;(setq python "python")
+  (setq python "/Users/niko/.pyenv/shims/python")
+  ;(setq python "/usr/local/bin/python3")
+;;  (setq python "/usr/bin/python")
+
+  (let ((trustfile
+         (replace-regexp-in-string
+          "\\\\" "/"
+          (replace-regexp-in-string
+           "\n" ""
+           (shell-command-to-string (concat python " -m certifi"))))))
+    (setq tls-program
+          (list
+           (format "gnutls-cli%s --x509cafile %s -p %%p %%h"
+                   (if (eq window-system 'w32) ".exe" "") trustfile)))
+    (setq gnutls-verify-error t)
+    (setq gnutls-trustfiles (list trustfile)))
+
+  ;; Test the settings by using the following code snippet:
+  ;;  (let ((bad-hosts
+  ;;         (loop for bad
+  ;;               in `("https://wrong.host.badssl.com/"
+  ;;                    "https://self-signed.badssl.com/")
+  ;;               if (condition-case e
+  ;;                      (url-retrieve
+  ;;                       bad (lambda (retrieved) t))
+  ;;                    (error nil))
+  ;;               collect bad)))
+  ;;    (if bad-hosts
+  ;;        (error (format "tls misconfigured; retrieved %s ok" bad-hosts))
+  ;;      (url-retrieve "https://badssl.com"
+  ;;                    (lambda (retrieved) t))))
+#+END_SRC
+
+* Installing use-package
+** Setup
+
+GNU Emacs has a lot of packages that make things very easy for the
+user. The package management infrastructure makes it a breeze to
+install new packages and keep up-to-date with their development.
+
+There are several package archives available for GNU Emacs:
+
+- GNU
+- Marmalade
+- Melpa
+
+Each archive will write its files in a seperate archive directory.
+
+#+BEGIN_SRC emacs-lisp
+  (require 'package)
+#+END_SRC
+
+Because the default setting for package-archives is to use the HTTP access to the GNU archive, I set the variable to `nil` before adding the HTTPS variants.
+
+#+name: credmp-package-infrastructure
+#+begin_src emacs-lisp
+
+  (defvar gnu '("gnu" . "https://elpa.gnu.org/packages/"))
+  (defvar melpa '("melpa" . "https://melpa.org/packages/"))
+;;  (defvar melpa-stable '("melpa-stable" . "https://stable.melpa.org/packages/"))
+  ;;(defvar org '("org" . "http://orgmode.org/elpa/"))
+
+  ;; Add marmalade to package repos
+  (setq package-archives nil)
+  ;;(add-to-list 'package-archives org t)
+  ;;(add-to-list 'package-archives melpa-stable t)
+  (add-to-list 'package-archives melpa t)
+  (add-to-list 'package-archives gnu t)
+#+end_src
+
+Initialize the archive and refresh the contents in case there is no cached archive.
+
+#+BEGIN_SRC emacs-lisp
+  ;(package-initialize)
+
+  (unless (and (file-exists-p (concat init-dir "elpa/archives/gnu"))
+               (file-exists-p (concat init-dir "elpa/archives/melpa"))
+               (file-exists-p (concat init-dir "elpa/archives/org")))
+    (package-refresh-contents))
+#+END_SRC
+
+At each load the package list will be evaluated and any missing
+packages will be installed. The packages-install function deals with
+this check and takes care of any loading of the packages.
+
+#+name: credmp-package-installer
+#+begin_src emacs-lisp
+  (defun packages-install (&rest packages)
+    (message "running packages-install")
+    (mapc (lambda (package)
+            (let ((name (car package))
+                  (repo (cdr package)))
+              (when (not (package-installed-p name))
+                (let ((package-archives (list repo)))
+                  ;(package-initialize)
+                  (package-install name)))))
+          packages)
+    ;(package-initialize)
+    (delete-other-windows))
+#+end_src
+
+** The package
+
+#+name: credmp-package-installer
+#+begin_src emacs-lisp
+  ;; Install extensions if they're missing
+  (defun init--install-packages ()
+    (message "Lets install some packages")
+    (packages-install
+     ;; Since use-package this is the only entry here
+     ;; ALWAYS try to use use-package!
+     (cons 'use-package melpa)
+     ))
+
+  (condition-case nil
+      (init--install-packages)
+    (error
+     (package-refresh-contents)
+     (init--install-packages)))
+#+end_src
+* diminish mode
+#+BEGIN_SRC emacs-lisp
+  (use-package diminish
+      :ensure t
+      :config
+      (diminish 'eldoc-mode))
+#+END_SRC
+* redo
+#+BEGIN_SRC emacs-lisp
+;; redo
+(use-package undo-tree
+  :ensure t
+  :diminish undo-tree-mode
+  :config
+  (progn
+    (global-set-key (kbd "s-Z") 'undo-tree-redo)
+    ))
+#+END_SRC
+
+* run this line
+#+begin_src emacs-lisp
+  (global-set-key (kbd "s-g") 'run-this-line)
+#+end_src
+* which key
+#+BEGIN_SRC emacs-lisp
+  (use-package which-key
+    :ensure t
+    :diminish which-key-mode
+    :config
+    (which-key-mode)
+    ;(which-key-setup-side-window-right)
+  )
+#+END_SRC
+
+* beacon
+#+BEGIN_SRC emacs-lisp
+    (use-package beacon
+      :ensure t
+      :diminish beacon-mode
+      :config
+      (beacon-mode 1)
+      (setq beacon-color "#d33682")
+  )
+#+END_SRC
+* window dimensions and decorations
+
+https://www.reddit.com/r/emacs/comments/b2r2oj/is_it_possible_to_disable_or_hide_the_titlebar_in/
+
+#+BEGIN_SRC emacs-lisp
+  (add-to-list 'default-frame-alist '(width . 150))
+  (add-to-list 'default-frame-alist '(height . 48))
+; (add-to-list 'default-frame-alist '(undecorated . t))
+; (add-to-list 'default-frame-alist '(drag-internal-border . 1))
+; (add-to-list 'default-frame-alist '(internal-border-width . 5))
+
+#+END_SRC
+
+* disable bell
+#+BEGIN_SRC emacs-lisp
+(setq visible-bell nil)
+(setq ring-bell-function 'ignore)
+#+END_SRC
+
+* org mode
+#+BEGIN_SRC emacs-lisp
+   (use-package org
+     :mode (("\\.org$" . org-mode))
+     :ensure t
+     :config
+     (progn
+         (org-babel-do-load-languages 'org-babel-load-languages
+                                      '((shell      . t)
+                                      (js         . t)
+                                      (sql        . t)
+                                      (typescript . t)
+                                      (emacs-lisp . t)
+                                      (python     . t)
+                                      (ruby       . t)
+                                      (restclient . t)
+                                      (dot        . t)
+                                      (css        . t)))
+
+         (setq org-image-actual-width nil)
+         ; (setq org-agenda-files '("~/org"))
+
+         ;; diminish org-indent-mode after load of org-indent - both ways work
+         ;;(eval-after-load 'org-indent '(diminish 'org-indent-mode))
+         (add-hook 'org-indent-mode-hook (lambda () (diminish 'org-indent-mode)))
+         (add-hook 'org-timer-done-hook (lambda () (ns-do-applescript "display notification \"Timer Done\"")))
+         ;; (add-hook 'org-mode-hook (lambda () (variable-pitch-mode 1)))
+
+         ;; disabled this one since it messed up with sql tables
+         ;(add-hook 'org-mode-hook (lambda () (visual-line-mode 1)))
+         (add-hook 'visual-line-mode-hook (lambda () (diminish 'visual-line-mode)))
+
+         (add-hook 'org-mode-hook (lambda () (org-indent-mode 1)))
+         ; (add-to-list 'org-structure-template-alist
+         ;              '("el" "#+BEGIN_SRC emacs-lisp\n?\n#+END_SRC"))
+         ;(add-to-list 'org-structure-template-alist
+         ;             '("el" . "emacs-lisp))
+
+         (setq org-confirm-babel-evaluate nil)
+         (setq org-src-fontify-natively t)
+         (setq org-src-tab-acts-natively t)
+         (setq org-log-done t)
+
+
+
+  (setq org-file-apps
+    '((auto-mode . emacs)
+      ("\\.mm\\'" . default)
+      ("\\.x?html?\\'" . default)
+      ("\\.pdf\\'" . default)
+      ("\\.jpg\\'" . "open %s")))
+         ;; open sourde edit in same window instead of split (C-c ')
+         ;; (setq org-src-window-setup 'current-widow)
+
+         (setq org-todo-keyword-faces
+             '(;;("TODO" . org-warning)
+             ("ON_IT" . (:foreground "DeepSkyBlue1" :weight bold))
+             ("READY_FOR_RELEASE" . (:foreground "VioletRed2" :weight bold))
+             ("WAIT" . (:foreground "red1" :weight bold))
+             ("READY_FOR_MERGE" . (:foreground "LightGreen" :weight bold))
+             ("NEEDS_INPUT" . (:foreground "SeaGreen1" :weight bold))
+         ))
+
+         (setq org-bullets-bullet-list '("①" "②" "③" "④" "⑤" "⑥"))
+     )
+     :bind (
+           ("<s-return>" . org-insert-todo-heading)
+           ;; ("C-j" . evil-window-down)
+           ;; ("C-k" . evil-window-up)
+            )
+     )
+
+   (use-package org-bullets
+     :ensure t
+     :config
+     (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+   (global-set-key "\C-cl" 'org-store-link)
+   (global-set-key "\C-cc" 'org-capture)
+   (global-set-key "\C-ca" 'org-agenda)
+   (global-set-key "\C-cb" 'org-iswitchb)
+
+  (use-package ob-restclient
+    :ensure t)
+
+  (use-package ob-typescript
+    :ensure t)
+
+#+END_SRC
+
+* helm
+#+begin_src emacs-lisp
+
+
+    (defun my/find-files ()
+      (interactive)
+      (ido-mode 1)
+      (ido-find-file)
+      )
+
+      (use-package helm
+        :ensure t
+        :diminish helm-mode
+        :config
+        (progn
+          (require 'helm-config)
+          (helm-mode 1)
+          (define-key global-map [remap find-file] 'my/find-files)
+          ;(define-key global-map [remap find-file] 'ido-find-file)
+          ;(define-key global-map [remap find-file] 'helm-find-files)
+    ;     ;(define-key global-map [remap occur] 'helm-occur)
+    ;     (define-key global-map [remap list-buffers] 'helm-buffers-list)
+    ;     ;(define-key global-map [remap dabbrev-expand] 'helm-dabbrev)
+          (global-set-key (kbd "M-x") 'helm-M-x)
+    ;     (unless (boundp 'completion-in-region-function)
+    ;       (define-key lisp-interaction-mode-map [remap completion-at-point] 'helm-lisp-completion-at-point)
+    ;       (define-key emacs-lisp-mode-map       [remap completion-at-point] 'helm-lisp-completion-at-point))
+    ;     (setq helm-mode-fuzzy-match t)
+    ;     (setq helm-completion-in-region-fuzzy-match t)
+    ;     (setq helm-recentf-fuzzy-match t)
+    ;     (setq helm-buffers-fuzzy-matching t)
+    ;     (setq helm-recentf-fuzzy-match t)
+    ;     ;;xx helm-find-files: fuzzy matching enabled by default.
+    ;     (setq helm-locate-fuzzy-match t)
+    ;     (setq helm-M-x-fuzzy-match t)
+    ;     (setq helm-semantic-fuzzy-match t)
+    ;     (setq helm-imenu-fuzzy-match t)
+    ;     (setq helm-apropos-fuzzy-match t)
+    ;     (setq helm-lisp-fuzzy-completion t)
+    ;     ;; show recent files
+          (global-set-key (kbd "s-e") 'helm-mini)
+          (global-set-key (kbd "M-s s") 'helm-org-in-buffer-headings)
+
+          (define-key helm-map (kbd "s-k") #'helm-previous-line)
+          (define-key helm-map (kbd "s-j") #'helm-next-line)
+          ;;(define-key company-active-map (kbd "C-p") #'company-select-previous)
+
+
+;(define-key helm-generic-files-map (kbd "s-j") #'helm-next-line)
+;(define-key helm-buffer-map (kbd "s-j") #'helm-next-line)
+
+  
+          ; always open helm in bottom split
+          (add-to-list 'display-buffer-alist
+                              `(,(rx bos "*helm" (* not-newline) "*" eos)
+                                  (display-buffer-in-side-window)
+                                  (inhibit-same-window . t)
+                                  (window-height . 0.4)))
+          ))
+    (use-package helm-tramp
+      :ensure t)
+
+    (use-package helm-org
+      :ensure t)
+
+  ; (use-package helm-sql-connect
+  ;   :ensure t)
+
+  ; (use-package helm-aws
+  ;   :ensure t)
+
+  ; (use-package ejc-sql
+  ;   :ensure t
+  ;   :config
+  ;   (progn
+  ;     (add-hook 'ejc-sql-minor-mode-hook
+  ;               (lambda ()
+  ;                 (auto-complete-mode t)
+  ;                 (ejc-ac-setup)))
+
+  ;     ))
+
+#+end_src
+
+* ivy
+#+begin_src emacs-lisp
+
+  (use-package ivy
+    :ensure t
+    :bind (:map ivy-minibuffer-map
+           ("s-k" . ivy-previous-line)
+           ("s-j" . ivy-next-line))
+    :diminish ivy-mode
+    :config
+    (ivy-mode 1)
+    :config
+    (progn
+      (define-key global-map [remap describe-variable] 'counsel-describe-variable)
+      )
+    )
+
+   (use-package ivy-rich
+     :ensure t
+     :diminish ivy-rich-mode
+     :config
+     (ivy-rich-mode 1))
+
+    (use-package counsel
+      :ensure t
+      :diminish counsel-mode
+      :config
+      (counsel-mode 0))
+
+#+end_src
+** ivy-posframe
+#+begin_src emacs-lisp
+; (use-package ivy-posframe
+;   :ensure t
+;   :custom-face
+;   (ivy-posframe-border ((t (:background "#ffffff"))))
+;   :config
+;   (setq ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+;   ;; Different command can use different display function.
+;   (setq ivy-posframe-display-functions-alist
+;         '((swiper . nil)
+;           (swiper-isearch . nil)
+;           (complete-symbol . ivy-posframe-display-at-point)
+;           (counsel-M-x     . ivy-posframe-display-at-frame-center)
+;           (t               . ivy-posframe-display)))
+;   (ivy-posframe-mode 1)
+;   (setq ivy-posframe-parameters
+;         '((left-fringe . 8)
+;           (right-fringe . 8)))
+;   (ivy-posframe-mode 1)
+;   )
+#+end_src
+
+* ;; helm postframe
+
+#+begin_src emacs-lisp
+;  (use-package helm-posframe
+;    :ensure t
+;    :config
+;    ;; (setq helm-posframe-poshandler 'posframe-poshandler-frame-center)
+;    (setq helm-posframe-poshandler 'posframe-poshandler-frame-bottom-center)
+;    ;; (setq helm-posframe-poshandler 'posframe-poshandler-frame-bottom-left-corner)
+;    (setq helm-posframe-parameters
+;          '((left-fringe . 2)
+;            (right-fringe . 2)))
+;    (helm-posframe-enable)
+;  )
+#+end_src
+* ido mode
+#+begin_src emacs-lisp
+  (use-package ido
+    :ensure ido-vertical-mode
+  ;; ido-completion-map
+    :bind (:map ido-common-completion-map
+                ("s-j" . ido-next-match)
+                ("s-k" . ido-prev-match))
+    :config
+    (progn
+      (setq ido-enable-flex-matching t)
+      (ido-vertical-mode 1)
+      ;;(setq ido-vertical-define-keys 'C-n-and-C-p-only)
+      (setq ido-vertical-define-keys 'C-n-C-p-up-and-down)
+      ;(setq ido-vertical-show-count t)
+      (ido-mode 1)
+      ))
+
+  (use-package flx-ido
+    :ensure t
+    :config
+    (progn
+      (flx-ido-mode 1)
+      (setq ido-use-faces nil)
+      ))
+#+end_src
+* evil
+
+https://emacs.stackexchange.com/questions/7403/evil-cursor-change-by-state
+The variable cursor-type controls how the appearance of the cursor, defaulting to t, which uses the cursor specified for the frame (see the docstring for options). If you'd like the cursor to default to a block, you can (setq cursor-type 'box).
+
+However, evil provides a number of different cursors for the different states, which you can adjust to give you a visual reminder of what state you're in when you're typing:
+
+evil-normal-state-cursor
+evil-insert-state-cursor
+evil-visual-state-cursor
+evil-motion-state-cursor
+evil-replace-state-cursor
+evil-operator-state-cursor
+The docstring states that each of these:
+
+May be a cursor type as per cursor-type, a color string as passed to set-cursor-color, a zero-argument function for changing the cursor, or a list of the above.
+
+So, for example, if you wanted a yellow bar 5 pixels wide in insert state and a purple-filled box in normal state, you could do the following:
+
+(setq evil-insert-state-cursor '((bar . 5) "yellow")
+evil-normal-state-cursor '(box "purple"))
+See the docstring for cursor-type for your options in adjusting the cursor.
+
+
+#+begin_src emacs-lisp
+    (use-package evil
+      :ensure t
+      :config
+      (evil-mode 1)
+      (setq evil-insert-state-cursor '(bar . 2))
+      :bind (
+             ;; ("C-l" . evil-window-right)
+             ;; ("C-j" . evil-window-down)
+             ;; ("C-k" . evil-window-up)
+             )
+      )
+
+    ;; enable % to jump to matching <div> tags etc
+    (use-package evil-matchit
+      :ensure t
+      :config
+      (global-evil-matchit-mode 1)
+      )
+
+  ; (use-package evil-magit
+  ;   :ensure t)
+
+    (use-package evil-leader
+      :ensure t
+      :config
+      (global-evil-leader-mode)
+      ;;(evil-leader/set-leader "<SPC>")
+      (evil-leader/set-leader ",")
+      (evil-leader/set-key
+
+          "l" 'evil-search-highlight-persist-remove-all
+          "," 'org-cycle
+          "c" 'org-ctrl-c-ctrl-c
+          ;"f" 'ido-find-file
+          "f" 'find-file
+          "z" 'counsel-fzf
+          "b" 'switch-to-buffer
+          "x" 'helm-M-x
+          "g" 'run-this-line
+          ;; "s" 'save-buffer
+          "sa" 'helm-org-agenda-files-headings
+          "ss" 'helm-org-in-buffer-headings
+          "si" 'counsel-org-goto
+          ;; "ss" 'counsel-org-goto
+          "t" 'org-todo
+          "<tab>" 'org-cycle
+          ;; "q" 'ns-do-hide-emacs
+          "q" 'kill-current-buffer
+          ;; "e" 'deer
+      )
+    )
+
+       (use-package evil-search-highlight-persist
+         :ensure t
+         :config
+         (global-evil-search-highlight-persist t)
+       )
+
+#+end_src
+* rest of config
+#+BEGIN_SRC emacs-lisp
+    (use-package try
+      :ensure t)
+
+    (use-package use-package-chords
+      :ensure t)
+
+    (global-unset-key (kbd "C-\\"))
+  ; (use-package avy
+  ;   :ensure t
+  ;   ;;    :bind ("s-o" . avy-goto-word-1)
+  ;   :bind ("s-j" . avy-goto-word-1)
+  ;   :chords (("38" . avy-goto-word-1))
+  ;   )
+
+    (defun run-this-line ()
+      "Go to end of line and evaluate expression."
+      (interactive)
+      (move-end-of-line 1)
+      (eval-last-sexp nil)
+    )
+
+    (use-package web-mode
+      :ensure t
+      :config
+      (progn
+        (add-to-list 'auto-mode-alist '("\\.html?\\'" . web-mode))
+        (add-to-list 'auto-mode-alist '("\\.phtml\\'" . web-mode))
+        (add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
+        (add-to-list 'auto-mode-alist '("\\.[agj]sp\\'" . web-mode))
+        (add-to-list 'auto-mode-alist '("\\.as[cp]x\\'" . web-mode))
+        (add-to-list 'auto-mode-alist '("\\.erb\\'" . web-mode))
+        (add-to-list 'auto-mode-alist '("\\.mustache\\'" . web-mode))
+        (add-to-list 'auto-mode-alist '("\\.djhtml\\'" . web-mode))
+        ))
+
+    ;; key-chord
+    (use-package key-chord
+      :ensure t
+      :config
+      (progn
+        (key-chord-mode t)
+        ))
+
+    ;; (key-chord-define-global "zz" 'avy-goto-word-1)
+
+    ;; magnars
+    (use-package multiple-cursors
+      :ensure t
+      :config
+      (progn
+        (global-set-key (kbd "C-S-c C-S-c") 'mc/edit-lines)
+        (global-set-key (kbd "C->") 'mc/mark-next-like-this)
+        (global-set-key (kbd "C-<") 'mc/mark-previous-like-this)
+        (global-set-key (kbd "C-c C-<") 'mc/mark-all-like-this)
+        ))
+
+    ;; magnars
+    (use-package expand-region
+      :ensure t
+      :config
+      (progn
+        (global-set-key (kbd "C-=") 'er/expand-region)
+        ))
+
+
+    (use-package exec-path-from-shell
+      :ensure t
+      :config
+      (progn
+        (exec-path-from-shell-initialize)
+        ))
+
+    ;;    (use-package perspective
+    ;;      :ensure t)
+
+
+    (use-package ggtags
+      :ensure t)
+
+    (use-package projectile
+      :ensure t
+      :diminish projectile-mode
+      :config
+      (progn
+        (projectile-global-mode t)
+        (add-to-list 'projectile-other-file-alist '("html" "ts"))
+        (add-to-list 'projectile-other-file-alist '("ts" "html"))
+        ;;        (global-set-key (kbd "C-'") (kbd "C-u C-c p a"))
+        ;;(global-set-key (kbd "s-o") (kbd "C-u C-c p a"))
+
+        (global-unset-key (kbd "s-l"))
+        ;;(global-set-key (kbd "s-l") 'ng2-open-counterpart)
+
+        ;;(global-set-key (kbd "s-e") 'projectile-recentf)
+        (global-set-key (kbd "s-O") 'projectile-find-file)
+        (global-set-key (kbd "s-F") 'projectile-ag)
+        ;(global-set-key (kbd "s-<up>") 'projectile-find-file-in-directory)
+        ;;(global-set-key (kbd "s-<up>") 'ido-find-file)
+        (global-set-key (kbd "s-<up>") 'helm-find-files)
+      )
+    )
+
+    (use-package helm-projectile
+      :ensure t
+      :config
+      (progn
+        (helm-projectile-on)
+
+          (global-set-key (kbd "s-.") (lambda () (interactive)
+                                      (helm-projectile)
+                                      (message "Opened:  %s" (buffer-name))))
+
+          ;;(global-set-key (kbd "s-e") 'helm-projectile-recentf)
+        ))
+
+    (use-package persp-mode
+      :ensure t)
+
+
+    ;;(use-package persp-projectile
+    ;;:ensure t)
+
+    (use-package ag
+      :ensure t
+      )
+
+    ; (use-package helm-swoop
+    ;   :ensure t
+    ;   )
+    ;
+    (use-package helm-ag
+      :ensure t
+      )
+  
+  (use-package helm-rg
+      :ensure t
+      )
+
+    (use-package restclient
+      :ensure t
+      )
+
+    (use-package ob-async
+      :ensure t)
+
+      ;; Lists directories first
+    (use-package dired
+      :commands dired
+      :config
+      (setq dired-listing-switches
+            "-laGh1v --group-directories-first"))
+
+
+    ;; dired - try to guess copy path if there is another dired window open
+    ;; for this to work you need to `brew install coreutils` which
+    ;; installs gls, otherwise dired errors out stringp nil bla bla
+    (setq dired-dwim-target t)
+    (setq insert-directory-program (executable-find "gls"))
+
+    ;;  (use-package typescript-mode
+    ;;    :ensure t
+    ;;    )
+
+    ;; (use-package tss
+    ;;     :ensure t
+    ;;     )
+
+ ;;   (use-package typescript-mode
+ ;;     :ensure t
+ ;;     :mode
+ ;;     (("\\.ts$" . typescript-mode)
+ ;;      ("\\.tsx$" . typescript-mode))
+ ;;     :interpreter ("node" . typescript-mode))
+
+  ;;  (use-package ng2-mode
+  ;;    :ensure t
+  ;;    :mode
+  ;;    (("\\.html$" . ng2-mode)
+  ;;     ("\\.ts$" . ng2-mode))
+  ;;    :bind (
+  ;;      :map ng2-html-mode-map
+  ;;      (("s-b" . ng2-html-goto-binding))
+  ;;      :map ng2-html-map
+  ;;      (("s-b" . ng2-html-goto-binding))
+  ;;      :map ng2-ts-mode-map
+  ;;      (("s-b" . tide-jump-to-definition))
+  ;;    ))
+
+    ;; disable cmd-p cuz if crashes emacs
+    (global-set-key (kbd "s-p") nil)
+    (global-set-key (kbd "s-p") 'evil-mode)
+
+    ; CMD-OPT-v
+    ;(global-set-key (kbd "M-s-√") 'evil-mode)
+
+    ;; set space to enter ex mode :command here
+    (define-key evil-normal-state-map " " 'evil-ex)
+
+    ;; this is C and " aka CTRL SHIFT '
+    ;; (global-set-key (kbd "C-\"") 'evil-mode) doesn't seem to work any more
+
+    ;(global-set-key (kbd "s-;") 'mode-line-other-buffer)
+
+    (global-unset-key (kbd "s-;"))
+    (global-set-key (kbd "s-; t") 'helm-tramp)
+
+    (global-set-key (kbd "s-1") 'delete-other-windows)
+    (global-set-key (kbd "s-2") 'split-window-below)
+    (global-set-key (kbd "s-3") 'split-window-right)
+
+    (global-unset-key (kbd "s-d"))
+    (global-set-key (kbd "s-d") 'delete-window)
+
+    (global-set-key (kbd "C-x k") 'kill-current-buffer)
+
+    (global-set-key (kbd "s-]") 'next-buffer)
+    (global-set-key (kbd "s-[") 'previous-buffer)
+
+    ;;(global-set-key (kbd "s-0") 'delete-window)
+    ;;(global-set-key (kbd "C-j") 'other-window)
+    ;;(global-set-key (kbd "C-o") 'other-window)
+
+    ;; switch between previous and next buffer using CMD , and .
+    ;;(global-set-key (kbd "s-.") 'next-buffer)
+    ;;(global-set-key (kbd "s-,") 'previous-buffer)
+
+    ;; uncomment these to use Mac OS Command as Meta
+    ;; (setq mac-command-modifier 'meta)
+    ;; (setq mac-option-modifier 'super)
+    ;; (setq ns-function-modifier 'hyper)
+
+    ;; map right command key to meta. enais. commented out for use with kinesis keyboard
+    ;; (setq mac-right-command-modifier 'meta)
+#+END_SRC
+* color theme
+** custom themes
+#+BEGIN_SRC emacs-lisp
+  (setq custom-safe-themes t)
+  (add-to-list 'custom-theme-load-path "~/.emacs.d/my-themes/")
+; (load-theme 'solo-jazz t) 
+;(load-theme 'modus-vivendi t) ; dark
+; (load-theme 'modus-operandi t) ; light
+;  (load-theme 'deeper-blue)
+#+END_SRC
+
+** mode line
+#+begin_src emacs-lisp
+
+  (defun my/set-default-mode-line ()
+    (interactive)
+    ;(setq my-mode-line-color-bg "#19262D")
+    ;(set-face-attribute 'mode-line nil :background my-mode-line-color-bg :foreground "#a09f93" :box '(:line-width -1 :style released-button))
+
+    ;; same as no theme defaults
+    ;(set-face-attribute 'mode-line nil :background "grey75" :foreground "black" :box '(:line-width -1 :style released-button))
+
+    ;(set-face-attribute 'mode-line nil :background "#4A5161" :foreground "grey80" :box '(:line-width -1 :style released-button))
+    ;(set-face-attribute 'mode-line nil :background "#333843" :foreground "grey80" :box '(:line-width -1 :style released-button))
+
+    ;; this one is the 3d version colored
+    ;(set-face-attribute 'mode-line nil :background "#333843" :foreground "grey70" :box '(:line-width -1 :style released-button))
+    ;;(set-face-attribute 'mode-line nil :background "#454B5B" :foreground "grey70")
+    )
+
+#+end_src
+
+** jazz
+#+begin_src emacs-lisp
+; (use-package jazz-theme
+;   :ensure t
+;   :config
+;   (load-theme 'jazz t))
+#+end_src
+
+** gruvbox
+#+begin_src emacs-lisp
+; (use-package gruvbox-theme
+;   :ensure t
+;   :config
+;   ;(load-theme 'gruvbox-light-medium t)
+; )
+#+end_src
+** jbeans
+#+begin_src emacs-lisp
+
+   ;(use-package jbeans-theme
+   ;  :ensure t
+   ;  :config
+   ;  (load-theme 'jbeans t)
+   ;  ;(set-face-attribute 'default nil :inherit nil :background "Black")
+   ;  ;(set-face-attribute 'fringe nil :background "Black")
+   ;)
+
+  ;  ; that's my usual theme
+  ;  ; jbeans start
+  ;  (use-package jbeans-theme
+  ;    :ensure t
+  ;    :config
+  ;    (progn
+  ;      (load-theme 'jbeans)
+  ;      ;;(setq my-background-color "#282c34")
+  ;
+  ;      ;; (setq my-background-color "#1D2021")
+  ;      ;; (setq my-foreground-color "dark gray")
+  ;
+  ;
+  ;                                          ;(setq my-background-color "#212734")
+  ;                                          ; (setq my-foreground-color "dark gray")
+  ;
+  ;                                          ;(setq my-background-color "#1C2B33")
+  ;                                          ;(setq my-background-color "#212734")
+  ;      (setq my-background-color "#151515")
+  ;      (setq my-foreground-color "dark gray")
+  ;      ;;(setq my-mode-line-color-bg "#19262D")
+  ;      (setq my-mode-line-color-bg "#2e2e2e")
+  ;                                          ;(setq my-mode-line-color-bg "#162229")
+  ;
+  ; ;;set background and foreground
+  ; (set-face-attribute 'default nil :inherit nil :background my-background-color :foreground my-foreground-color)
+  ; (set-face-attribute 'fringe nil :background my-background-color)
+  ; ;;(set-face-attribute 'helm-source-header nil :background my-background-color :foreground "#fad07a")
+  ;
+  ; ;; gruvbox
+  ; ;;(set-face-attribute 'default nil :inherit nil :background "#1d2021")
+  ; ;;(set-face-attribute 'fringe nil :background "#1d2021")
+  ; ;;(set-face-attribute 'helm-source-header nil :background "#1d2021" :foreground "#fad07a")
+  ;
+  ;
+  ; (set-face-attribute 'helm-source-header nil :background "#162229" :foreground "#fad07a")
+  ; ;; may be for status bar #19262D
+  ; ;; may be for hl line "#1A2830"
+  ;
+  ;
+  ; (set-face-attribute 'cursor nil :background "IndianRed1")
+  ;
+  ;
+  ; ;; (set-face-attribute 'hl-line nil :background "gray18")
+  ; ;;(set-face-attribute 'hl-line nil :background "#1D232E")
+  ; ;;(set-face-attribute 'hl-line nil :background "#293141")
+  ;                                     ; to user this make sure to have global-hl-line-mode enabled
+  ;                                     ;(set-face-attribute 'hl-line nil :background "#1A2830")
+  ;
+  ; ;; set to default setting
+  ; ;;(set-face-attribute 'mode-line nil :background "grey75" :foreground "black" :box '(:line-width -1 :style released-button))
+  ;
+  ; ;; change default setting
+  ; ;;(set-face-attribute 'mode-line nil :background "#222535" :foreground "dark cyan")
+  ; ;;(set-face-attribute 'mode-line nil :background "#2b2b2b" :foreground "dark cyan" :box '(:line-width -1 :style released-button))
+  ; ;;(set-face-attribute 'mode-line nil :background "#2b2b2b" :foreground "#a09f93" :box '(:line-width -1 :style released-button))
+  ; (set-face-attribute 'mode-line nil :background my-mode-line-color-bg :foreground "#a09f93" :box '(:line-width -1 :style released-button))
+  ;
+  ; ;;(set-face-attribute 'mode-line-buffer-id nil :foreground "#99cc99")
+  ; (set-face-attribute 'mode-line-buffer-id nil :foreground "dark cyan")
+  ;
+  ; ;;(set-face-attribute 'region nil :background "#2F65CA" :foreground "White")
+  ; (set-face-attribute 'region nil :background "#656F9F" :foreground "White")
+  ; ;;(set-face-attribute 'mode-line nil :background "grey75" :foreground "black")
+  ;
+  ; ;; helm matching words highlight
+  ; (set-face-attribute 'helm-match nil :background my-background-color :foreground "IndianRed3")
+  ; ;;(set-face-attribute 'helm-match nil :background "#151515" :foreground "IndianRed3")
+  ; ;;(set-face-attribute 'helm-match nil :background "#282c34" :foreground "IndianRed3")
+  ;
+  ; ;; current selected line in helm
+  ; ;;(set-face-attribute 'helm-selection nil :background "MediumPurple4")
+  ; ;;(set-face-attribute 'helm-selection nil :background "dark blue")
+  ;
+  ; ;; comment color
+  ; (set-face-attribute 'font-lock-comment-face nil :foreground "HotPink2")
+  ; ;(set-face-attribute 'font-lock-comment-delimiter-face :foreground "HotPink4")
+  ;
+  ; ;; search
+  ; (set-face-attribute 'isearch nil :background "IndianRed3" :foreground "#cccccc")
+  ; (set-face-attribute 'isearch-fail nil :background "IndianRed3")
+  ; (set-face-attribute 'lazy-highlight nil :background "IndianRed3" :foreground "black")
+  ; (set-face-attribute 'highlight nil :background "#F99157" :foreground "black")
+  ; )
+  ; ;'(font-lock-comment-delimiter-face ((t (:foreground "dark magenta" :slant normal))))
+  ; ;'(org-block ((t (:inherit shadow :background "black"))))
+  ; ;'(org-checkbox ((t (:foreground "DeepPink3" :weight bold))))
+  ; ;'(org-level-1 ((t (:foreground "#ffb964" :weight bold :height 200 :family "Source Sans Pro"))))
+  ; ;'(org-level-2 ((t (:foreground "#99ad6a" :weight bold :height 160 :family "Source Sans Pro"))))
+  ;
+  ;)
+#+end_src
+
+** doom theme
+#+begin_src emacs-lisp
+  (use-package doom-themes
+    :ensure t
+    :config
+    ;(load-theme 'doom-one t)
+    ;(load-theme 'doom-vibrant t)
+    ;(load-theme 'doom-molokai t)
+    (load-theme 'doom-oceanic-next t)
+    ;(load-theme 'doom-monokai-pro t)
+    ;;(load-theme 'doom-dracula t)
+    ;(my/set-org-faces)
+    (doom-themes-org-config)
+    (doom-themes-visual-bell-config)
+    ;(set-face-attribute 'doom-visual-bell nil :background "#ff665c" :foreground "black")
+    (my/set-default-mode-line)
+    )
+#+end_src
+** zenburn theme
+#+begin_src emacs-lisp
+; (use-package hc-zenburn-theme
+;   :ensure t
+;   :config
+;   (load-theme 'hc-zenburn)
+;   (set-face-attribute 'fringe nil :background "#313131"))
+#+end_src
+** flatui theme
+#+begin_src emacs-lisp
+  ;   (use-package flatui-theme
+  ;   :ensure t
+  ;   :config
+  ;   (load-theme 'flatui)
+  ;)
+#+end_src
+
+** solarized themes
+#+begin_src emacs-lisp
+
+    ; (use-package solarized-theme
+    ;   :ensure t)
+
+  ;   (use-package color-theme-sanityinc-solarized
+  ;     :ensure t
+  ;     :config
+  ;     (load-theme 'sanityinc-solarized-dark t))
+  ;(load-theme 'solarized-gruvbox-light t)
+
+#+end_src
+** custom faces
+#+begin_src emacs-lisp
+  (defun my/set-org-faces ()
+    (interactive)
+    (set-face-attribute 'org-level-1 nil :height 1.0)
+    (set-face-attribute 'org-level-2 nil :height 1.0)
+    (set-face-attribute 'org-level-3 nil :height 1.0)
+    (set-face-attribute 'org-level-4 nil :height 1.0)
+    (set-face-attribute 'org-level-5 nil :height 1.0)
+    (set-face-attribute 'org-level-6 nil :height 1.0)
+    (set-face-attribute 'org-level-7 nil :height 1.0)
+    (set-face-attribute 'org-level-8 nil :height 1.0)
+    )
+
+
+                        ;; no theme; notheme use this when not using any theme; default theme
+;    (set-face-attribute 'region nil :background "#2F65CA" :foreground "White")
+;    (set-face-attribute 'default nil :inherit nil :background "honeydew")
+;    (set-face-attribute 'fringe nil :background "honeydew")
+
+                                   ;; Getting error 'Invalid face hl-line
+                                   ;; (set-face-attribute 'hl-line nil :background "gray92")
+
+
+;  (set-face-attribute 'fringe nil :background "White")
+;  (set-face-attribute 'cursor nil :background "IndianRed1")
+
+
+                        ;; change mode-line color by evil state
+                        ;(lexical-let ((default-color (cons (face-background 'mode-line)
+                        ;                                   (face-foreground 'mode-line))))
+                        ;  (add-hook 'post-command-hook
+                        ;    (lambda ()
+                        ;      (let ((color (cond ((minibufferp) default-color)
+                        ;                         ((evil-insert-state-p) '("#19262D" . "IndianRed3"))
+                        ;                         ((evil-emacs-state-p)  '("#19262D" . "#8381C5"))
+                        ;                         ((buffer-modified-p)   '("#19262D" . "#F99B14"))
+                        ;                         (t default-color))))
+                        ;        (set-face-background 'mode-line (car color))
+                        ;        (set-face-foreground 'mode-line (cdr color))))))
+                        ;; END change mode-line color by evil state
+
+
+#+end_src
+** other themes
+#+BEGIN_SRC emacs-lisp
+  ; (use-package arjen-grey-theme
+  ;   :ensure t
+  ;   :config
+  ;   (progn
+  ;     (require 'arjen-grey-theme)
+  ;     (load-theme 'arjen-grey)
+  ;     )
+  ;   )
+
+;   (use-package modus-vivendi-theme
+;     :ensure t
+;     :config
+;     :init
+;     (setq modus-vivendi-theme-rainbow-headings t)
+;     (set-face-attribute 'org-checkbox nil :foreground "DeepPink3")
+;     (progn
+;       (setq my-foreground-color "gray77")
+;       (set-face-attribute 'default nil :inherit nil :foreground my-foreground-color)
+;       (set-face-attribute 'region nil :background "#2F65CA" :foreground "White")
+;     )
+;   )
+
+   ; (use-package modus-operandi-theme
+   ;   :ensure t
+   ;   )
+
+  ;    (use-package poet-theme
+  ;      :ensure t
+  ;      )
+
+  ; (use-package eclipse-theme
+  ;   :ensure t
+  ;   :config
+  ;   (progn
+  ;     (load-theme 'eclipse)
+  ;     (set-face-attribute 'cursor nil :background "IndianRed1")
+  ;     (set-face-attribute 'region nil :background "#2F65CA" :foreground "White")
+  ;     (set-face-attribute 'mode-line nil :background "#005F87" :foreground "White")
+  ;     ))
+
+  ; (use-package spacemacs-theme
+  ;   :ensure t
+  ;   :config
+  ;   (progn
+  ;     (load-theme 'spacemacs-dark)
+
+  ;     ))
+
+
+
+  ;    (use-package dracula-theme
+  ;      :ensure t
+  ;      :config
+  ;      (progn
+  ;          (load-theme 'dracula)
+  ;          (my/set-org-faces)
+  ;          (my/set-default-mode-line)
+  ;      ))
+
+
+  ;  (load-theme 'light-blue)
+
+  ;(use-package blackboard-theme
+  ;  :ensure t
+  ;  :config
+  ;  (progn
+  ;    (load-theme 'blackboard)
+  ;    ))
+
+  ;(load-theme 'adwaita)
+  ;(set-face-attribute 'font-lock-builtin-face nil :foreground "dark blue")
+  ;(set-face-attribute 'hl-line nil :background "gray87")
+
+  ; (use-package color-theme-sanityinc-solarized
+  ;   :ensure t
+  ;   :config
+  ;   (progn
+  ;     (load-theme 'sanityinc-solarized-dark)
+  ;     (set-face-attribute 'mode-line nil :box nil :background "gray6")
+  ;     (set-face-attribute 'mode-line-inactive nil :box nil)
+  ;     (set-face-attribute 'cursor nil :background "IndianRed1")
+  ;     )
+  ;   )
+#+END_SRC
+
+* font settings
+#+BEGIN_SRC emacs-lisp
+
+      ;    (set-face-attribute 'default nil :family "Iosevka" :height 120)
+      ;    (set-face-attribute 'fixed-pitch nil :family "Iosevka" :height 120)
+
+            (setq my-font-size 140)
+            (setq my-font-name "JetBrains Mono")
+            ;(setq my-font-name "Monaco")
+            ;(setq my-font-name "SauceCodePro Nerd Font Mono")
+            ;(setq my-font-name "snpro")
+
+      ;     (setq my-font-size 140)
+      ;     (setq my-font-name "Cascadia Code")
+
+
+       ;    (set-face-attribute 'default nil
+       ;                        :font my-font-name
+       ;                        :height my-font-size)
+
+            ; use this for jbeans 
+            ;(set-face-attribute 'org-block nil :background "black")
+
+            ; use for notheme
+            ;(set-face-attribute 'org-block nil :backround "white")
+            ;(set-face-attribute 'org-block nil :font my-font-name :height my-font-size)
+
+            ;(set-face-attribute 'font-lock-comment-face nil :slant normal) ; doesn't work for some reason. Saved in custom.el for now
+
+  (dolist (face '(default fixed-pitch))
+    (set-face-attribute `,face nil :font my-font-name :height my-font-size))
+
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
+  ;;; what-face to determine the face at the current point
+  ;; https://gitlab.com/buildfunthings/emacs-config/blob/master/loader.org
+  (defun my/what-face (pos)
+    (interactive "d")
+    (let ((face (or (get-char-property (point) 'read-face-name)
+                    (get-char-property (point) 'face))))
+      (if face (message "Face: %s" face) (message "No face at %d" pos))))
+
+
+  (defun change-font-height (delta)
+    ;(set-face-attribute 'default nil :height (+ (face-attribute 'default :height) delta))
+    ;(set-face-attribute 'org-block nil :height (+ (face-attribute 'org-block :height) delta))
+
+    (dolist (face '(default fixed-pitch))
+        (set-face-attribute `,face nil :height (+ (face-attribute `,face :height) delta))
+  ))
+
+  (global-set-key (kbd "s-=") '(lambda () (interactive) (change-font-height +10)))
+  (global-set-key (kbd "s--") '(lambda () (interactive) (change-font-height -10)))
+  ;;  (global-set-key (kbd "s-0") '(lambda () (interactive) (set-face-attribute 'default nil :height 140)))
+
+  ;(global-set-key (kbd "s-0") '(lambda () (interactive) (set-face-attribute 'default nil :height my-font-size)))
+  (global-set-key (kbd "s-0") '(lambda () (interactive) 
+    (dolist (face '(default fixed-pitch))
+    (set-face-attribute `,face nil :font my-font-name :height my-font-size))
+  ))
+
+#+END_SRC
+
+* mouse config
+#+BEGIN_SRC emacs-lisp
+  ;; scroll one line at a time (less "jumpy" than defaults)
+  ;; https://www.emacswiki.org/emacs/SmoothScrolling
+  
+  (setq mouse-wheel-scroll-amount '(1 ((shift) . 1))) ;; one line at a time
+  
+  (setq mouse-wheel-progressive-speed nil) ;; don't accelerate scrolling
+  
+  (setq mouse-wheel-follow-mouse 't) ;; scroll window under mouse
+  
+  (setq scroll-step 1) ;; keyboard scroll one line at a time
+  #+END_SRC
+
+* Previous customizations
+
+#+BEGIN_SRC emacs-lisp
+(setq custom-file (concat init-dir "custom.el"))
+
+(load custom-file :noerror)
+#+END_SRC
+
+* tern
+#+BEGIN_SRC emacs-lisp
+;; (use-package tern
+;;   :ensure t)
+
+;;;;;  (use-package auto-complete
+;;;;;    :ensure t
+;;;;;    :config
+;;;;;    (progn
+;;;;;      (require 'auto-complete-config)
+;;;;;      (ac-config-default)
+;;;;;      ))
+;;;;;
+;;;;;  (use-package tern-auto-complete
+;;;;;    :ensure t)
+;;;;;
+;;;;;  (add-hook 'js-mode-hook (lambda () (tern-mode t)))
+;;;;;  (eval-after-load 'tern
+;;;;;    '(progn
+;;;;;       (require 'tern-auto-complete)
+;;;;;       (tern-ac-setup)))
+#+END_SRC
+* js2
+#+BEGIN_SRC emacs-lisp
+;; (use-package js2-mode
+;;   :ensure t
+;;   :mode (("\\.js\\'" . js2-mode)))
+#+END_SRC
+* narrow-widen
+# http://endlessparentheses.com/the-toggle-map-and-wizardry.html
+#+BEGIN_SRC emacs-lisp
+(define-prefix-command 'endless/toggle-map)
+;; The manual recommends C-c for user keys, but C-x t is
+;; always free, whereas C-c t is used by some modes.
+(define-key ctl-x-map "t" 'endless/toggle-map)
+(define-key endless/toggle-map "c" #'column-number-mode)
+(define-key endless/toggle-map "d" #'toggle-debug-on-error)
+(define-key endless/toggle-map "e" #'toggle-debug-on-error)
+(define-key endless/toggle-map "f" #'auto-fill-mode)
+(define-key endless/toggle-map "l" #'toggle-truncate-lines)
+(define-key endless/toggle-map "q" #'toggle-debug-on-quit)
+(define-key endless/toggle-map "t" #'endless/toggle-theme)
+(define-key endless/toggle-map "v" #'visual-line-mode)
+;(global-set-key (kbd "C-x t v") 'visual-line-mode)
+
+;;; Generalized version of `read-only-mode'.
+(define-key endless/toggle-map "r" #'dired-toggle-read-only)
+(autoload 'dired-toggle-read-only "dired" nil t)
+(define-key endless/toggle-map "w" #'whitespace-mode)
+#+END_SRC
+
+# http://endlessparentheses.com/emacs-narrow-or-widen-dwim.html
+#+BEGIN_SRC emacs-lisp
+(defun narrow-or-widen-dwim (p)
+  "Widen if buffer is narrowed, narrow-dwim otherwise.
+Dwim means: region, org-src-block, org-subtree, or
+defun, whichever applies first. Narrowing to
+org-src-block actually calls `org-edit-src-code'.
+
+With prefix P, don't widen, just narrow even if buffer
+is already narrowed."
+  (interactive "P")
+  (declare (interactive-only))
+  (cond ((and (buffer-narrowed-p) (not p)) (widen))
+        ((region-active-p)
+         (narrow-to-region (region-beginning)
+                           (region-end)))
+        ((derived-mode-p 'org-mode)
+         ;; `org-edit-src-code' is not a real narrowing
+         ;; command. Remove this first conditional if
+         ;; you don't want it.
+         (cond ((ignore-errors (org-edit-src-code) t)
+                (delete-other-windows))
+               ((ignore-errors (org-narrow-to-block) t))
+               (t (org-narrow-to-subtree))))
+        ((derived-mode-p 'latex-mode)
+         (LaTeX-narrow-to-environment))
+        (t (narrow-to-defun))))
+
+; cmd-n to narrow and widen
+(global-unset-key (kbd "s-n"))
+(global-set-key (kbd "s-n") 'narrow-or-widen-dwim)
+
+(define-key endless/toggle-map "n"
+  #'narrow-or-widen-dwim)
+;; This line actually replaces Emacs' entire narrowing
+;; keymap, that's how much I like this command. Only
+;; copy it if that's what you want.
+(define-key ctl-x-map "n" #'narrow-or-widen-dwim)
+(add-hook 'LaTeX-mode-hook
+          (lambda ()
+            (define-key LaTeX-mode-map "\C-xn"
+              nil)))
+
+#+END_SRC
+* ; aggressive-indent
+#+BEGIN_SRC emacs-lisp
+;;  (use-package aggressive-indent
+;;    :ensure t
+;;    :config
+;;    (global-aggressive-indent-mode 1)
+;;    )
+#+END_SRC
+* fly check, tide, company mode
+
+#+BEGIN_SRC emacs-lisp
+  ;; (use-package tide
+  ;;   :ensure t)
+
+  (use-package company
+    :ensure t
+    :diminish 'company-mode
+    :config
+    (setq company-idle-delay 0)
+    (setq company-minimum-prefix-length 2)
+    (define-key company-active-map (kbd "M-n") nil)
+    (define-key company-active-map (kbd "M-p") nil)
+    (define-key company-active-map (kbd "C-n") #'company-select-next)
+    (define-key company-active-map (kbd "C-p") #'company-select-previous)
+    ;;(define-key company-active-map (kbd "C-j") #'company-select-next)
+    ;;(define-key company-active-map (kbd "C-k") #'company-select-previous)
+    (add-hook 'prog-mode-hook 'company-mode))
+
+  (use-package company-flx
+    :ensure t
+    :config (add-hook 'prog-mode-hook 'company-mode))
+
+  ;;(company-flx-mode +1)
+
+  ;; youcomplete me set
+  ;; (use-package company-ycmd
+  ;;   :ensure t)
+  ;;
+  ;; (require 'company-ycmd)
+  ;; (company-ycmd-setup)
+  ;; (set-variable 'ycmd-server-command '("python" "/Users/niko/vimconfigs/vim/bundle/YouCompleteMe/python/ycm/youcompleteme.py"))
+  ;; ;;(require 'ycmd-test)
+  ;; ;;(ert-run-tests-interactively "ycmd-test")
+
+  (with-eval-after-load 'company
+    (add-hook 'company-mode-hook (lambda ()
+                                   (add-to-list 'company-backends 'company-capf)))
+  (company-flx-mode +1))
+
+
+
+  ;; (defun setup-tide-mode ()
+  ;;   (interactive)
+  ;;   (tide-setup)
+  ;;   (flycheck-mode +1)
+  ;;   (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  ;;   (eldoc-mode +1)
+  ;;   (diminish 'eldoc-mode)
+  ;;   (tide-hl-identifier-mode +1)
+  ;;   ;; company is an optional dependency. You have to
+  ;;   ;; install it separately via package-install
+  ;;   ;; `M-x package-install [ret] company`
+
+  ;;   ;; (company-mode +1)
+  ;;   ;; (auto-complete-mode 1)
+  ;; )
+
+;;   (defun setup-ng2-html-mode
+;;       (interactive)
+;;       (fly-check-mode +1)
+;;       )
+
+  ;; aligns annotation to the right hand side
+  (setq company-tooltip-align-annotations t)
+
+  ;; formats the buffer before saving (dangeours)
+  ;;(add-hook 'before-save-hook 'tide-format-before-save)
+
+;;  (add-hook 'typescript-mode-hook #'setup-tide-mode)
+;;  (add-hook 'ng2-html-mode-hook #'setup-ng2-html-mode)
+
+  ;; format options
+  ;; (setq tide-format-options '(:insertSpaceAfterFunctionKeywordForAnonymousFunctions t :placeOpenBraceOnNewLineForFunctions nil))
+
+ ;; (use-package flycheck
+ ;;   :ensure t)
+ #+END_SRC
+
+* backup files
+#+BEGIN_SRC emacs-lisp
+(setq
+   backup-by-copying t      ; don't clobber symlinks
+   backup-directory-alist
+    '(("." . "~/.emacs.d/backup"))    ; don't litter my fs tree
+   tramp-backup-directory-alist backup-directory-alist 
+   delete-old-versions t
+   kept-new-versions 6
+   kept-old-versions 2
+   version-control t)       ; use versioned backups
+#+END_SRC
+* ; yasnippets
+#+BEGIN_SRC emacs-lisp
+;(use-package yasnippet
+;  :ensure t
+;  :diminish yas-minor-mode
+;  :config
+;  (yas-global-mode 1))
+#+END_SRC
+
+* rainbow (off)
+#+BEGIN_SRC emacs-lisp
+;(use-package rainbow-mode
+;  :ensure t
+;  :diminish rainbow-mode
+;  :config
+;  (rainbow-mode 1))
+#+END_SRC
+* wrap-region
+#+BEGIN_SRC emacs-lisp
+(use-package wrap-region
+  :ensure t
+  :diminish wrap-region-mode
+  :config
+  (wrap-region-mode 1))
+#+END_SRC
+* fasd
+#+BEGIN_SRC emacs-lisp
+(use-package fasd
+  :ensure t
+  )
+#+END_SRC
+
+* lua-mode
+
+#+BEGIN_SRC emacs-lisp
+(use-package lua-mode
+  :ensure t
+)
+#+END_SRC
+* title bar color matching theme
+#+BEGIN_SRC emacs-lisp
+(add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+(add-to-list 'default-frame-alist '(ns-appearance . dark))
+#+END_SRC
+* magit
+#+BEGIN_SRC emacs-lisp
+;;(use-package magit
+;;  :ensure t)
+#+END_SRC
+* pop up kill ring
+#+BEGIN_SRC emacs-lisp
+  (use-package popup-kill-ring
+    :ensure t
+    :bind ("s-y" . popup-kill-ring))
+#+END_SRC
+* reload config
+#+BEGIN_SRC emacs-lisp
+  (defun config-reload ()
+    (interactive)
+    (org-babel-load-file (expand-file-name "loader.org" init-dir)))
+  (global-set-key (kbd "C-c r") 'config-reload)
+#+END_SRC
+* ; disable antialiasing
+#+BEGIN_SRC emacs-lisp
+  ;;(setq ns-antialias-text nil)
+#+END_SRC
+* ; ranger
+#+BEGIN_SRC emacs-lisp
+;  (use-package ranger
+;    :ensure t)
+#+END_SRC
+* swiper
+#+begin_src emacs-lisp
+  ;;(global-unset-key (kbd "s-l"))
+
+; swiper-multi - lets you select multiple buffers but not sure how
+  (use-package swiper
+    :ensure t
+    :bind (
+             ("s-I" . swiper)
+             ("s-L" . swiper-all)
+             ("s-l" . swiper))
+  )
+
+#+end_src
+* imagemagic
+
+#+begin_src emacs-lisp
+(add-to-list 'exec-path "/usr/local/Cellar/imagemagick")
+#+end_src
+* ibuffer shortcut
+#+begin_src emacs-lisp
+  (global-set-key (kbd "s-i") 'ibuffer)
+#+end_src
+* docker
+** docker
+#+begin_src emacs-lisp
+; (use-package docker
+;   :ensure t
+;   :bind ("C-c d" . docker)
+;   :config
+;   (setq docker-container-shell-file-name "/usr/local/bin/zsh")
+; )
+#+end_src
+
+** docker tramp
+#+begin_src emacs-lisp
+
+; (use-package docker-tramp
+;   :ensure t)
+
+#+end_src
+** dockerfile mode
+#+begin_src emacs-lisp
+
+  (use-package dockerfile-mode
+    :ensure t)
+
+#+end_src
+* doom mode line
+#+begin_src emacs-lisp
+
+; (use-package doom-modeline
+;   :ensure t
+;   :init
+;   (doom-modeline-mode 1)
+;   :config
+;   (setq doom-modeline-height 1)
+;   (set-face-attribute 'mode-line nil :family "Source Code Pro" :height 120)
+;   (set-face-attribute 'mode-line-inactive nil :family "Source Code Pro" :height 120))
+
+#+end_src
+* keycast
+#+begin_src emacs-lisp
+  (use-package moody :ensure)
+
+  (use-package keycast
+    :ensure
+    :after moody
+    :config
+    (setq keycast-window-predicate 'moody-window-active-p)
+    (setq keycast-separator-width 1)
+    (setq keycast-insert-after 'mode-line-buffer-identification)
+    (setq keycast-remove-tail-elements nil)
+    (keycast-mode 1)
+    ;(set-face-attribute 'keycast-key nil :background "#000000")
+    ;(set-face-attribute 'keycast-key nil :background "white" :height 1.0  :box '(:line-width -1 :color nil :style released-button))
+    ;(keycast-key ((t (:background "gray58" :foreground "#000000" :weight bold :height 1))))
+    (set-face-attribute 'keycast-key nil :background "gray" :height 1.0 :box '(:width 0))
+
+  ;; TODO pending review
+    (add-to-list 'keycast-substitute-alist '(mouse-event-p nil))
+    (add-to-list 'keycast-substitute-alist '(mouse-movement-p nil))
+    (add-to-list 'keycast-substitute-alist '(mwheel-scroll nil))
+    ;; (add-to-list 'keycast-substitute-alist '(mouse-set-point nil))
+    ;; (add-to-list 'keycast-substitute-alist '(mouse-set-region nil))
+    ;; (add-to-list 'keycast-substitute-alist '(mouse-drag-secondary nil))
+    ;; (add-to-list 'keycast-substitute-alist '(mouse-drag-line nil))
+    ;; (add-to-list 'keycast-substitute-alist '(mouse-drag-drag nil))
+    ;; (add-to-list 'keycast-substitute-alist '(mouse-start-end nil))
+    ;; (add-to-list 'keycast-substitute-alist '(mouse-drag-region nil nil))
+    ;; (add-to-list 'keycast-substitute-alist '(mouse-drag-track nil nil))
+    ;; (add-to-list 'keycast-substitute-alist '(mouse-drag-region-rectangle nil))
+    ;; (add-to-list 'keycast-substitute-alist '(mouse-drag-and-drop-region nil))
+    ;; (add-to-list 'keycast-substitute-alist '(mwheel-event-button nil))
+    ;; (add-to-list 'keycast-substitute-alist '(dframe-mouse-event-p nil))
+    ;; (add-to-list 'keycast-substitute-alist '(mouse-drag-events-are-point-events-p nil))
+    (add-to-list 'keycast-substitute-alist '(self-insert-command "." "Typing…"))
+    (add-to-list 'keycast-substitute-alist '(org-self-insert-command "." "Typing…")))
+#+end_src
+* yaml mode
+#+begin_src emacs-lisp
+
+  (use-package yaml-mode
+    :ensure t)
+
+#+end_src
+
+* centaur tabs
+
+#+begin_src emacs-lisp
+; (use-package centaur-tabs
+;   :ensure t
+;   :config
+;   (setq centaur-tabs-set-bar 'over
+;         centaur-tabs-set-icons t
+;         centaur-tabs-gray-out-icons 'buffer
+;         centaur-tabs-height 24
+;         centaur-tabs-set-modified-marker t
+;         )
+;   (centaur-tabs-mode t))
+#+end_src
+
+* apache mode
+#+begin_src emacs-lisp
+
+  (use-package apache-mode
+    :ensure t)
+
+#+end_src
