@@ -45,7 +45,8 @@ font:
 
 # colorscheme
 import:
-  - ~/.config/alacritty/everforest.yml
+  - ~/.config/alacritty/rose-pine.yml
+  # - ~/.config/alacritty/everforest.yml
 
 cursor:
   thickness: 0.25
