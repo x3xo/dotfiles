@@ -2,19 +2,27 @@ env:
   TERM: xterm-256color
 
 window:
+
+  # make option key act as alt on mac os
+  option_as_alt: Both
+
   paddig:
     x: 4
     y: 0
 
   dynamic_padding: true
-  decorations: buttonless
-  startup_mode: Maximized
+  decorations: full
+  startup_mode: SimpleFullscreen
+
+  # decorations: buttonless
+  # startup_mode: Maximized
 
 anchors:
   # &font_family: JetBrainsMono Nerd Font Mono
   # &font_family: M PLUS Code Latin 50
   # &font_family: M PLUS Code Latin 60
   &font_family Hack Nerd Font Mono
+  # &font_family UbuntuMono Nerd Font Mono
   # &font_family SF Mono
 
 font:
@@ -66,6 +74,7 @@ key_bindings:
   - { key: T,              mods: Command,                    chars: "\x07\x63"             } # new window (tab) in tmux
   - { key: W,              mods: Command,                    chars: "\x1b\x77"             } # close pane in tmux
   - { key: F,              mods: Command,                    chars: "\x1b\x2f"             } # find in tmux
+  - { key: F,              mods: Command|Shift,              action: ToggleSimpleFullscreen} # fullscreen toggle
   - { key: Key1,           mods: Command,                    chars: "\x07\x31"             } # switch to window 1
   - { key: Key2,           mods: Command,                    chars: "\x07\x32"             } # switch to window 2
   - { key: Key3,           mods: Command,                    chars: "\x07\x33"             } # switch to window 3
