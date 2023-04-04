@@ -60,5 +60,25 @@ return {
   'norcalli/nvim-colorizer.lua',
   'j-hui/fidget.nvim',
   'machakann/vim-highlightedyank',
+  { -- Add indentation guides
+    'lukas-reineke/indent-blankline.nvim',
+    opts = {
+      char = '┊',
+      show_trailing_blankline_indent = false,
+    },
+  },
+  {
+    'folke/neodev.nvim',
+    config = function ()
+      require('neodev').setup()
+    end
+  },
+  {
+    'nvim-telescope/telescope-fzf-native.nvim',
+    build = 'make',
+    cond = function()
+      return vim.fn.executable 'make' == 1
+    end,
+  },
 }
 
