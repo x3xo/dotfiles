@@ -19,7 +19,7 @@ local keymap = vim.keymap.set
 -- open config
 -- keymap("n", "<C-n>v", ":e $MYVIMRC<cr>", opts)
 keymap("n", "<C-n>v", ":Telescope find_files cwd=$HOME/.config/nvim<cr>", opts)
-keymap("n", "<C-n>h", ":Telescope help_tags<cr>", opts)
+-- keymap("n", "<C-n>h", ":Telescope help_tags<cr>", opts)
 
 keymap("n", "<C-d>", ":bnext<cr>", opts)
 keymap("n", "<C-s>", ":bprev<cr>", opts)
