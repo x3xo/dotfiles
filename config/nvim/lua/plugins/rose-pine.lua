@@ -24,11 +24,12 @@ return {
         TelescopePromptNormal = { bg = "base" },
         TelescopeResultsNormal = { fg = "subtle", bg = "none" },
         TelescopeMatching = { fg = "love" },
+        DiffAdd = { bg = "#83c092", blend = 50},
         -- TelescopeSelection = { fg = "text", bg = "base" },
         -- TelescopeSelectionCaret = { fg = "rose", bg = "rose" },
       }
     })
 
-    -- vim.cmd('colorscheme rose-pine')
+    vim.cmd('colorscheme rose-pine')
   end
 }
