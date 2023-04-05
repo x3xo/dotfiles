@@ -77,7 +77,8 @@ keymap('n', '<C-n>m', builtin.keymaps, {})
 -- fugitive
 keymap("n", "<leader>gs", ":Git<cr>", opts)
 
-
+-- select current line from first non-empty character till the end of line excluding new line character
+keymap("n", "val", ":norm ^vg_<cr>", opts)
 
 
 
