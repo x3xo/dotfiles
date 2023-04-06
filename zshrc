@@ -163,6 +163,8 @@ lfcd() {
 }
 bindkey -s '^o' 'lfcd\n'  # zsh
 
+# edit command line in vim
+bindkey '^x^x' edit-command-line
 
 # source nvm
 export NVM_DIR="$HOME/.nvm"
