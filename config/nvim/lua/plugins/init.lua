@@ -26,7 +26,7 @@ return {
   -- 'preservim/nerdtree',
   'ryanoasis/vim-devicons',
   -- 'mbbill/undotree',
-  'pacha/vem-tabline',
+  -- 'pacha/vem-tabline', -- deprecated. Replaced with barbar
   {
     'tpope/vim-fugitive',
     cmd = { "G", "Git"},
@@ -79,6 +79,17 @@ return {
     cond = function()
       return vim.fn.executable 'make' == 1
     end,
+  },
+  {'romgrk/barbar.nvim',
+    dependencies = 'nvim-tree/nvim-web-devicons',
+    init = function() vim.g.barbar_auto_setup = false end,
+    opts = {
+      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+      animation = true,
+      -- insert_at_start = true,
+      -- …etc.
+    },
+    version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
 }
 
