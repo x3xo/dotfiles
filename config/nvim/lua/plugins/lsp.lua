@@ -33,6 +33,12 @@ return {
       'lua_ls',
     })
 
+
+    lsp.set_preferences({
+      -- use letters instead of icons in gutter. thanks primagen
+      sign_icons = { }
+    })
+
     -- (Optional) Configure lua language server for neovim
     lsp.nvim_workspace()
 
