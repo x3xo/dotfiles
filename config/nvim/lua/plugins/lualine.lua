@@ -7,6 +7,8 @@ return {
         -- theme = 'auto',
         theme = 'onedark',
         component_separators = '|',
+        -- component_separators = '│',
+        -- component_separators = '┃',
         section_separators = '',
         disabled_filetypes = {
           statusline = {},
