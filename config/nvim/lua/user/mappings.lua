@@ -24,6 +24,13 @@ keymap("n", "<C-n>v", ":Telescope find_files cwd=$HOME/.config/nvim<cr>", opts)
 keymap("n", "<C-d>", ":bnext<cr>", opts)
 keymap("n", "<C-s>", ":bprev<cr>", opts)
 
+-- barbar
+keymap("n", "<A-m>", ":BufferPrevious<cr>", opts)
+keymap("n", "<A-,>", ":BufferNext<cr>", opts)
+keymap("n", "<A-p>", ":BufferPrevious<cr>", opts)
+keymap("n", "<A-n>", ":BufferNext<cr>", opts)
+keymap("n", "<A-g>", ":b#<cr>", opts)
+
 -- disable ZZ so I don't accidently hit it when running zz
 keymap("", "ZZ", "<nop>", opts)
 
@@ -33,8 +40,8 @@ keymap({"n", "v"}, "<leader>c", ":TComment<cr>", opts)
 
 keymap("n", "<leader>.", ":ColorizerToggle<cr>", opts)
 
--- keymap("n", "<leader>w", ":Bclose<cr>", opts)
-keymap("n", "<leader>q", ":Bclose<cr>", opts)
+-- keymap("n", "<leader>q", ":Bclose<cr>", opts)
+keymap("n", "<leader>q", ":BufferClose<cr>", opts)
 
 -- telescope
 local builtin = require('telescope.builtin')
@@ -79,6 +86,4 @@ keymap("n", "<leader>gs", ":Git<cr>", opts)
 
 -- select current line from first non-empty character till the end of line excluding new line character
 keymap("n", "val", ":norm ^vg_<cr>", opts)
-
-
 

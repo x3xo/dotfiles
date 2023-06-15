@@ -36,15 +36,26 @@ return {
 
     lsp.set_preferences({
       -- use letters instead of icons in gutter. thanks primagen
-      sign_icons = { }
+      -- sign_icons = { }
+      sign_icons = {
+        error = '✘',
+        warn = '▲',
+        hint = '⚑',
+        info = '»'
+      }
     })
+
 
     -- (Optional) Configure lua language server for neovim
     lsp.nvim_workspace()
 
+
     lsp.setup()
 
+
+    -- print("hello")
     local on_attach = function(_, bufnr)
+      print("attaching LSP...")
       -- Enable completion triggered by <c-x><c-o>
       vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -55,21 +66,66 @@ return {
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
       vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-      vim.keymap.set('n', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-      vim.keymap.set('n', '<space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-      vim.keymap.set('n', '<space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-      vim.keymap.set('n', '<space>wl', function()
+      vim.keymap.set('n', 'gI', vim.diagnostic.open_float, bufopts)
+      vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, bufopts)
+      vim.keymap.set('n', '<leader><space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
+      vim.keymap.set('n', '<leader><space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
+      vim.keymap.set('n', '<leader><space>wl', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end, bufopts)
-      vim.keymap.set('n', '<space>D', vim.lsp.buf.type_definition, bufopts)
-      vim.keymap.set('n', '<space>rn', vim.lsp.buf.rename, bufopts)
-      vim.keymap.set('n', '<space>ca', vim.lsp.buf.code_action, bufopts)
+      vim.keymap.set('n', '<leader><space>D', vim.lsp.buf.type_definition, bufopts)
+      vim.keymap.set('n', '<leader><space>rn', vim.lsp.buf.rename, bufopts)
+      vim.keymap.set('n', '<leader><space>ca', vim.lsp.buf.code_action, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-      vim.keymap.set('n', '<space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+      vim.keymap.set('n', '<leader><space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
     end
 
-    require'lspconfig'.sourcekit.setup {
+
+    local lspconfig = require('lspconfig')
+
+
+    lspconfig.sourcekit.setup {
       on_attach = on_attach,
+    }
+
+
+    lspconfig.lua_ls.setup {
+      on_attach = on_attach,
+      settings = {
+        Lua = {
+          runtime = {
+            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+            version = 'LuaJIT',
+          },
+          diagnostics = {
+            -- Get the language server to recognize the `vim` global
+            globals = {'vim', 'hs'},
+          },
+          workspace = {
+            -- Make the server aware of Neovim runtime files
+            library = vim.api.nvim_get_runtime_file("", true),
+          },
+          -- Do not send telemetry data containing a randomized but unique identifier
+          telemetry = {
+            enable = false,
+          },
+        },
+      },
+    }
+
+    lspconfig.pyright.setup {
+      on_attach = on_attach,
+      settings = {
+        {
+          python = {
+            analysis = {
+              autoSearchPaths = true,
+              diagnosticMode = "workspace",
+              useLibraryCodeForTypes = true
+            }
+          }
+        },
+      },
     }
 
   end,

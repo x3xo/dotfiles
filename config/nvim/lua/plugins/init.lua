@@ -18,8 +18,6 @@ return {
   --   name = 'rose-pine',
   -- },
 
-  -- { "catppuccin/nvim", name = "catppuccin" },
-
   -- 'navarasu/onedark.nvim',
   'sainnhe/everforest',
   'christoomey/vim-tmux-navigator',
@@ -82,12 +80,14 @@ return {
       return vim.fn.executable 'make' == 1
     end,
   },
+  
+  -- buffers as tabs. Replacing vem-tabline
   {'romgrk/barbar.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
     init = function() vim.g.barbar_auto_setup = false end,
     opts = {
       -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
-      animation = true,
+      animation = false,
       -- insert_at_start = true,
       -- …etc.
     },

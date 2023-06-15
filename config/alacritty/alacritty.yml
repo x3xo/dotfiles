@@ -75,13 +75,13 @@ key_bindings:
   - { key: W,              mods: Command,                    chars: "\x1b\x77"             } # close pane in tmux
   - { key: F,              mods: Command,                    chars: "\x1b\x2f"             } # find in tmux
   - { key: F,              mods: Command|Shift,              action: ToggleSimpleFullscreen} # fullscreen toggle
-  - { key: Key1,           mods: Command,                    chars: "\x07\x31"             } # switch to window 1
-  - { key: Key2,           mods: Command,                    chars: "\x07\x32"             } # switch to window 2
-  - { key: Key3,           mods: Command,                    chars: "\x07\x33"             } # switch to window 3
-  - { key: Key4,           mods: Command,                    chars: "\x07\x34"             }
-  - { key: Key5,           mods: Command,                    chars: "\x07\x35"             }
-  - { key: Key6,           mods: Command,                    chars: "\x07\x36"             }
-  - { key: Key7,           mods: Command,                    chars: "\x07\x37"             }
-  - { key: Key8,           mods: Command,                    chars: "\x07\x38"             }
-  - { key: Key9,           mods: Command,                    chars: "\x07\x39"             }
+  # - { key: Key1,           mods: Command,                    chars: "\x07\x31"             } # switch to window 1
+  # - { key: Key2,           mods: Command,                    chars: "\x07\x32"             } # switch to window 2
+  # - { key: Key3,           mods: Command,                    chars: "\x07\x33"             } # switch to window 3
+  # - { key: Key4,           mods: Command,                    chars: "\x07\x34"             }
+  # - { key: Key5,           mods: Command,                    chars: "\x07\x35"             }
+  # - { key: Key6,           mods: Command,                    chars: "\x07\x36"             }
+  # - { key: Key7,           mods: Command,                    chars: "\x07\x37"             }
+  # - { key: Key8,           mods: Command,                    chars: "\x07\x38"             }
+  # - { key: Key9,           mods: Command,                    chars: "\x07\x39"             }
 

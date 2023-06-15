@@ -27,5 +27,6 @@ require("user.mappings")
 require("user.everforest")
 require("user.highlightedyank")
 require("user.colorscheme")
+require("user.statusline")
 require("user.highlight-group")
 
