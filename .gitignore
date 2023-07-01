@@ -1,4 +1,6 @@
 *.pyc
 *.pyo
 .DS_Store
+config/nvim/lazy-lock.json
+
 
