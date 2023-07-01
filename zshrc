@@ -3,26 +3,33 @@
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
-export PATH=$HOME/.nvm/versions/node/v19.5.0/bin:$HOME/bin:$HOME/scripts/dragon:$HOME/go/bin:$HOME/.jenv/bin:$PATH
+# export PATH=$HOME/.nvm/versions/node/v19.5.0/bin:$HOME/bin:$HOME/scripts/dragon:$HOME/go/bin:$HOME/.jenv/bin:$PATH
+export PATH=$HOME/bin:$HOME/scripts/dragon:$HOME/go/bin:$PATH
+
+# https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
+export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 
 # set up jenv
 # commented out because it slows down shell init.
 # eval "$(jenv init -)"
 
 # lazy load jenv
-jenv() {
-  emulate -LR zsh
-  if [[ -n "${functions[jenv]}" ]]; then
-    if [[ -z "$JENV_INIT" ]]; then
-      JENV_INIT=1
-      eval "$(jenv init -)"
-    fi
-    command jenv "$@"
-  else
-    autoload -U jenv
-    jenv "$@"
-  fi
-}
+#### jenv() {
+####   emulate -LR zsh
+####   if [[ -n "${functions[jenv]}" ]]; then
+####     if [[ -z "$JENV_INIT" ]]; then
+####       JENV_INIT=1
+####       eval "$(jenv init -)"
+####     fi
+####     command jenv "$@"
+####   else
+####     autoload -U jenv
+####     jenv "$@"
+####   fi
+#### }
+
+# rtx
+eval "$(rtx activate zsh)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -30,6 +37,7 @@ jenv() {
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="niko"
+# ZSH_THEME="agnoster-niko"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -145,7 +153,7 @@ alias py-makevenv="python3 -m venv .venv && source .venv/bin/activate"
 # that mirrors the content of $PATH. The -U option to typeset modifies
 # that variable so that the entries are unique.
 typeset -aU path
-path=( $path /foo )
+# path=( $path /foo )
 
 
 lfcd() {
@@ -167,8 +175,8 @@ bindkey -s '^o' 'lfcd\n'  # zsh
 bindkey '^x^x' edit-command-line
 
 # source nvm
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
+#### export NVM_DIR="$HOME/.nvm"
+#### [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # lazy load nvm
