@@ -8,7 +8,9 @@ hi TelescopeMatching guifg=#f38ba8
 " hi StatusLine guibg=#005577
 " hi StatusLine guibg=#003a96
 " hi StatusLine guibg=#003a96
-hi StatusLine guibg=#424785
+" hi StatusLine guibg=#424785
+
+" hi Normal guibg=#000000
 
 
 
