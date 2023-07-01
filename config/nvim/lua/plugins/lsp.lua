@@ -3,22 +3,22 @@ return {
   branch = 'v1.x',
   dependencies = {
     -- LSP Support
-    {'neovim/nvim-lspconfig'},             -- Required
-    {'williamboman/mason.nvim'},           -- Optional
-    {'williamboman/mason-lspconfig.nvim'}, -- Optional
+    { 'neovim/nvim-lspconfig' }, -- Required
+    { 'williamboman/mason.nvim' }, -- Optional
+    { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
     -- Autocompletion
-    {'hrsh7th/nvim-cmp'},         -- Required
-    {'hrsh7th/cmp-nvim-lsp'},     -- Required
-    {'hrsh7th/cmp-buffer'},       -- Optional
-    {'hrsh7th/cmp-path'},         -- Optional
+    { 'hrsh7th/nvim-cmp' }, -- Required
+    { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+    { 'hrsh7th/cmp-buffer' }, -- Optional
+    { 'hrsh7th/cmp-path' }, -- Optional
     -- {'hrsh7th/cmp-cmdline'},         -- Optional
-    {'saadparwaiz1/cmp_luasnip'}, -- Optional
-    {'hrsh7th/cmp-nvim-lua'},     -- Optional
+    { 'saadparwaiz1/cmp_luasnip' }, -- Optional
+    { 'hrsh7th/cmp-nvim-lua' }, -- Optional
 
     -- Snippets
-    {'L3MON4D3/LuaSnip'},             -- Required
-    {'rafamadriz/friendly-snippets'}, -- Optional
+    { 'L3MON4D3/LuaSnip' }, -- Required
+    { 'rafamadriz/friendly-snippets' }, -- Optional
   },
   config = function()
 
@@ -61,7 +61,7 @@ return {
 
       -- Mappings.
       -- See `:help vim.lsp.*` for documentation on any of the below functions
-      local bufopts = { noremap=true, silent=true, buffer=bufnr }
+      local bufopts = { noremap = true, silent = true, buffer = bufnr }
       vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
       vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
       vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
@@ -78,6 +78,8 @@ return {
       vim.keymap.set('n', '<leader><space>ca', vim.lsp.buf.code_action, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
       vim.keymap.set('n', '<leader><space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+
+      print("attaching LSP done")
     end
 
 
@@ -88,7 +90,10 @@ return {
       on_attach = on_attach,
     }
 
-
+    -- setting up lua
+    local runtime_path = vim.split(package.path, ';')
+    table.insert(runtime_path, 'lua/?.lua')
+    table.insert(runtime_path, 'lua/?/init.lua')
     lspconfig.lua_ls.setup {
       on_attach = on_attach,
       settings = {
@@ -96,14 +101,23 @@ return {
           runtime = {
             -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
             version = 'LuaJIT',
+            path = runtime_path,
           },
           diagnostics = {
             -- Get the language server to recognize the `vim` global
-            globals = {'vim', 'hs'},
+            globals = { 'vim', 'hs' },
           },
+          -- commands = {
+          --   Format = {
+          --     function()
+          --       require('stylua-nvim').format_file()
+          --     end,
+          --   },
+          -- },
           workspace = {
             -- Make the server aware of Neovim runtime files
             library = vim.api.nvim_get_runtime_file("", true),
+            checkThirdParty = false,
           },
           -- Do not send telemetry data containing a randomized but unique identifier
           telemetry = {
@@ -130,4 +144,3 @@ return {
 
   end,
 }
-
