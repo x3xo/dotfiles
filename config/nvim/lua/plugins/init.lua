@@ -18,7 +18,7 @@ return {
   --   name = 'rose-pine',
   -- },
 
-  -- 'navarasu/onedark.nvim',
+  'navarasu/onedark.nvim',
   'sainnhe/everforest',
   'christoomey/vim-tmux-navigator',
   -- 'preservim/nerdtree',
@@ -27,7 +27,7 @@ return {
   -- 'pacha/vem-tabline', -- deprecated. Replaced with barbar
   {
     'tpope/vim-fugitive',
-    cmd = { "G", "Git"},
+    cmd = { "G", "Git" },
   },
   {
     'junegunn/gv.vim',
@@ -69,7 +69,7 @@ return {
   },
   {
     'folke/neodev.nvim',
-    config = function ()
+    config = function()
       require('neodev').setup()
     end
   },
@@ -80,9 +80,9 @@ return {
       return vim.fn.executable 'make' == 1
     end,
   },
-  
+
   -- buffers as tabs. Replacing vem-tabline
-  {'romgrk/barbar.nvim',
+  { 'romgrk/barbar.nvim',
     dependencies = 'nvim-tree/nvim-web-devicons',
     init = function() vim.g.barbar_auto_setup = false end,
     opts = {
@@ -94,4 +94,3 @@ return {
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
   },
 }
-
