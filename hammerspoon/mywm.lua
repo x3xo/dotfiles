@@ -5,7 +5,7 @@ mywm.BIG_WINDOW_SIZE = 1844.0
 -- mywm.BIG_WINDOW_SIZE = 1600.0
 
 function mywm.moveWindowLeft()
-  return hs.hotkey.bind({"cmd", "ctrl"}, "W", function()
+  return hs.hotkey.bind({ "cmd", "ctrl" }, "W", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
 
@@ -14,9 +14,8 @@ function mywm.moveWindowLeft()
   end)
 end
 
-
 function mywm.tileLeft()
-  hs.hotkey.bind({"alt", "ctrl"}, "Left", function()
+  hs.hotkey.bind({ "alt", "ctrl" }, "Left", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -30,9 +29,8 @@ function mywm.tileLeft()
   end)
 end
 
-
 function mywm.tileRight()
-  hs.hotkey.bind({"alt", "ctrl"}, "Right", function()
+  hs.hotkey.bind({ "alt", "ctrl" }, "Right", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -46,8 +44,7 @@ function mywm.tileRight()
   end)
 end
 
-
-local maximizeWindow = function (window)
+local maximizeWindow = function(window)
   local f = window:frame()
   local screen = window:screen()
   local max = screen:frame()
@@ -60,7 +57,7 @@ end
 
 
 function mywm.maximizeWindow()
-  hs.hotkey.bind({"alt", "ctrl"}, "m", function ()
+  hs.hotkey.bind({ "alt", "ctrl" }, "m", function()
     maximizeWindow(hs.window.focusedWindow())
   end)
 end
@@ -92,7 +89,7 @@ end
 
 
 function mywm.moveToOtherScreen()
-  hs.hotkey.bind({"alt", "ctrl"}, "o", function()
+  hs.hotkey.bind({ "alt", "ctrl" }, "o", function()
     local win = hs.window.focusedWindow()
     local screen = win:screen()
     print(screen:name())
@@ -105,10 +102,9 @@ function mywm.moveToOtherScreen()
   end)
 end
 
-
 function mywm.tileLeftBig()
 
-  hs.hotkey.bind({"alt", "ctrl"}, "h", function ()
+  hs.hotkey.bind({ "alt", "ctrl" }, "h", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     -- print("frame", f)
@@ -124,7 +120,7 @@ function mywm.tileLeftBig()
 end
 
 function mywm.tileRightBig()
-  hs.hotkey.bind({"alt", "ctrl"}, "l", function ()
+  hs.hotkey.bind({ "alt", "ctrl" }, "l", function()
     local win = hs.window.focusedWindow()
     local f = win:frame()
     local screen = win:screen()
@@ -137,7 +133,6 @@ function mywm.tileRightBig()
   end)
 end
 
-
 -- hide all applications
 function mywm.hideAllApps()
   local apps = hs.application.runningApplications()
@@ -146,12 +141,24 @@ function mywm.hideAllApps()
   end
 end
 
-
 function mywm.hideAllApplications()
-  hs.hotkey.bind({"cmd", "alt", "ctrl"}, "H", function()
+  hs.hotkey.bind({ "cmd", "alt", "ctrl" }, "H", function()
     mywm.hideAllApps()
   end)
 end
 
-return mywm
+-- Function to center a window
+function mywm.centerWindow()
+  hs.hotkey.bind({ "alt", "ctrl" }, "C", function()
+    local win = hs.window.focusedWindow()
+    if win then
+      local frame = win:frame()
+      local screenFrame = win:screen():frame()
+      frame.x = (screenFrame.w - frame.w) / 2
+      frame.y = (screenFrame.h - frame.h) / 2
+      win:setFrame(frame)
+    end
+  end)
+end
 
+return mywm

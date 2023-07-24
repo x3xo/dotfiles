@@ -25,6 +25,7 @@ my_wm.moveToOtherScreen()
 my_wm.tileLeftBig()
 my_wm.tileRightBig()
 my_wm.hideAllApplications()
+my_wm.centerWindow()
 
 -- set up your instance(s)
 -- expose = hs.expose.new(nil, { showThumbnails = false }) -- default windowfilter, no thumbnails
