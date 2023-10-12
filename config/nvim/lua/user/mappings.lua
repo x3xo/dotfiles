@@ -18,7 +18,6 @@ local keymap = vim.keymap.set
 
 -- open config
 -- keymap("n", "<C-n>v", ":e $MYVIMRC<cr>", opts)
-keymap("n", "<C-n>v", ":Telescope find_files cwd=$HOME/.config/nvim<cr>", opts)
 -- keymap("n", "<C-n>h", ":Telescope help_tags<cr>", opts)
 
 keymap("n", "<C-d>", ":bnext<cr>", opts)
@@ -43,42 +42,42 @@ keymap("n", "<leader>.", ":ColorizerToggle<cr>", opts)
 -- keymap("n", "<leader>q", ":Bclose<cr>", opts)
 keymap("n", "<leader>q", ":BufferClose<cr>", opts)
 
--- telescope
-local builtin = require('telescope.builtin')
+-- -- telescope
+-- local builtin = require('telescope.builtin')
+-- -- keymap('n', '<leader>f', builtin.find_files, {})
+--
+--
 -- keymap('n', '<leader>f', builtin.find_files, {})
-
-
-keymap('n', '<leader>f', builtin.find_files, {})
-keymap('n', '<C-n>c', builtin.highlights, {})
-
-
--- keymap('n', '<leader>f', function()
+-- keymap('n', '<C-n>c', builtin.highlights, {})
+--
+--
+-- -- keymap('n', '<leader>f', function()
+-- --   -- You can pass additional configuration to telescope to change theme, layout, etc.
+-- --   builtin.find_files(require('telescope.themes').get_dropdown {
+-- --     previewer = false,
+-- --   })
+-- -- end, { desc = '[/] Fuzzily search in current buffer' })
+--
+--
+--
+-- keymap('n', '<leader>/', function()
 --   -- You can pass additional configuration to telescope to change theme, layout, etc.
---   builtin.find_files(require('telescope.themes').get_dropdown {
+--   builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+--     winblend = 10,
 --     previewer = false,
 --   })
 -- end, { desc = '[/] Fuzzily search in current buffer' })
-
-
-
-keymap('n', '<leader>/', function()
-  -- You can pass additional configuration to telescope to change theme, layout, etc.
-  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
-    winblend = 10,
-    previewer = false,
-  })
-end, { desc = '[/] Fuzzily search in current buffer' })
-
-
-keymap('n', '<leader>F', builtin.live_grep, {})
-keymap('n', '<leader>b', builtin.buffers, {})
-keymap('n', '<leader>s', builtin.oldfiles, {})
-keymap('n', '<leader>h', builtin.help_tags, {})
-keymap('n', '<leader>x', builtin.commands, {})
-keymap('n', '<leader>m', builtin.marks, {})
-keymap('n', '<M-x>', builtin.commands, {})
-keymap('n', '<M-f>', builtin.live_grep, {})
-keymap('n', '<C-n>m', builtin.keymaps, {})
+--
+--
+-- keymap('n', '<leader>F', builtin.live_grep, {})
+-- keymap('n', '<leader>b', builtin.buffers, {})
+-- keymap('n', '<leader>s', builtin.oldfiles, {})
+-- keymap('n', '<leader>h', builtin.help_tags, {})
+-- keymap('n', '<leader>x', builtin.commands, {})
+-- keymap('n', '<leader>m', builtin.marks, {})
+-- keymap('n', '<M-x>', builtin.commands, {})
+-- keymap('n', '<M-f>', builtin.live_grep, {})
+-- keymap('n', '<C-n>m', builtin.keymaps, {})
 
 -- nerdtree settings. Trying neotree instead
 -- keymap("", "<leader>t", ":NERDTreeToggle<cr>", opts)
