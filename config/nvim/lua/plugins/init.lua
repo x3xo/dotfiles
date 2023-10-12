@@ -60,11 +60,15 @@ return {
   'machakann/vim-highlightedyank',
   { -- Add indentation guides
     'lukas-reineke/indent-blankline.nvim',
+    main = "ibl",
     opts = {
-      char = '┊',
+      -- char = '┊',
+      indent = {
+        char = "│",
       -- char = '┃',
       -- char = '│',
-      show_trailing_blankline_indent = false,
+      },
+      -- show_trailing_blankline_indent = false,
     },
   },
   {
@@ -92,5 +96,10 @@ return {
       -- …etc.
     },
     version = '^1.0.0', -- optional: only update when a new 1.x version is released
+  },
+
+  {
+    dir = '~/src/vim_plugin/stackmap.nvim',
+    dev = true,
   },
 }

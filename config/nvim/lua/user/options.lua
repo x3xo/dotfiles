@@ -31,7 +31,7 @@ local options = {
   splitbelow = true,
   showmode = false, -- disable showing mode under status line since lualine shows it already. Enable if not using lualine
   splitright = true,
-  laststatus = 3,
+  laststatus = 2, -- set to 3 for global status line
 }
 
 for k, v in pairs(options) do
@@ -39,20 +39,20 @@ for k, v in pairs(options) do
 end
 
 
-vim.api.nvim_create_autocmd({ "BufWritePre" }, {
-  pattern = "*.lua",
-  -- command = "normal mpgg=G`pzz",
-  callback = function()
-    vim.lsp.buf.format({
-      formatting_options = {
-        tabSize = 2,
-        insertSpaces = true,
-        -- trimFinalNewlines = false, -- this doesn't seem to work
-        insertFinalNewline = true,
-      },
-    })
-  end
-})
+-- vim.api.nvim_create_autocmd({ "BufWritePre" }, {
+--   pattern = "*.lua",
+--   -- command = "normal mpgg=G`pzz",
+--   callback = function()
+--     vim.lsp.buf.format({
+--       formatting_options = {
+--         tabSize = 2,
+--         insertSpaces = true,
+--         -- trimFinalNewlines = false, -- this doesn't seem to work
+--         insertFinalNewline = true,
+--       },
+--     })
+--   end
+-- })
 
 -- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 

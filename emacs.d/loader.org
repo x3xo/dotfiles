@@ -14,183 +14,208 @@
 
 * my config
 #+BEGIN_SRC emacs-lisp
-   ;transparency
-   ; (setq my-transparency 85) ; figrue out how to use variable
-   ;(set-frame-parameter (selected-frame) 'alpha '(90 . 50)) ; first number is focused window transprency, second one is for non-focused
-   ;(add-to-list 'default-frame-alist '(alpha . (90 . 50)))
+     ;transparency
+     ; (setq my-transparency 85) ; figrue out how to use variable
+     ;(set-frame-parameter (selected-frame) 'alpha '(90 . 50)) ; first number is focused window transprency, second one is for non-focused
+     ;(add-to-list 'default-frame-alist '(alpha . (90 . 50)))
 
-   ;(set-frame-parameter (selected-frame) 'alpha '(95 . 80)) ; first number is focused window transprency, second one is for non-focused
-   ;(add-to-list 'default-frame-alist '(alpha . (95 . 80)))
+     ;(set-frame-parameter (selected-frame) 'alpha '(95 . 80)) ; first number is focused window transprency, second one is for non-focused
+     ;(add-to-list 'default-frame-alist '(alpha . (95 . 80)))
 
-   (setq inhibit-x-resources 1)
-   ; Allow 20MB of memory (instead of 0.76MB) before calling garbage collection. This means GC runs less often, which speeds up some operations.
-   (setq gc-cons-threshold 20000000)
+     (setq inhibit-x-resources 1)
+     ; Allow 20MB of memory (instead of 0.76MB) before calling garbage collection. This means GC runs less often, which speeds up some operations.
+     (setq gc-cons-threshold 20000000)
 
-   ; set the default mode for scratch buffer to text-mode. Default is elisp
-   ;(setq initial-major-mode 'text-mode)
+     ; set the default mode for scratch buffer to text-mode. Default is elisp
+     ;(setq initial-major-mode 'text-mode)
 
-   (set-keyboard-coding-system nil)
+     (set-keyboard-coding-system nil)
 
-   ; use M-x toggle-frame-fullscreen
-   (setq ns-use-native-fullscreen nil)
+     ; use M-x toggle-frame-fullscreen
+     (setq ns-use-native-fullscreen nil)
 
-   (setq frame-resize-pixelwise 1)
-
-
-   (setq scroll-conservatively 101)
-
-   ; open files in same emacs frame
-   (setq ns-pop-up-frames nil)
-
-   ; disable beeping, enable visible bell
-   (setq visible-bell nil)
-   (setq ring-bell-function 'ignore)
-
-   ; https://www.emacswiki.org/emacs/HorizontalSplitting
-   ; open help etc in horizontal(vim horizontal) split
-   ;;(setq split-width-threshold 9999)
-
-   ; open help etc in horizontal(vim vertical) split
-   ; (setq split-width-threshold 0)
-
-   ; set fn key to hyper
-   ; http://ergoemacs.org/emacs/emacs_hyper_super_keys.html
-   (setq ns-function-modifier 'hyper)
-   ; (global-set-key (kbd "H-f") 'toggle-frame-fullsceen)
-
-   ; NOTES
-   ; global-set-key expects an interactive command. (lambda () (interactive) (forward-line 5)) ought to work.
-   ; By the way, C-h f commandp is a pretty good starting point for errors like that.
-   ; H-f - Hyper + f. Fn key on apple keyboard is set to Hyper key from Karabiner
+     (setq frame-resize-pixelwise 1)
 
 
-  (defun config-reload ()
+     (setq scroll-conservatively 101)
+
+     ; open files in same emacs frame
+     (setq ns-pop-up-frames nil)
+
+     ; disable beeping, enable visible bell
+     (setq visible-bell nil)
+     (setq ring-bell-function 'ignore)
+
+     ; https://www.emacswiki.org/emacs/HorizontalSplitting
+     ; open help etc in horizontal(vim horizontal) split
+     ;;(setq split-width-threshold 9999)
+
+     ; open help etc in horizontal(vim vertical) split
+     ; (setq split-width-threshold 0)
+
+     ; set fn key to hyper
+     ; http://ergoemacs.org/emacs/emacs_hyper_super_keys.html
+     (setq ns-function-modifier 'hyper)
+     ; (global-set-key (kbd "H-f") 'toggle-frame-fullsceen)
+
+     ; NOTES
+     ; global-set-key expects an interactive command. (lambda () (interactive) (forward-line 5)) ought to work.
+     ; By the way, C-h f commandp is a pretty good starting point for errors like that.
+     ; H-f - Hyper + f. Fn key on apple keyboard is set to Hyper key from Karabiner
+
+
+    (defun config-reload ()
+      (interactive)
+      (org-babel-load-file (expand-file-name "loader.org" init-dir)))
+
+
+
+
+    (global-set-key (kbd "C-c r") 'config-reload)
+
+
+     (global-set-key (kbd "H-f") #'toggle-frame-fullscreen)
+     (global-set-key (kbd "<C-M-return>") #'toggle-frame-fullscreen)
+     ;; Command + f
+
+     ;(global-set-key (kbd "s-f") 'counsel-file-jump)
+     ;(global-set-key (kbd "s-f") 'helm-occur)
+     ;;(global-set-key (kbd "s-F") 'helm-rg)
+     ;;(global-set-key (kbd "s-F") 'counsel-rg)
+
+     ;(global-set-key (kbd "s-f") (lambda () (interactive)
+     ;                                (toggle-frame-fullscreen)))
+
+     ; disable transient-mark-mode
+     ; (setq transient-mark-mode nil)
+
+     ; answer yes or no questions with just y and p
+     (defalias 'yes-or-no-p 'y-or-n-p)
+
+     ; enable/disable blinking cursor
+     (blink-cursor-mode 0)
+
+     ; make cursor in non active windows be a horizontal bar instead of the default hollow cursor
+     ;(setq cursor-in-non-selected-windows (quote (hbar . 0)))
+
+     ; vertical bar caret
+     ; (setq-default cursor-type 'bar)
+
+     ; use spaces for tabs
+     (setq-default indent-tabs-mode nil)
+     (setq tab-width 4)
+
+     ; line spacing. Default is 0. Set to 4 for mononoki line height linespace
+     ;(setq-default line-spacing nil)
+     ;(setq-default line-height 2)
+
+     ; show column number
+     (setq column-number-mode 1)
+
+     ; highlight current line
+     (global-hl-line-mode 1)
+
+     ; set default session for tramp
+     (setq tramp-defaul-session "ssh")
+
+     ; toggle line wrapping
+     (global-set-key (kbd "<f6>") 'toggle-truncate-lines)
+
+     ; start a shell
+     (global-set-key (kbd "<f5>") 'eshell)
+     ;;(global-set-key (kbd "<f5>") 'term)
+     ;;(setq explicit-shell-file-name "/usr/local/bin/zsh")
+     (setq explicit-shell-file-name "/bin/zsh")
+
+     (global-unset-key (kbd "s-,"))
+     (global-set-key (kbd "s-,") (lambda() (interactive)(find-file "~/.emacs.d/loader.org")))
+     (global-set-key (kbd "s-\\") (lambda() (interactive)(find-file "~/.emacs.d/loader.org")))
+     (global-set-key (kbd "<f12>") (lambda() (interactive)(find-file "~/org/todo.org")))
+
+     ; make cmd-left and right move to beginning and end of line
+     (global-set-key (kbd "s-<right>") 'move-end-of-line)
+     (global-set-key (kbd "s-<left>") 'move-beginning-of-line)
+
+     ; since M-< and > are tricky
+     (global-set-key (kbd "s-<") 'beginning-of-buffer)
+     (global-set-key (kbd "s->") 'end-of-buffer)
+
+     ; commenting
+     (global-set-key (kbd "s-/") 'comment-dwim)
+
+     ; kill buffer with cmd-w
+     (global-set-key (kbd "s-w") 'kill-this-buffer)
+
+     ; disable CMD-q for quitting by accident
+     (global-unset-key (kbd "s-q"))
+
+     ; hide emacs instead of quit
+     (global-set-key (kbd "s-q") 'ns-do-hide-emacs)
+
+     ;; enable CMD-OPT-h to hide other apps like in other apps
+     (global-set-key (kbd "M-s-˙") 'ns-do-hide-others)
+
+     (global-unset-key (kbd "C-w"))
+     (global-set-key (kbd "C-w k") 'kill-region)
+     (global-set-key (kbd "C-w c") 'kill-ring-save)
+
+     ; toggle full screen
+     ; (global-unset-key (kbd "<f10>"))
+     ; (global-set-key (kbd "<f10>") 'toggle-frame-fullscreen)
+     ;(global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
+
+     (global-unset-key (kbd "s-o"))
+     (global-set-key (kbd "s-o") 'other-window)
+
+     (global-unset-key (kbd "s-;"))
+     (global-set-key (kbd "s-; t") 'helm-tramp)
+
+     (global-set-key (kbd "s-1") 'delete-other-windows)
+     (global-set-key (kbd "s-2") 'split-window-below)
+     (global-set-key (kbd "s-3") 'split-window-right)
+
+     (global-unset-key (kbd "s-d"))
+     (global-set-key (kbd "s-d") 'delete-window)
+
+     (global-set-key (kbd "C-x k") 'kill-current-buffer)
+
+     (global-unset-key (kbd "s-k"))
+     (global-unset-key (kbd "s-j"))
+    ;(global-set-key (kbd "s-k") 'next-buffer)
+    ;(global-set-key (kbd "s-j") 'previous-buffer)
+
+     (global-set-key (kbd "s-]") 'next-buffer)
+     (global-set-key (kbd "s-[") 'previous-buffer)
+
+     (add-hook 'visual-line-mode-hook (lambda () (diminish 'visual-line-mode)))
+
+
+    (global-unset-key (kbd "s-n"))
+
+
+    (defun compile-and-run-java ()
+    "Compile and run the current Java file in a separate buffer."
     (interactive)
-    (org-babel-load-file (expand-file-name "loader.org" init-dir)))
+    (let ((file-name (buffer-file-name)))
+      (if (and file-name (string-suffix-p ".java" file-name))
+          (let* ((class-name (file-name-sans-extension (file-name-nondirectory file-name)))
+                 (command (format "javac %s && java %s" file-name class-name))
+                 (compilation-buffer-name-function (lambda (_) "*Java Compilation*")))
+            (compile command)
+            (add-hook 'compilation-filter-hook
+                      (lambda ()
+                        (when (string-match "Finished" (buffer-string))
+                          (goto-char (point-max)))))
+            (setq compilation-finish-functions
+                  (append compilation-finish-functions
+                          (list (lambda (buf str)
+                                  (when (string-match "Finished" str)
+                                    (pop-to-buffer buf)
+                                    (end-of-buffer)))))))
+        (message "Not a Java file!"))))
 
+    (global-set-key (kbd "C-'") 'compile-and-run-java)
 
-
-
-  (global-set-key (kbd "C-c r") 'config-reload)
-
-
-   (global-set-key (kbd "H-f") #'toggle-frame-fullscreen)
-   (global-set-key (kbd "<C-M-return>") #'toggle-frame-fullscreen)
-   ;; Command + f
-
-   ;(global-set-key (kbd "s-f") 'counsel-file-jump)
-   ;(global-set-key (kbd "s-f") 'helm-occur)
-   ;;(global-set-key (kbd "s-F") 'helm-rg)
-   ;;(global-set-key (kbd "s-F") 'counsel-rg)
-
-   ;(global-set-key (kbd "s-f") (lambda () (interactive)
-   ;                                (toggle-frame-fullscreen)))
-
-   ; disable transient-mark-mode
-   ; (setq transient-mark-mode nil)
-
-   ; answer yes or no questions with just y and p
-   (defalias 'yes-or-no-p 'y-or-n-p)
-
-   ; enable/disable blinking cursor
-   (blink-cursor-mode 0)
-
-   ; make cursor in non active windows be a horizontal bar instead of the default hollow cursor
-   ;(setq cursor-in-non-selected-windows (quote (hbar . 0)))
-
-   ; vertical bar caret
-   ; (setq-default cursor-type 'bar)
-
-   ; use spaces for tabs
-   (setq-default indent-tabs-mode nil)
-   (setq tab-width 4)
-
-   ; line spacing. Default is 0. Set to 4 for mononoki line height linespace
-   ;(setq-default line-spacing nil)
-   ;(setq-default line-height 2)
-
-   ; show column number
-   (setq column-number-mode 1)
-
-   ; highlight current line
-   (global-hl-line-mode 1)
-
-   ; set default session for tramp
-   (setq tramp-defaul-session "ssh")
-
-   ; toggle line wrapping
-   (global-set-key (kbd "<f6>") 'toggle-truncate-lines)
-
-   ; start a shell
-   (global-set-key (kbd "<f5>") 'eshell)
-   ;;(global-set-key (kbd "<f5>") 'term)
-   ;;(setq explicit-shell-file-name "/usr/local/bin/zsh")
-   (setq explicit-shell-file-name "/bin/zsh")
-
-   (global-unset-key (kbd "s-,"))
-   (global-set-key (kbd "s-,") (lambda() (interactive)(find-file "~/.emacs.d/loader.org")))
-   (global-set-key (kbd "s-\\") (lambda() (interactive)(find-file "~/.emacs.d/loader.org")))
-   (global-set-key (kbd "<f12>") (lambda() (interactive)(find-file "~/org/todo.org")))
-
-   ; make cmd-left and right move to beginning and end of line
-   (global-set-key (kbd "s-<right>") 'move-end-of-line)
-   (global-set-key (kbd "s-<left>") 'move-beginning-of-line)
-
-   ; since M-< and > are tricky
-   (global-set-key (kbd "s-<") 'beginning-of-buffer)
-   (global-set-key (kbd "s->") 'end-of-buffer)
-
-   ; commenting
-   (global-set-key (kbd "s-/") 'comment-dwim)
-
-   ; kill buffer with cmd-w
-   (global-set-key (kbd "s-w") 'kill-this-buffer)
-
-   ; disable CMD-q for quitting by accident
-   (global-unset-key (kbd "s-q"))
-
-   ; hide emacs instead of quit
-   (global-set-key (kbd "s-q") 'ns-do-hide-emacs)
-
-   ;; enable CMD-OPT-h to hide other apps like in other apps
-   (global-set-key (kbd "M-s-˙") 'ns-do-hide-others)
-
-   (global-unset-key (kbd "C-w"))
-   (global-set-key (kbd "C-w k") 'kill-region)
-   (global-set-key (kbd "C-w c") 'kill-ring-save)
-
-   ; toggle full screen
-   ; (global-unset-key (kbd "<f10>"))
-   ; (global-set-key (kbd "<f10>") 'toggle-frame-fullscreen)
-   ;(global-set-key (kbd "C-s-f") 'toggle-frame-fullscreen)
-
-   (global-unset-key (kbd "s-o"))
-   (global-set-key (kbd "s-o") 'other-window)
-
-   (global-unset-key (kbd "s-;"))
-   (global-set-key (kbd "s-; t") 'helm-tramp)
-
-   (global-set-key (kbd "s-1") 'delete-other-windows)
-   (global-set-key (kbd "s-2") 'split-window-below)
-   (global-set-key (kbd "s-3") 'split-window-right)
-
-   (global-unset-key (kbd "s-d"))
-   (global-set-key (kbd "s-d") 'delete-window)
-
-   (global-set-key (kbd "C-x k") 'kill-current-buffer)
-
-   (global-unset-key (kbd "s-k"))
-   (global-unset-key (kbd "s-j"))
-  ;(global-set-key (kbd "s-k") 'next-buffer)
-  ;(global-set-key (kbd "s-j") 'previous-buffer)
-
-   (global-set-key (kbd "s-]") 'next-buffer)
-   (global-set-key (kbd "s-[") 'previous-buffer)
-
-   (add-hook 'visual-line-mode-hook (lambda () (diminish 'visual-line-mode)))
-
-
-  (global-unset-key (kbd "s-n"))
 
 #+END_SRC
 
@@ -340,12 +365,12 @@ https://ianyepan.github.io/posts/setting-up-use-package/#:~:text=Setting%20use-p
   (defun my/set-theme-tweaks ()
     (interactive)
 
-    (set-face-attribute 'cursor nil :background "#FF5289")
-    (set-face-attribute 'region nil :background "#41AE7A" :foreground "black")
-    (set-face-attribute 'vertical-border nil :foreground "dark gray" :background "dark gray")
+   (set-face-attribute 'cursor nil :background "#FF5289")
+;   (set-face-attribute 'region nil :background "#41AE7A" :foreground "black")
+;   (set-face-attribute 'vertical-border nil :foreground "dark gray" :background "dark gray")
 
     ;; make background the same as fringe color for default theme
-    ;(set-face-attribute 'default nil :background "grey95")
+;;    (set-face-attribute 'default nil :background "grey95")
 
     ;; for default white theme
     ;;(set-face-attribute 'org-block nil :background "gray90")
@@ -366,7 +391,7 @@ https://ianyepan.github.io/posts/setting-up-use-package/#:~:text=Setting%20use-p
   ;;(load-theme 'modus-vivendi-tinted t)
   ; (load-theme 'leuven-dark t)
    ;(set-face-attribute 'cursor nil :background "IndianRed3")
-  ;;(my/set-theme-tweaks) 
+  (my/set-theme-tweaks) 
   ; (set-face-attribute 'default nil :background "#0d1117" :foreground "grey70")
   ; (set-face-attribute 'fringe nil :background "#0d1117")
     ;(set-face-attribute 'mode-line nil :background "#333843" :foreground "grey70")
@@ -388,7 +413,7 @@ https://ianyepan.github.io/posts/setting-up-use-package/#:~:text=Setting%20use-p
     ;(set-face-attribute 'mode-line nil :background "grey75" :foreground "black" :box '(:line-width -1 :style released-button))
 
     ;; just make it 3d
-    (set-face-attribute 'mode-line nil :box '(:line-width -1 :style released-button))
+    ;;(set-face-attribute 'mode-line nil :box '(:line-width -1 :style released-button))
 
     ;(set-face-attribute 'mode-line nil :background "#4A5161" :foreground "grey80" :box '(:line-width -1 :style released-button))
     ;(set-face-attribute 'mode-line nil :background "#333843" :foreground "grey80" :box '(:line-width -1 :style released-button))
@@ -411,7 +436,7 @@ https://ianyepan.github.io/posts/setting-up-use-package/#:~:text=Setting%20use-p
     ;;(set-face-attribute 'mode-line-inactive nil :background "PaleVioletRed4" :foreground "grey70" :box nil)
 
 
-    (set-face-attribute 'mode-line-inactive nil :foreground "gray30" :background "black")
+    ;;(set-face-attribute 'mode-line-inactive nil :foreground "gray30" :background "black")
 
     )
 
@@ -438,50 +463,50 @@ https://ianyepan.github.io/posts/setting-up-use-package/#:~:text=Setting%20use-p
 ** chocolate
 #+begin_src emacs-lisp
 
-  (use-package chocolate-theme
-    :ensure t
-    :config
-    (load-theme 'chocolate t)
-    (my/set-default-mode-line)
-    (my/set-theme-tweaks)
-    ;;(set-face-attribute 'org-block nil :background "#4B393E")
-    )
+;;(use-package chocolate-theme
+;;  :ensure t
+;;  :config
+;;  (load-theme 'chocolate t)
+;;  (my/set-default-mode-line)
+;;  (my/set-theme-tweaks)
+;;  ;;(set-face-attribute 'org-block nil :background "#4B393E")
+;;  )
 
 #+end_src
 
 ** doom themes
 #+begin_src emacs-lisp
-;;(use-package doom-themes
-;;  :ensure t
-;;  :config
-;;  ;(load-theme 'doom-ayu-mirage t)
+(use-package doom-themes
+  :ensure t
+  :config
+  (load-theme 'doom-ayu-dark t)
 
-;;(setq custom-safe-themes t)
-;;  ;(load-theme 'doom-spacegrey t)
-;;  ;(load-theme 'doom-gruvbox t)
-;;  ;(load-theme 'doom-ayu-dark t)
-;;  ;(load-theme 'doom-ayu-mirage t)
-;;  ;(load-theme 'doom-horizon t)
-;;  ;(load-theme 'doom-one t)
-;;  ;(load-theme 'doom-one-light t)
-;;  ;(load-theme 'doom-vibrant t)
-;;  ;(load-theme 'doom-molokai t)
-;;  ;(load-theme 'doom-Iosvkem t)
-;;  ;(load-theme 'doom-oceanic-next t)
-;;  ;(load-theme 'doom-monokai-pro t)
-;;  ;;(load-theme 'doom-dracula t)
-;;  (load-theme 'doom-miramare t)
-;;  ;(my/set-org-faces)
-;;  (doom-themes-org-config)
-;;  (doom-themes-visual-bell-config)
-;;  ;(set-face-attribute 'doom-visual-bell nil :background "#ff665c" :foreground "black")
+(setq custom-safe-themes t)
+  ;(load-theme 'doom-spacegrey t)
+  ;(load-theme 'doom-gruvbox t)
+  ;(load-theme 'doom-ayu-dark t)
+  ;(load-theme 'doom-ayu-mirage t)
+  ;(load-theme 'doom-horizon t)
+  ;(load-theme 'doom-one t)
+  ;(load-theme 'doom-one-light t)
+  ;(load-theme 'doom-vibrant t)
+  ;(load-theme 'doom-molokai t)
+  ;(load-theme 'doom-Iosvkem t)
+  ;(load-theme 'doom-oceanic-next t)
+  ;(load-theme 'doom-monokai-pro t)
+  ;;(load-theme 'doom-dracula t)
+  ;;(load-theme 'doom-miramare t)
+  ;(my/set-org-faces)
+  (doom-themes-org-config)
+  (doom-themes-visual-bell-config)
+  ;(set-face-attribute 'doom-visual-bell nil :background "#ff665c" :foreground "black")
 
-;;  (set-face-attribute 'vertical-border nil :foreground "dark gray" :background "dark gray")
+  (set-face-attribute 'vertical-border nil :foreground "dark gray" :background "dark gray")
 
-;;  (my/set-default-mode-line)
+  (my/set-default-mode-line)
 
-;;  ;(set-face-attribute 'cursor nil :background "IndianRed3")
-;;  )
+  ;(set-face-attribute 'cursor nil :background "IndianRed3")
+  )
 #+end_src
 
 * rainbow mode
@@ -651,7 +676,7 @@ Displays colors
       :config
       (global-evil-search-highlight-persist t)
       ;(set-face-attribute 'evil-search-highlight-persist-highlight-face nil :background "yellow1" :foreground "black")
-      (set-face-attribute 'evil-search-highlight-persist-highlight-face nil :background "#705B5F" :foreground "#EAEAFE")
+      ;;(set-face-attribute 'evil-search-highlight-persist-highlight-face nil :background "#705B5F" :foreground "#EAEAFE")
       ;;(set-face-attribute 'evil-search-highlight-persist-highlight-face nil :inherit 'lazy-highlight)
       )
 
@@ -972,7 +997,7 @@ This enables drag and drop of images in org mode files.
 * fonts
 #+BEGIN_SRC emacs-lisp
 
-  (setq my-font-size 140)
+  (setq my-font-size 150)
   ;;(setq my-font-name "Source Code Pro")
   (setq my-font-name "JetBrains Mono")
   ;;(setq my-font-name "Consolas")
@@ -1037,89 +1062,90 @@ https://iginomarini.com/fell/the-revival-fonts/
 
 #+begin_src emacs-lisp
 
-  (defun my/set-org-faces ()
-    (interactive)
-    ;;(set-face-attribute 'org-level-1 nil :height 1.0)
-    ;;(set-face-attribute 'org-level-2 nil :height 1.0)
-    ;;(set-face-attribute 'org-level-3 nil :height 1.0)
-    ;;(set-face-attribute 'org-level-4 nil :height 1.0)
-    ;;(set-face-attribute 'org-level-5 nil :height 1.0)
-    ;;(set-face-attribute 'org-level-6 nil :height 1.0)
-    ;;(set-face-attribute 'org-level-7 nil :height 1.0)
-    ;;(set-face-attribute 'org-level-8 nil :height 1.0)
+    (defun my/set-org-faces ()
+      (interactive)
+      ;;(set-face-attribute 'org-level-1 nil :height 1.0)
+      ;;(set-face-attribute 'org-level-2 nil :height 1.0)
+      ;;(set-face-attribute 'org-level-3 nil :height 1.0)
+      ;;(set-face-attribute 'org-level-4 nil :height 1.0)
+      ;;(set-face-attribute 'org-level-5 nil :height 1.0)
+      ;;(set-face-attribute 'org-level-6 nil :height 1.0)
+      ;;(set-face-attribute 'org-level-7 nil :height 1.0)
+      ;;(set-face-attribute 'org-level-8 nil :height 1.0)
 
 
-    (setq my-fixed-pitch-font-name my-font-name)
-    (setq my-fixed-pitch-font-size my-font-size)
+      (setq my-fixed-pitch-font-name my-font-name)
+      (setq my-fixed-pitch-font-size my-font-size)
 
-    (setq my-variable-pitch-font-name "Georgia")
-    (setq my-variable-pitch-font-size 190)
+      (setq my-variable-pitch-font-name "Inter")
+      (setq my-variable-pitch-font-size 190)
 
-    ;;(set-face-attribute 'variable-pitch nil :family "ETBembo" :height 210 :weight 'normal)
-    (set-face-attribute 'variable-pitch nil :family my-variable-pitch-font-name :height my-variable-pitch-font-size :weight 'normal)
-    (set-face-attribute 'fixed-pitch nil :family my-fixed-pitch-font-name :height my-fixed-pitch-font-size :weight 'normal)
+      ;;(set-face-attribute 'variable-pitch nil :family "ETBembo" :height 210 :weight 'normal)
+      (set-face-attribute 'variable-pitch nil :family my-variable-pitch-font-name :height my-variable-pitch-font-size :weight 'normal)
+      (set-face-attribute 'fixed-pitch nil :family my-fixed-pitch-font-name :height my-fixed-pitch-font-size :weight 'normal)
 
-  (let* ((variable-tuple
-          (cond ((x-list-fonts "IM FELL English PRO") '(:font "IM FELL English PRO"))
-                ((x-list-fonts "Georgia")             '(:font "Georgia"))
-                ((x-list-fonts "ETBembo")             '(:font "ETBembo"))
-                ((x-list-fonts "Helvetica")           '(:font "Helvetica"))
-                ((x-list-fonts "Inter")               '(:font "Inter"))
-                ((x-list-fonts "Source Sans Pro")     '(:font "Source Sans Pro"))
-                ((x-list-fonts "Lucida Grande")       '(:font "Lucida Grande"))
-                ((x-list-fonts "Verdana")             '(:font "Verdana"))
-                ((x-family-fonts "Sans Serif")        '(:family "Sans Serif"))
-                (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
-         (base-font-color     (face-foreground 'default nil 'default))
-         (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+    (let* ((variable-tuple
+            (cond
+                  ((x-list-fonts "Inter")               '(:font "Inter"))
+                  ((x-list-fonts "IM FELL English PRO") '(:font "IM FELL English PRO"))
+                  ((x-list-fonts "Georgia")             '(:font "Georgia"))
+                  ((x-list-fonts "ETBembo")             '(:font "ETBembo"))
+                  ((x-list-fonts "Helvetica")           '(:font "Helvetica"))
+                  ((x-list-fonts "Source Sans Pro")     '(:font "Source Sans Pro"))
+                  ((x-list-fonts "Lucida Grande")       '(:font "Lucida Grande"))
+                  ((x-list-fonts "Verdana")             '(:font "Verdana"))
+                  ((x-family-fonts "Sans Serif")        '(:family "Sans Serif"))
+                  (nil (warn "Cannot find a Sans Serif Font.  Install Source Sans Pro."))))
+           (base-font-color     (face-foreground 'default nil 'default))
+           (headline           `(:inherit default :weight bold :foreground ,base-font-color)))
+
+
+      (custom-theme-set-faces
+       'user
+       `(org-level-8 ((t (,@headline ,@variable-tuple))))
+       `(org-level-7 ((t (,@headline ,@variable-tuple))))
+       `(org-level-6 ((t (,@headline ,@variable-tuple))))
+       `(org-level-5 ((t (,@headline ,@variable-tuple))))
+       `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
+       `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.20))))
+       `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.25))))
+       `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.5))))
+       `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
+
+    ;;(custom-theme-set-faces
+    ;;   'user
+    ;;   '(variable-pitch ((t (:family "IM FELL English PRO" :height 200 :weight regular))))
+    ;;   '(fixed-pitch ((t ( :family "Source Code Pro" :height 140 :weight regular)))))
+
 
 
     (custom-theme-set-faces
      'user
-     `(org-level-8 ((t (,@headline ,@variable-tuple))))
-     `(org-level-7 ((t (,@headline ,@variable-tuple))))
-     `(org-level-6 ((t (,@headline ,@variable-tuple))))
-     `(org-level-5 ((t (,@headline ,@variable-tuple))))
-     `(org-level-4 ((t (,@headline ,@variable-tuple :height 1.1))))
-     `(org-level-3 ((t (,@headline ,@variable-tuple :height 1.20))))
-     `(org-level-2 ((t (,@headline ,@variable-tuple :height 1.25))))
-     `(org-level-1 ((t (,@headline ,@variable-tuple :height 1.5))))
-     `(org-document-title ((t (,@headline ,@variable-tuple :height 2.0 :underline nil))))))
+     '(org-block ((t (:inherit fixed-pitch))))
+     '(org-code ((t (:inherit (shadow fixed-pitch)))))
+     '(org-document-info ((t (:foreground "dark orange"))))
+     '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
+     '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
+     '(org-link ((t (:foreground "royal blue" :underline t))))
+     '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+     '(org-property-value ((t (:inherit fixed-pitch))) t)
+     '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
+     '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
+     '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
+     '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
 
-  ;;(custom-theme-set-faces
-  ;;   'user
-  ;;   '(variable-pitch ((t (:family "IM FELL English PRO" :height 200 :weight regular))))
-  ;;   '(fixed-pitch ((t ( :family "Source Code Pro" :height 140 :weight regular)))))
+    ;; for default white theme
+    (set-face-attribute 'org-block nil :background "gray90")
 
+    ;; for ujelly
+    ;(set-face-attribute 'org-block nil :background "gray14")
 
+    ;; chocolate
+    ;; (set-face-attribute 'org-block nil :background "#4B393E")
+      )
 
-  (custom-theme-set-faces
-   'user
-   '(org-block ((t (:inherit fixed-pitch))))
-   '(org-code ((t (:inherit (shadow fixed-pitch)))))
-   '(org-document-info ((t (:foreground "dark orange"))))
-   '(org-document-info-keyword ((t (:inherit (shadow fixed-pitch)))))
-   '(org-indent ((t (:inherit (org-hide fixed-pitch)))))
-   '(org-link ((t (:foreground "royal blue" :underline t))))
-   '(org-meta-line ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-   '(org-property-value ((t (:inherit fixed-pitch))) t)
-   '(org-special-keyword ((t (:inherit (font-lock-comment-face fixed-pitch)))))
-   '(org-table ((t (:inherit fixed-pitch :foreground "#83a598"))))
-   '(org-tag ((t (:inherit (shadow fixed-pitch) :weight bold :height 0.8))))
-   '(org-verbatim ((t (:inherit (shadow fixed-pitch))))))
-
-  ;; for default white theme
-  ;;(set-face-attribute 'org-block nil :background "gray90")
-
-  ;; for ujelly
-  ;(set-face-attribute 'org-block nil :background "gray14")
-
-  ;; chocolate
-  (set-face-attribute 'org-block nil :background "#4B393E")
-    )
-
-; (add-hook 'org-mode-hook 'variable-pitch-mode)
-  (add-hook 'org-mode-hook (lambda () (my/set-org-faces)))
+  ; (add-hook 'org-mode-hook 'variable-pitch-mode)
+    ;;(add-hook 'org-mode-hook (lambda () (my/set-org-faces)))
 
    #+end_src
 * paren mode (matching pares)

@@ -49,6 +49,8 @@ local builtin = require('telescope.builtin')
 
 
 keymap('n', '<leader>f', builtin.find_files, {})
+keymap('n', '<C-n>c', builtin.highlights, {})
+
 
 -- keymap('n', '<leader>f', function()
 --   -- You can pass additional configuration to telescope to change theme, layout, etc.

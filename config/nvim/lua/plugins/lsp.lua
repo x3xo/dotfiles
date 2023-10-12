@@ -55,7 +55,7 @@ return {
 
     -- print("hello")
     local on_attach = function(_, bufnr)
-      print("attaching LSP...")
+      -- print("attaching LSP...")
       -- Enable completion triggered by <c-x><c-o>
       vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
@@ -79,7 +79,7 @@ return {
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
       vim.keymap.set('n', '<leader><space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
-      print("attaching LSP done")
+      print("attaching LSP...done")
     end
 
 
@@ -140,6 +140,10 @@ return {
           }
         },
       },
+    }
+
+    lspconfig.jdtls.setup {
+      on_attach = on_attach,
     }
 
   end,

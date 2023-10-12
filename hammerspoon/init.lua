@@ -61,6 +61,7 @@ docItemChrome = mydock.newItemWithKeybinding("j", "Google Chrome")
 docItemVivaldi = mydock.newItemWithKeybinding("h", "Vivaldi")
 docItemCura = mydock.newItemWithKeybinding("u", "Ultimaker-Cura")
 docItemBlender = mydock.newItemWithKeybinding("b", "Blender")
+docItemSublime = mydock.newItemWithKeybinding("s", "Sublime Text")
 docItemFinder = mydock.newItemWithKeybinding("f", "Finder", nil, displayFinder)
 
 
