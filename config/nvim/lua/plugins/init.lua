@@ -56,7 +56,20 @@ return {
   },
   'rbgrouleff/bclose.vim',
   'norcalli/nvim-colorizer.lua',
-  'j-hui/fidget.nvim',
+  {
+    "j-hui/fidget.nvim",
+    tag = "legacy",
+    event = "LspAttach",
+    opts = {
+      -- options
+      text = {
+        spinner = "dots_pulse",         -- animation shown when tasks are ongoing
+        done = "✔",               -- character shown when all tasks are complete
+        commenced = "Started",    -- message shown when task starts
+        completed = "Completed",  -- message shown when task completes
+      },
+    },
+  },
   'machakann/vim-highlightedyank',
   { -- Add indentation guides
     'lukas-reineke/indent-blankline.nvim',

@@ -2,6 +2,7 @@ vim.cmd([[
 
 
 " colorscheme onedark
+colorscheme habamax
 
 hi clear MatchParen
 hi MatchParen guibg=#61AFEF guifg=black
