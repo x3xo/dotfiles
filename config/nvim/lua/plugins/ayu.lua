@@ -14,6 +14,7 @@ return {
     --   
     --   hi CursorLine guibg=#191e2a
     --   hi CursorLineNr guibg=#191e2a guifg=#e6b450
+    --   hi IncSearch gui=reverse
     --
     -- ]])
 
