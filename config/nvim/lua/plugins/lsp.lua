@@ -2,6 +2,8 @@ return {
   'VonHeikemen/lsp-zero.nvim',
   branch = 'v1.x',
   dependencies = {
+
+    { 'folke/neodev.nvim' },
     -- LSP Support
     { 'neovim/nvim-lspconfig' }, -- Required
     { 'williamboman/mason.nvim' }, -- Optional
@@ -22,6 +24,7 @@ return {
   },
   config = function()
 
+    local neodev = require('neodev').setup()
     -- Learn the keybindings, see :help lsp-zero-keybindings
     -- Learn to configure LSP servers, see :help lsp-zero-api-showcase
     local lsp = require('lsp-zero')

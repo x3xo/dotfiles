@@ -85,12 +85,6 @@ return {
     },
   },
   {
-    'folke/neodev.nvim',
-    config = function()
-      require('neodev').setup()
-    end
-  },
-  {
     'nvim-telescope/telescope-fzf-native.nvim',
     build = 'make',
     cond = function()

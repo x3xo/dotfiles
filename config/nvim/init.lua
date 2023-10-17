@@ -24,7 +24,7 @@ require("lazy").setup('plugins')
 -- setup lazy end
 
 require("user.mappings")
--- require("user.everforest")
+require("user.everforest")
 require("user.highlightedyank")
 require("user.colorscheme")
 require("user.statusline")
