@@ -32,7 +32,6 @@ return {
     -- telescope
     local builtin = require('telescope.builtin')
     keymap("n", "<C-n>v", ":Telescope find_files cwd=$HOME/.config/nvim<cr>", opts)
-    keymap('n', '<leader>f', builtin.find_files, {})
     keymap('n', '<C-n>c', builtin.highlights, {})
 
     -- keymap('n', '<leader>f', function()
@@ -51,12 +50,13 @@ return {
     end, { desc = '[/] Fuzzily search in current buffer' })
 
 
-    keymap('n', '<leader>F', builtin.live_grep, {})
-    keymap('n', '<leader>b', builtin.buffers, {})
-    keymap('n', '<leader>s', builtin.oldfiles, {})
-    keymap('n', '<leader>h', builtin.help_tags, {})
-    keymap('n', '<leader>x', builtin.commands, {})
-    keymap('n', '<leader>m', builtin.marks, {})
+    keymap('n', '<leader>ff', builtin.find_files, {})
+    keymap('n', '<leader>fg', builtin.live_grep, {})
+    keymap('n', '<leader>fb', builtin.buffers, {})
+    keymap('n', '<leader>fs', builtin.oldfiles, {})
+    keymap('n', '<leader>fh', builtin.help_tags, {})
+    keymap('n', '<leader>fx', builtin.commands, {})
+    keymap('n', '<leader>fm', builtin.marks, {})
     keymap('n', '<M-x>', builtin.commands, {})
     keymap('n', '<M-f>', builtin.live_grep, {})
     keymap('n', '<C-n>m', builtin.keymaps, {})
