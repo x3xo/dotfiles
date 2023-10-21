@@ -33,6 +33,7 @@ return {
     lsp.ensure_installed({
       'tsserver',
       'eslint',
+      'clangd',
       'lua_ls',
     })
 
@@ -149,6 +150,10 @@ return {
     }
 
     lspconfig.jdtls.setup {
+      on_attach = on_attach,
+    }
+    
+    lspconfig.clangd.setup {
       on_attach = on_attach,
     }
 

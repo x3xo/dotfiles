@@ -24,7 +24,6 @@ return {
         "python",
         "lua",
         "vim",
-        "help",
         "html",
         "bash",
         "yaml",

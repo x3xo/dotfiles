@@ -29,7 +29,7 @@ local options = {
   wildmenu = true,
   wildmode = "longest,full",
   splitbelow = true,
-  showmode = false, -- disable showing mode under status line since lualine shows it already. Enable if not using lualine
+  showmode = true, -- disable showing mode under status line since lualine shows it already. Enable if not using lualine
   splitright = true,
   laststatus = 2, -- set to 3 for global status line
 }
