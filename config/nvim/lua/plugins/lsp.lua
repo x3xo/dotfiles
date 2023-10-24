@@ -78,8 +78,8 @@ return {
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
       end, bufopts)
       vim.keymap.set('n', '<leader><space>D', vim.lsp.buf.type_definition, bufopts)
-      vim.keymap.set('n', '<leader><space>rn', vim.lsp.buf.rename, bufopts)
-      vim.keymap.set('n', '<leader><space>ca', vim.lsp.buf.code_action, bufopts)
+      vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
+      vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
       vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
       vim.keymap.set('n', '<leader><space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
 
