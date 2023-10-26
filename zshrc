@@ -4,7 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 # export PATH=$HOME/.nvm/versions/node/v19.5.0/bin:$HOME/bin:$HOME/scripts/dragon:$HOME/go/bin:$HOME/.jenv/bin:$PATH
-export PATH=$HOME/bin:$HOME/scripts/dragon:$HOME/go/bin:$PATH
+export PATH=$HOME/bin:$HOME/Library/Android/sdk/platform-tools:$HOME/scripts/dragon:$HOME/go/bin:$PATH
 
 # https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
 export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
@@ -141,6 +141,9 @@ alias vim="nvim"
 alias v="nvim"
 alias ls="ls -FG"
 alias py-makevenv="python3 -m venv .venv && source .venv/bin/activate"
+
+# google bundle tool
+alias bundletool="java -jar $HOME/Applications/bundletool.jar"
 # Base16 Shell
 # BASE16_SHELL="$HOME/.config/base16-shell/"
 # [ -n "$PS1" ] && \
