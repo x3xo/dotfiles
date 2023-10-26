@@ -156,6 +156,14 @@ return {
     lspconfig.clangd.setup {
       on_attach = on_attach,
     }
+    
+    lspconfig.eslint.setup {
+      on_attach = on_attach,
+    }
+
+    lspconfig.tsserver.setup {
+      on_attach = on_attach,
+    }
 
   end,
 }

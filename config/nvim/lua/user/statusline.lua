@@ -77,7 +77,8 @@ set statusline+=\ %f
 "set statusline+=\ %#Error#
 set statusline+=%m
 "set statusline+=\%#StatusLine#
-set statusline+=\ ℓ\ %4l/%L
+" set statusline+=\ ℓ\ %4l/%L
+set statusline+=\ %4l\ of\ %L\ lines
 set statusline+=%h%r%w%q%k
 set statusline+=%=
 set statusline+=\ b%n
