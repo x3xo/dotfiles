@@ -15,6 +15,10 @@ return {
       hi CursorLineNr guibg=#191e2a guifg=#e6b450
       hi IncSearch gui=reverse
       hi Visual guibg=#475258 guifg=#ccc
+
+      hi DiagnosticWarn guibg=#1b2733
+      hi DiagnosticError guibg=#1b2733
+      hi DiagnosticInfo guibg=#1b2733
     ]])
   end
 }

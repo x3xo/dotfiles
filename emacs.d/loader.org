@@ -476,37 +476,38 @@ https://ianyepan.github.io/posts/setting-up-use-package/#:~:text=Setting%20use-p
 
 ** doom themes
 #+begin_src emacs-lisp
-(use-package doom-themes
-  :ensure t
-  :config
+  (use-package doom-themes
+    :ensure t
+    :config
+    ;;(load-theme 'doom-ayu-dark t)
+    ;; TODO: check if this needs to be wrapped or add it to :init
+  (setq custom-safe-themes t)
+    ;(load-theme 'doom-spacegrey t)
+    ;(load-theme 'doom-gruvbox t)
   (load-theme 'doom-ayu-dark t)
+  (set-face-attribute 'widget-field nil :background "gray17")
+    ;(load-theme 'doom-ayu-mirage t)
+    ;(load-theme 'doom-horizon t)
+    ;(load-theme 'doom-one t)
+    ;(load-theme 'doom-one-light t)
+    ;(load-theme 'doom-vibrant t)
+    ;(load-theme 'doom-molokai t)
+    ;(load-theme 'doom-Iosvkem t)
+    ;(load-theme 'doom-oceanic-next t)
+    ;(load-theme 'doom-monokai-pro t)
+    ;;(load-theme 'doom-dracula t)
+    ;;(load-theme 'doom-miramare t)
+    ;(my/set-org-faces)
+    (doom-themes-org-config)
+    (doom-themes-visual-bell-config)
+    ;(set-face-attribute 'doom-visual-bell nil :background "#ff665c" :foreground "black")
 
-(setq custom-safe-themes t)
-  ;(load-theme 'doom-spacegrey t)
-  ;(load-theme 'doom-gruvbox t)
-  ;(load-theme 'doom-ayu-dark t)
-  ;(load-theme 'doom-ayu-mirage t)
-  ;(load-theme 'doom-horizon t)
-  ;(load-theme 'doom-one t)
-  ;(load-theme 'doom-one-light t)
-  ;(load-theme 'doom-vibrant t)
-  ;(load-theme 'doom-molokai t)
-  ;(load-theme 'doom-Iosvkem t)
-  ;(load-theme 'doom-oceanic-next t)
-  ;(load-theme 'doom-monokai-pro t)
-  ;;(load-theme 'doom-dracula t)
-  ;;(load-theme 'doom-miramare t)
-  ;(my/set-org-faces)
-  (doom-themes-org-config)
-  (doom-themes-visual-bell-config)
-  ;(set-face-attribute 'doom-visual-bell nil :background "#ff665c" :foreground "black")
+    (set-face-attribute 'vertical-border nil :foreground "dark gray" :background "dark gray")
 
-  (set-face-attribute 'vertical-border nil :foreground "dark gray" :background "dark gray")
+    (my/set-default-mode-line)
 
-  (my/set-default-mode-line)
-
-  ;(set-face-attribute 'cursor nil :background "IndianRed3")
-  )
+    ;(set-face-attribute 'cursor nil :background "IndianRed3")
+    )
 #+end_src
 
 * rainbow mode
@@ -997,9 +998,10 @@ This enables drag and drop of images in org mode files.
 * fonts
 #+BEGIN_SRC emacs-lisp
 
-  (setq my-font-size 150)
+  (setq my-font-size 170)
   ;;(setq my-font-name "Source Code Pro")
-  (setq my-font-name "JetBrains Mono")
+  ;;(setq my-font-name "JetBrains Mono")
+  (setq my-font-name "Iosevka Fixed")
   ;;(setq my-font-name "Consolas")
   ;;(setq my-font-name "Hack")
   ;;(setq my-font-name "M PLUS 1 Code")
