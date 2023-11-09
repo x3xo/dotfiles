@@ -103,6 +103,12 @@ plugins=(git tmux)
 
 source $ZSH/oh-my-zsh.sh
 
+# ssh
+# Check if SSH agent is running or start a new one
+if [ -z "$SSH_AUTH_SOCK" ] ; then
+  eval "$(ssh-agent -s)"
+fi
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
