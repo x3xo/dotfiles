@@ -54,13 +54,13 @@ mydock = require("dock")
 
 -- docItemDay
 -- docItemNight
-docItemObsidian = mydock.newItemWithKeybinding("o", "Obsidian")
+-- docItemObsidian = mydock.newItemWithKeybinding("o", "Obsidian")
 docItemFirefox = mydock.newItemWithKeybinding("k", "Emacs")
 docItemiTerm = mydock.newItemWithKeybinding(";", "iTerm", true)
-docItemChrome = mydock.newItemWithKeybinding("j", "Google Chrome")
+-- docItemChrome = mydock.newItemWithKeybinding("j", "Google Chrome")
 docItemVivaldi = mydock.newItemWithKeybinding("h", "Vivaldi")
-docItemCura = mydock.newItemWithKeybinding("u", "Ultimaker-Cura")
-docItemBlender = mydock.newItemWithKeybinding("b", "Blender")
+-- docItemCura = mydock.newItemWithKeybinding("u", "Ultimaker-Cura")
+-- docItemBlender = mydock.newItemWithKeybinding("b", "Blender")
 docItemSublime = mydock.newItemWithKeybinding("s", "Sublime Text")
 docItemFinder = mydock.newItemWithKeybinding("f", "Finder", nil, displayFinder)
 
