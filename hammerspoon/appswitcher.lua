@@ -38,9 +38,11 @@ function M.add(app, key)
   -- local bid = hs.application.infoForBundlePath("/Applications/" .. app .. ".app")
   local bid = app == "Finder" and hs.application.infoForBundlePath("/System/Library/CoreServices/Finder.app") or
       hs.application.infoForBundlePath("/Applications/" .. app .. ".app")
-  -- myInspect("bid: ", bid.CFBundleIdentifier)
-  local image = hs.image.imageFromAppBundle(bid.CFBundleIdentifier)
-  binding.image = image
+  -- myInspect("bid: ", bid)
+  if bid and bid.CFBundleIdentifier then
+    local image = hs.image.imageFromAppBundle(bid.CFBundleIdentifier)
+    binding.image = image
+  end
 
   M.k:bind('', key, 'Pressed ' .. key, function()
     print("pressed: " .. key .. " switching to app: " .. app)
