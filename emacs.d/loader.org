@@ -315,6 +315,18 @@ https://www.reddit.com/r/emacs/comments/b2r2oj/is_it_possible_to_disable_or_hide
 
 #+end_src
 
+* my functions
+#+begin_src emacs-lisp
+  (defun my/search-for-org-files ()
+    (interactive)
+    (counsel-fzf nil "~/org/" "find org file: ")
+  )
+
+  (defun my/search-in-org-files ()
+    (interactive)
+    (counsel-rg nil "~/org" nil "search in org files: ")
+  )
+#+end_src
 * install use-package
 
 https://github.com/jwiegley/use-package
@@ -613,9 +625,10 @@ Displays colors
       "," 'org-cycle
       "." 'rainbow-mode
       "c" 'org-ctrl-c-ctrl-c
-      "f" 'find-file
-      "z" 'counsel-fzf
-      "b" 'counsel-to-buffer
+      "fs" 'counsel-buffer-or-recentf
+      "ff" 'find-file
+      "fz" 'counsel-fzf
+      "fb" 'counsel-to-buffer
       "x" 'counsel-M-x
       "g" 'run-this-line
       ;; "s" 'save-buffer
@@ -623,6 +636,8 @@ Displays colors
       ;;"ss" 'helm-org-in-buffer-headings
       "ss" 'counsel-org-goto
       "si" 'counsel-org-goto
+      "so" 'my/search-for-org-files
+      "sr" 'my/search-in-org-files
       ;; "ss" 'counsel-org-goto
       "t" 'org-todo
       ;;"<tab>" 'org-cycle
@@ -823,10 +838,8 @@ Displays colors
     :bind (("C-c n l" . org-roam-buffer-toggle)
            ("C-c n f" . org-roam-node-find)
            ("C-c n i" . org-roam-node-insert)
-           ("C-c n s" . (lambda () (interactive)
-                          (counsel-rg nil "~/org" nil "search in org files: ")))
-           ("C-c n F" . (lambda () (interactive)
-                          (counsel-fzf nil "~/org/" "find org file: ")))
+           ("C-c n s" . my/search-in-org-files)
+           ("C-c n F" . my/search-for-org-files)
            :map org-mode-map
            ("C-M-i" . completion-at-point))
     :config
@@ -998,7 +1011,7 @@ This enables drag and drop of images in org mode files.
 * fonts
 #+BEGIN_SRC emacs-lisp
 
-  (setq my-font-size 170)
+  (setq my-font-size 140)
   ;;(setq my-font-name "Source Code Pro")
   (setq my-font-name "JetBrains Mono")
   ;;(setq my-font-name "Iosevka Fixed")
