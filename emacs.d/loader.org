@@ -1190,7 +1190,7 @@ https://iginomarini.com/fell/the-revival-fonts/
     (setq keycast-separator-width 1)
     (setq keycast-insert-after 'mode-line-buffer-identification)
     (setq keycast-remove-tail-elements nil)
-    (keycast-mode 1)
+    ;(keycast-mode 1)
     ;(set-face-attribute 'keycast-key nil :background "#000000")
     ;(set-face-attribute 'keycast-key nil :background "white" :height 1.0  :box '(:line-width -1 :color nil :style released-button))
     ;(keycast-key ((t (:background "gray58" :foreground "#000000" :weight bold :height 1))))
