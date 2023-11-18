@@ -9,6 +9,9 @@ export PATH=$HOME/bin:$HOME/Library/Android/sdk/platform-tools:$HOME/scripts/dra
 # https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
 export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 
+
+export RIPGREP_CONFIG_PATH=$HOME/.config/ripgreprc rg foo
+
 # set up jenv
 # commented out because it slows down shell init.
 # eval "$(jenv init -)"
