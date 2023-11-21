@@ -632,7 +632,7 @@ Displays colors
       "x" 'counsel-M-x
       "g" 'run-this-line
       ;; "s" 'save-buffer
-      "sa" 'helm-org-agenda-files-headings
+      ;;"sa" 'helm-org-agenda-files-headings
       ;;"ss" 'helm-org-in-buffer-headings
       "ss" 'counsel-org-goto
       "si" 'counsel-org-goto
