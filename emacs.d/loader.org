@@ -699,6 +699,7 @@ Displays colors
     ;; disable cmd-p cuz if crashes emacs
     (global-set-key (kbd "s-p") nil)
     (global-set-key (kbd "s-p") 'evil-mode)
+    (global-set-key (kbd "s-.") 'evil-mode)
 
 #+end_src
 
@@ -1011,9 +1012,10 @@ This enables drag and drop of images in org mode files.
 * fonts
 #+BEGIN_SRC emacs-lisp
 
-  (setq my-font-size 140)
+  (setq my-font-size 170)
   ;;(setq my-font-name "Source Code Pro")
   (setq my-font-name "JetBrains Mono")
+  ;;(setq my-font-name "Input")
   ;;(setq my-font-name "Iosevka Fixed")
   ;;(setq my-font-name "Consolas")
   ;;(setq my-font-name "Hack")
