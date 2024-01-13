@@ -120,13 +120,13 @@ hs.notify.new({ title = "Hammerspoon", informativeText = "Hide All Applications 
 
 
 
-myswitcher = require("appswitcher")
+-- myswitcher = require("appswitcher")
 -- myswitcher.add('iTerm', 'i')
-myswitcher.add('Vivaldi', 'v')
-myswitcher.add('Emacs', 'e')
-myswitcher.add('Google Chrome', 'g')
-myswitcher.add('Blender', 'b')
-myswitcher.add('Finder', 'f')
+-- myswitcher.add('Vivaldi', 'v')
+-- myswitcher.add('Emacs', 'e')
+-- myswitcher.add('Google Chrome', 'g')
+-- myswitcher.add('Blender', 'b')
+-- myswitcher.add('Finder', 'f')
 
 
 -- hs.alert.defaultStyle = {
