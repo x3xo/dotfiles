@@ -13,7 +13,6 @@ file_list=(
     "nvim"
     "ranger"
     "alacritty"
-    "zellij"
     "ripgreprc"
 )
 
@@ -76,7 +75,6 @@ main() {
     setupRestOfDotConfig
     setupTmux
     setupScreen
-    setupZsh
     setupIdeavimrc
 }
 
