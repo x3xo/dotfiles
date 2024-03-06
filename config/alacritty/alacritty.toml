@@ -20,7 +20,7 @@ style = "Regular"
 
 [font.glyph_offset]
 x = 0
-y = 4
+y = 2
 
 [font.italic]
 family = "JetBrainsMonoNL Nerd Font Mono"
@@ -32,7 +32,7 @@ style = "Regular"
 
 [font.offset]
 x = 0
-y = 8
+y = 4
 
 [[keyboard.bindings]]
 chars = "\u0007z"
