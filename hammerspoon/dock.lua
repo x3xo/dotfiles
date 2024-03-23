@@ -1,4 +1,12 @@
 local M = {}
+local m = require("monitor")
+my_wm = require("mywm")
+
+M.items = {}
+
+function M.addItem(item)
+  table.insert(M.items, item)
+end
 
 local myswitcher = require("appswitcher")
 
@@ -70,6 +78,71 @@ function M.newItemRunShellCommand(displayName, commandPath, commandParams)
   item:setTitle(displayName)
   item:setClickCallback(function()
     runApp(commandPath)
+  end)
+  return item
+end
+
+function M.newBrightnessItem()
+  local home_dir = os.getenv("HOME")
+  local item = M.newItemRunShellCommand("", home_dir .. "/bin/gui-bnessa.sh")
+  item:setIcon(hs.image.imageFromPath("images/brightness.png"):size({ w = 20.0, h = 20.0 }), false)
+  return item
+end
+
+function M.newNightItem()
+  -- TODO convert these to mydock.newItemRunShellCommand
+  -- Create a new menubar item
+  local item = hs.menubar.new()
+  -- menuBarItem:setTitle("night")
+  item:setIcon(hs.image.imageFromPath("images/night.png"):size({ w = 16.0, h = 16.0 }), false)
+  item:setClickCallback(function()
+    m.setBrightness("0")
+  end)
+  return item
+end
+
+function M.newDayItem()
+  local item = hs.menubar.new()
+  -- dayTimeMenuBarItem:setTitle("day")
+  item:setIcon(hs.image.imageFromPath("images/sun.png"):size({ w = 20.0, h = 20.0 }), false)
+  item:setClickCallback(function()
+    m.setBrightness("40")
+  end)
+  return item
+end
+
+function M.moveToRightOnScreenItem()
+  local item = hs.menubar.new()
+  item:setIcon(hs.image.imageFromPath("images/right.png"):size({ w = 20.0, h = 20.0 }), false)
+  item:setClickCallback(function()
+    my_wm.tileRight()
+  end)
+  return item
+end
+
+function M.moveToLeftOnScreenItem()
+  local item = hs.menubar.new()
+  item:setIcon(hs.image.imageFromPath("images/left.png"):size({ w = 20.0, h = 20.0 }), false)
+  item:setClickCallback(function()
+    my_wm.tileLeft()
+  end)
+  return item
+end
+
+function M.maximizeWindowItem()
+  local item = hs.menubar.new()
+  item:setIcon(hs.image.imageFromPath("images/maximize.png"):size({ w = 20.0, h = 20.0 }), false)
+  item:setClickCallback(function()
+    my_wm.maximizeWindow(hs.window.focusedWindow())
+  end)
+  return item
+end
+
+function M.moveToOtherScreenItem()
+  local item = hs.menubar.new()
+  item:setIcon(hs.image.imageFromPath("images/swap.png"):size({ w = 20.0, h = 20.0 }), false)
+  item:setClickCallback(function()
+    my_wm.moveToOtherScreen()
   end)
   return item
 end

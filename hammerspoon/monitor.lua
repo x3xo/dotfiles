@@ -1,6 +1,6 @@
-local monitor = {}
+local M = {}
 
-function monitor.setBrightness(brightness_percent)
+function M.setBrightness(brightness_percent)
   print("####### night time")
   print("setting brightness to: ", brightness_percent)
   local home_dir = os.getenv("HOME")
@@ -12,4 +12,4 @@ function monitor.setBrightness(brightness_percent)
   task:start()
 end
 
-return monitor
+return M
