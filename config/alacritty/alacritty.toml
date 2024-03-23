@@ -1,0 +1,101 @@
+# import = ["/home/niko/.config/alacritty/rose-pine.toml"]
+import = ["/home/niko/.config/alacritty/alacritty-ayu-dark.toml"] 
+
+[cursor]
+thickness = 0.25
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 10.0
+
+[font.bold]
+family = "JetBrainsMonoNL Nerd Font Mono"
+style = "Regular"
+
+[font.bold_italic]
+family = "JetBrainsMonoNL Nerd Font Mono"
+style = "Regular"
+
+[font.glyph_offset]
+x = 0
+y = 2
+
+[font.italic]
+family = "JetBrainsMonoNL Nerd Font Mono"
+style = "Regular"
+
+[font.normal]
+family = "JetBrainsMonoNL Nerd Font Mono"
+style = "Regular"
+
+[font.offset]
+x = 0
+y = 4
+
+[[keyboard.bindings]]
+chars = "\u0007z"
+key = "D"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B,b"
+key = "E"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0007\u0007"
+key = "G"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = """
+\u001B:w
+"""
+key = "S"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0007p"
+key = "H"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0007n"
+key = "L"
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "Hide"
+key = "Q"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0007n"
+key = "N"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0007p"
+key = "P"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u0007c"
+key = "T"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001Bw"
+key = "W"
+mods = "Command"
+
+[[keyboard.bindings]]
+chars = "\u001B/"
+key = "F"
+mods = "Command"
+
+[window]
+decorations = "full"
+
