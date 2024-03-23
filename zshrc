@@ -31,8 +31,8 @@ export RIPGREP_CONFIG_PATH=$HOME/.config/ripgreprc rg foo
 ####   fi
 #### }
 
-# rtx
-eval "$(rtx activate zsh)"
+# rtx now called mise
+eval "$(mise activate zsh)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
