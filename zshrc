@@ -4,7 +4,7 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 # export PATH=$HOME/.nvm/versions/node/v19.5.0/bin:$HOME/bin:$HOME/scripts/dragon:$HOME/go/bin:$HOME/.jenv/bin:$PATH
-export PATH=$HOME/bin:$HOME/Library/Android/sdk/platform-tools:$HOME/scripts/dragon:$HOME/go/bin:$PATH
+export PATH=$HOME/bin:$HOME/Library/Android/sdk/platform-tools:$HOME/scripts/dragon:/Applications/WezTerm.app/Contents/MacOS:$HOME/go/bin:$PATH
 
 # https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
 export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
