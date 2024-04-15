@@ -3,7 +3,7 @@ return {
   config = function()
     -- require("monokai-pro").setup()
     -- vim.cmd('colorscheme monokai-pro-default')
-    -- vim.cmd('colorscheme monokai-pro-spectrum')
+    -- -- vim.cmd('colorscheme monokai-pro-spectrum')
     -- vim.cmd('hi CursorLineNr guifg=#ffd866 guibg=#373438')
     -- vim.cmd('hi TelescopePreviewLine guifg=#ffd866 guibg=#373438')
   end
