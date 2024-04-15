@@ -20,7 +20,15 @@ vim.g.maplocalleader = "\\"
 require("user.options")
 -- setup lazy start
 -- load lua/plugins
-require("lazy").setup('plugins')
+
+local opts = {
+    change_detection = {
+    -- automatically check for config file changes and reload the ui
+    enabled = true,
+    notify = false, -- get a notification when changes are found
+  },
+}
+require("lazy").setup('plugins', opts)
 -- setup lazy end
 
 require("user.mappings")
