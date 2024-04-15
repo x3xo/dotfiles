@@ -12,4 +12,8 @@ function M.setBrightness(brightness_percent)
   task:start()
 end
 
+function M.sleepDisplay()
+    hs.execute("/usr/bin/pmset displaysleepnow")
+end
+
 return M

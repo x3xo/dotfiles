@@ -24,14 +24,14 @@ end
 
 mydock = require("dock")
 mydock.addItem(mydock.newItemWithKeybinding("k", "Emacs"))
-mydock.addItem(mydock.newItemWithKeybinding(";", "iTerm", true))
+mydock.addItem(mydock.newItemWithKeybinding(";", "WezTerm", true))
 mydock.addItem(mydock.newItemWithKeybinding("h", "Vivaldi"))
 mydock.addItem(mydock.newItemWithKeybinding("i", "Brave Browser"))
 mydock.addItem(mydock.newItemWithKeybinding("s", "Sublime Text"))
 mydock.addItem(mydock.newItemWithKeybinding("f", "Finder", nil, displayFinder))
 mydock.addItem(mydock.newBrightnessItem())
-mydock.addItem(mydock.newNightItem())
-mydock.addItem(mydock.newDayItem())
+-- mydock.addItem(mydock.newNightItem())
+-- mydock.addItem(mydock.newDayItem())
 mydock.addItem(mydock.moveToRightOnScreenItem())
 mydock.addItem(mydock.moveToLeftOnScreenItem())
 mydock.addItem(mydock.maximizeWindowItem())
@@ -57,7 +57,7 @@ end)
 -- Start the event tap
 mouseEventTap:start()
 --
-hs.notify.new({ title = "Hammerspoon", informativeText = "Hide All Applications script loaded" }):send()
+-- hs.notify.new({ title = "Hammerspoon", informativeText = "Hide All Applications script loaded" }):send()
 
 hs.hotkey.bind({ "alt", "ctrl" }, "R", function()
   hs.reload()

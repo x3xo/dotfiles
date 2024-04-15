@@ -84,8 +84,103 @@ end
 
 function M.newBrightnessItem()
   local home_dir = os.getenv("HOME")
-  local item = M.newItemRunShellCommand("", home_dir .. "/bin/gui-bnessa.sh")
+  -- local item = M.newItemRunShellCommand("", home_dir .. "/bin/gui-bnessa.sh")
+  local item = hs.menubar.new()
   item:setIcon(hs.image.imageFromPath("images/brightness.png"):size({ w = 20.0, h = 20.0 }), false)
+
+  local menuItems = {
+    {
+      title = "Sleep Display",
+      fn = function()
+        m.sleepDisplay()
+      end
+    }
+  }
+
+  for i = 0,100,10
+  do
+    table.insert(menuItems,
+    {
+      title = i,
+      fn = function()
+        m.setBrightness(tostring(i))
+      end
+    }
+    )
+  end
+
+  item:setMenu(menuItems)
+
+  -- item:setMenu({
+  --   {
+  --     title = "Sleep Display",
+  --     fn = function()
+  --       m.sleepDisplay()
+  --     end
+  --   },
+  --   {
+  --     title = "10",
+  --     fn = function()
+  --       m.setBrightness("10")
+  --     end
+  --   },
+  --   {
+  --     title = "20",
+  --     fn = function()
+  --       m.setBrightness("20")
+  --     end
+  --   },
+  --   {
+  --     title = "30",
+  --     fn = function()
+  --       m.setBrightness("30")
+  --     end
+  --   },
+  --   {
+  --     title = "40",
+  --     fn = function()
+  --       m.setBrightness("40")
+  --     end
+  --   },
+  --   {
+  --     title = "50",
+  --     fn = function()
+  --       m.setBrightness("50")
+  --     end
+  --   },
+  --   {
+  --     title = "60",
+  --     fn = function()
+  --       m.setBrightness("60")
+  --     end
+  --   },
+  --   {
+  --     title = "70",
+  --     fn = function()
+  --       m.setBrightness("70")
+  --     end
+  --   },
+  --   {
+  --     title = "80",
+  --     fn = function()
+  --       m.setBrightness("80")
+  --     end
+  --   },
+  --   {
+  --     title = "90",
+  --     fn = function()
+  --       m.setBrightness("90")
+  --     end
+  --   },
+  --   {
+  --     title = "100",
+  --     fn = function()
+  --       m.setBrightness("100")
+  --     end
+  --   },
+  -- })
+
+
   return item
 end
 
@@ -98,6 +193,31 @@ function M.newNightItem()
   item:setClickCallback(function()
     m.setBrightness("0")
   end)
+
+
+  -- Right-click action specific to the menu item
+  item:setMenu({
+    {
+      title = "Sleep Display",
+      fn = function()
+        m.sleepDisplay()
+      end
+    }
+  })
+
+  -- Right-click action
+  -- function rightClickEvent(event)
+  --   if event:getType() == hs.eventtap.event.types.rightMouseDown then
+  --     sleepDisplay()
+  --   end
+  -- end
+
+  -- Create a new right-click watcher
+  -- local rightClickWatcher = hs.eventtap.new({ hs.eventtap.event.types.rightMouseDown }, rightClickEvent)
+
+  -- Start the right-click watcher
+  -- rightClickWatcher:start()
+
   return item
 end
 
