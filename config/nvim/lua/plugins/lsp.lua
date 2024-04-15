@@ -1,6 +1,7 @@
 return {
-  'VonHeikemen/lsp-zero.nvim',
-  branch = 'v1.x',
+  -- 'VonHeikemen/lsp-zero.nvim',
+  -- branch = 'v3.x',
+  'neovim/nvim-lspconfig', -- Required
   dependencies = {
 
     { 'folke/neodev.nvim' },
@@ -25,39 +26,10 @@ return {
   config = function()
 
     local neodev = require('neodev').setup()
-    -- Learn the keybindings, see :help lsp-zero-keybindings
-    -- Learn to configure LSP servers, see :help lsp-zero-api-showcase
-    local lsp = require('lsp-zero')
-    lsp.preset('recommended')
 
-    lsp.ensure_installed({
-      'tsserver',
-      'eslint',
-      'clangd',
-      'lua_ls',
-    })
+    -- enable snippets
+    require("luasnip.loaders.from_vscode").lazy_load()
 
-
-    lsp.set_preferences({
-      -- use letters instead of icons in gutter. thanks primagen
-      -- sign_icons = { }
-      sign_icons = {
-        error = '✘',
-        warn = '▲',
-        hint = '⚑',
-        info = '»'
-      }
-    })
-
-
-    -- (Optional) Configure lua language server for neovim
-    lsp.nvim_workspace()
-
-
-    lsp.setup()
-
-
-    -- print("hello")
     local on_attach = function(_, bufnr)
       -- print("attaching LSP...")
       -- Enable completion triggered by <c-x><c-o>
@@ -89,81 +61,157 @@ return {
       print("attaching LSP...done")
     end
 
+    local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
 
     local lspconfig = require('lspconfig')
+    local default_setup = function(server)
+      -- require('lspconfig')[server].setup({
+      lspconfig[server].setup({
+        capabilities = lsp_capabilities,
+      })
+    end
 
+    require('mason').setup({})
+    require('mason-lspconfig').setup({
+      ensure_installed = {
+        'tsserver',
+        'eslint',
+        'clangd',
+        'pyright',
+        'jdtls',
+        'lua_ls',
+      },
+      handlers = {
+        -- lsp_zero.default_setup,
+        default_setup,
+        pyright = function()
+          lspconfig.pyright.setup {
+            on_attach = on_attach,
+            settings = {
+              {
+                python = {
+                  analysis = {
+                    autoSearchPaths = true,
+                    diagnosticMode = "workspace",
+                    useLibraryCodeForTypes = true
+                  }
+                }
+              },
+            },
+          }
+        end,
+        jdtls = function()
+          lspconfig.jdtls.setup {
+            on_attach = on_attach,
+          }
+        end,
+        clangd = function()
+          lspconfig.clangd.setup {
+            on_attach = on_attach,
+          }
+        end,
+        eslint = function()
+          lspconfig.eslint.setup {
+            on_attach = on_attach,
+          }
+
+        end,
+        tsserver = function()
+          lspconfig.tsserver.setup {
+            on_attach = on_attach,
+          }
+        end,
+        lua_ls = function()
+          local runtime_path = vim.split(package.path, ';')
+          table.insert(runtime_path, 'lua/?.lua')
+          table.insert(runtime_path, 'lua/?/init.lua')
+
+          -- setting up lua
+          lspconfig.lua_ls.setup {
+            on_attach = on_attach,
+            settings = {
+              Lua = {
+                runtime = {
+                  -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+                  version = 'LuaJIT',
+                  path = runtime_path,
+                },
+                diagnostics = {
+                  -- Get the language server to recognize the `vim` global
+                  globals = { 'vim', 'hs' },
+                },
+                -- commands = {
+                  --   Format = {
+                    --     function()
+                      --       require('stylua-nvim').format_file()
+                      --     end,
+                      --   },
+                      -- },
+                      workspace = {
+                        -- Make the server aware of Neovim runtime files
+                        library = vim.api.nvim_get_runtime_file("", true),
+                        checkThirdParty = false,
+                      },
+                      -- Do not send telemetry data containing a randomized but unique identifier
+                      telemetry = {
+                        enable = false,
+                      },
+                    },
+                  },
+                }
+        end
+      },
+    })
+
+    local cmp = require('cmp')
+    cmp.setup({
+      sources = {
+          { name = 'nvim_lsp' },
+          { name = 'luasnip' },
+          { name = 'path' },
+        },
+      mapping = cmp.mapping.preset.insert({
+        -- Enter key confirms completion item
+        ['<CR>'] = cmp.mapping.confirm({select = true}),
+
+        -- Ctrl + space triggers completion menu
+        ['<C-Space>'] = cmp.mapping.complete(),
+        ['<tab>'] = cmp.mapping.select_next_item(),
+        ['<s-tab>'] = cmp.mapping.select_prev_item(),
+        ['<C-j>'] = cmp.mapping.select_next_item(),
+        ['<C-k>'] = cmp.mapping.select_prev_item(),
+        -- Scroll the documentation window [b]ack / [f]orward
+        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+      }),
+      snippet = {
+        expand = function(args)
+          require('luasnip').lsp_expand(args.body)
+        end,
+      },
+    })
 
     lspconfig.sourcekit.setup {
       on_attach = on_attach,
     }
 
-    -- setting up lua
-    local runtime_path = vim.split(package.path, ';')
-    table.insert(runtime_path, 'lua/?.lua')
-    table.insert(runtime_path, 'lua/?/init.lua')
-    lspconfig.lua_ls.setup {
-      on_attach = on_attach,
-      settings = {
-        Lua = {
-          runtime = {
-            -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-            version = 'LuaJIT',
-            path = runtime_path,
-          },
-          diagnostics = {
-            -- Get the language server to recognize the `vim` global
-            globals = { 'vim', 'hs' },
-          },
-          -- commands = {
-          --   Format = {
-          --     function()
-          --       require('stylua-nvim').format_file()
-          --     end,
-          --   },
-          -- },
-          workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = vim.api.nvim_get_runtime_file("", true),
-            checkThirdParty = false,
-          },
-          -- Do not send telemetry data containing a randomized but unique identifier
-          telemetry = {
-            enable = false,
-          },
-        },
-      },
-    }
+    -- lsp_zero.set_preferences({
+    --   -- use letters instead of icons in gutter. thanks primagen
+    --   -- sign_icons = { }
+    --   sign_icons = {
+    --     error = '✘',
+    --     warn = '▲',
+    --     hint = '⚑',
+    --     info = '»'
+    --   }
+    -- })
 
-    lspconfig.pyright.setup {
-      on_attach = on_attach,
-      settings = {
-        {
-          python = {
-            analysis = {
-              autoSearchPaths = true,
-              diagnosticMode = "workspace",
-              useLibraryCodeForTypes = true
-            }
-          }
-        },
-      },
-    }
-
-    lspconfig.jdtls.setup {
-      on_attach = on_attach,
-    }
-    
-    lspconfig.clangd.setup {
-      on_attach = on_attach,
-    }
-    
-    lspconfig.eslint.setup {
-      on_attach = on_attach,
-    }
-
-    lspconfig.tsserver.setup {
-      on_attach = on_attach,
-    }
+    -- this works but trying out not using it
+    -- local signs = { Error = "✘ ", Warn = "▲ ", Hint = "⚑ ", Info = " " }
+    -- for type, icon in pairs(signs) do
+    --   local hl = "DiagnosticSign" .. type
+    --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    -- end
 
   end,
 }
