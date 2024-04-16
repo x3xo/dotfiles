@@ -11,6 +11,7 @@ file_list=(
     "bat"
     "lf"
     "nvim"
+    "wezterm"
     "ranger"
     "alacritty"
     "ripgreprc"
