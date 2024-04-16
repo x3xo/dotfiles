@@ -37,6 +37,11 @@ config.keys = {
     action = wezterm.action{SendString="\x1b\x77"}, -- close pane in tmux
   },
   {
+    key = 'w',
+    mods = 'CMD|SHIFT',
+    action = wezterm.action.CloseCurrentTab { confirm = true },
+  },
+  {
     key = 'f',
     mods = 'CMD',
     action = wezterm.action{SendString="\x1b\x2f"}, -- find in tmux
