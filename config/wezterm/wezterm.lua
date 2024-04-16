@@ -7,7 +7,7 @@ config.color_scheme = 'Ayu Mirage (Gogh)'
 -- config.color_scheme = 'Oceanic Next (Gogh)'
 -- config.color_scheme = 'Azu (Gogh)'
 
-config.font_size = 16.0
+config.font_size = 15.0
 config.line_height = 1.2
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' } -- disable ligatures
 config.cursor_thickness = "4px"
@@ -25,7 +25,34 @@ config.window_padding = {
   bottom = 0,
 }
 
+config.disable_default_key_bindings = true
+
 config.keys = {
+  {
+    key = '=',
+    mods = 'CMD',
+    action = wezterm.action.IncreaseFontSize,
+  },
+  {
+    key = '-',
+    mods = 'CMD',
+    action = wezterm.action.DecreaseFontSize,
+  },
+  {
+    key = '0',
+    mods = 'CMD',
+    action = wezterm.action.ResetFontSize,
+  },
+  {
+    key = 'c',
+    mods = 'CMD',
+    action = wezterm.action.CopyTo "Clipboard",
+  },
+  {
+    key = 'v',
+    mods = 'CMD',
+    action = wezterm.action.PasteFrom "Clipboard",
+  },
   {
     key = 't',
     mods = 'CMD',
