@@ -29,6 +29,21 @@ config.disable_default_key_bindings = true
 
 config.keys = {
   {
+    key = 'q',
+    mods = 'CMD|OPT',
+    action = wezterm.action.QuitApplication,
+  },
+  {
+    key = 'q',
+    mods = 'CMD',
+    action = wezterm.action.HideApplication,
+  },
+  {
+    key = 'h',
+    mods = 'CMD',
+    action = wezterm.action.HideApplication,
+  },
+  {
     key = '=',
     mods = 'CMD',
     action = wezterm.action.IncreaseFontSize,
