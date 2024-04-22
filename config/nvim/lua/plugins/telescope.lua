@@ -2,6 +2,9 @@ return {
   'nvim-telescope/telescope.nvim', tag = '0.1.4',
   dependencies = { {'nvim-lua/plenary.nvim'}, {'nvim-telescope/telescope-ui-select.nvim' } },
   config = function()
+
+    local actions = require('telescope.actions')
+
     require('telescope').setup({
       defaults = {
         layout_strategy = 'vertical',
@@ -10,7 +13,13 @@ return {
           -- other layout configuration here
         },
         -- other defaults configuration here
-        preview = false,
+        -- preview = false,
+        mappings = {
+          i = {
+            ["<C-j>"] = actions.move_selection_next,
+            ["<C-k>"] = actions.move_selection_previous,
+          },
+        },
       },
       extensions = {
         ["ui-select"] = {

@@ -3,14 +3,35 @@ local config = {}
 
 -- config.color_scheme = 'Batman'
 -- config.color_scheme = 'Ayu Dark (Gogh)'
-config.color_scheme = 'Ayu Mirage (Gogh)'
--- config.color_scheme = 'Oceanic Next (Gogh)'
+-- config.color_scheme = 'Ayu Mirage (Gogh)'
+config.color_scheme = 'Oceanic Next (Gogh)'
 -- config.color_scheme = 'Azu (Gogh)'
+-- config.color_scheme = 'Oxocarbon Dark (Gogh)'
+-- config.color_scheme = 'Dark Pastel (Gogh)'
+-- config.color_scheme = 'Panda (Gogh)'
+-- config.color_scheme = 'Rosé Pine (base16)'
+-- config.color_scheme = 'Royal (Gogh)'
+-- config.color_scheme = 'Rydgel (terminal.sexy)'
+-- config.color_scheme = 'Tokyo Night (Gogh)'
 
-config.font_size = 15.0
+config.colors = {
+  cursor_bg = '#52ad70',
+  -- Overrides the text color when the current cell is occupied by the cursor
+  cursor_fg = 'black',
+  -- Specifies the border color of the cursor when the cursor style is set to Block,
+  -- or the color of the vertical or horizontal bar when the cursor style is set to
+  -- Bar or Underline.
+  cursor_border = '#52ad70',
+}
+
+-- config.font = wezterm.font('Zed Mono Extended', { weight = 'Regular', italic = false })
+-- config.font = wezterm.font('Zed Mono Extended')
+-- config.font = wezterm.font('Iosevka Fixed Extended')
+
+config.font_size = 14.0
 config.line_height = 1.2
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' } -- disable ligatures
-config.cursor_thickness = "4px"
+config.cursor_thickness = "3px"
 config.window_decorations = "RESIZE" -- remove title bar
 config.use_fancy_tab_bar = false -- remove tab bar
 config.hide_tab_bar_if_only_one_tab = true -- remove tab bar

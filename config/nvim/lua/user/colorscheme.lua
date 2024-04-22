@@ -16,6 +16,7 @@ hi CurSearch guibg=#EC5f67 guifg=black
 " hi MatchParen guibg=#EC5f67 guifg=black
 
 " hi StatusLine guibg=#005577
+" hi StatusLineNC guibg=#475258 guifg=black
 " hi StatusLine guibg=#003a96
 " hi StatusLine guibg=#003a96
 " hi StatusLine guibg=#424785
