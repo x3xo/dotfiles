@@ -52,8 +52,8 @@ return {
     })
 
     -- setup must be called before loading
-    vim.cmd.colorscheme "catppuccin"
-    vim.cmd "hi! default link CursorLineNr CursorLine"
+    -- vim.cmd.colorscheme "catppuccin"
+    -- vim.cmd "hi! default link CursorLineNr CursorLine"
 
   end
 
