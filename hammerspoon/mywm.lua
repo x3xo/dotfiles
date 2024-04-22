@@ -104,6 +104,7 @@ end
 
 function M.bindMoveToOtherScreen()
   hs.hotkey.bind({ "alt", "ctrl" }, "o", M.moveToOtherScreen)
+  hs.hotkey.bind({ "cmd", "ctrl" }, "o", M.moveToOtherScreen)
 end
 
 function M.tileLeftBig()
