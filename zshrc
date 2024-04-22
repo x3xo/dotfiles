@@ -12,27 +12,7 @@ export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 
 export RIPGREP_CONFIG_PATH=$HOME/.config/ripgreprc rg foo
 
-# set up jenv
-# commented out because it slows down shell init.
-# eval "$(jenv init -)"
 
-# lazy load jenv
-#### jenv() {
-####   emulate -LR zsh
-####   if [[ -n "${functions[jenv]}" ]]; then
-####     if [[ -z "$JENV_INIT" ]]; then
-####       JENV_INIT=1
-####       eval "$(jenv init -)"
-####     fi
-####     command jenv "$@"
-####   else
-####     autoload -U jenv
-####     jenv "$@"
-####   fi
-#### }
-
-# rtx now called mise
-eval "$(mise activate zsh)"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -112,6 +92,31 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval "$(ssh-agent -s)"
 fi
 
+# set up jenv
+# commented out because it slows down shell init.
+# eval "$(jenv init -)"
+
+# lazy load jenv
+#### jenv() {
+####   emulate -LR zsh
+####   if [[ -n "${functions[jenv]}" ]]; then
+####     if [[ -z "$JENV_INIT" ]]; then
+####       JENV_INIT=1
+####       eval "$(jenv init -)"
+####     fi
+####     command jenv "$@"
+####   else
+####     autoload -U jenv
+####     jenv "$@"
+####   fi
+#### }
+
+# rtx now called mise
+eval "$(mise activate zsh)"
+
+eval "$(fzf --zsh)"
+
+
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -150,6 +155,7 @@ alias vim="nvim"
 alias v="nvim"
 alias ls="ls -FG"
 alias py-makevenv="python3 -m venv .venv && source .venv/bin/activate"
+alias cci="cd ~/src/crackinginterview"
 
 # google bundle tool
 alias bundletool="java -jar $HOME/Applications/bundletool.jar"
