@@ -7,11 +7,9 @@ export ZSH="$HOME/.oh-my-zsh"
 export PATH=$HOME/bin:$HOME/Library/Android/sdk/platform-tools:$HOME/scripts/dragon:/Applications/WezTerm.app/Contents/MacOS:$HOME/go/bin:$PATH
 
 # https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
-export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
+# export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 
-
-export RIPGREP_CONFIG_PATH=$HOME/.config/ripgreprc rg foo
-
+export RIPGREP_CONFIG_PATH=$HOME/.config/ripgreprc
 
 
 # Set name of the theme to load --- if set to "random", it will
@@ -92,24 +90,8 @@ if [ -z "$SSH_AUTH_SOCK" ] ; then
   eval "$(ssh-agent -s)"
 fi
 
-# set up jenv
-# commented out because it slows down shell init.
-# eval "$(jenv init -)"
-
-# lazy load jenv
-#### jenv() {
-####   emulate -LR zsh
-####   if [[ -n "${functions[jenv]}" ]]; then
-####     if [[ -z "$JENV_INIT" ]]; then
-####       JENV_INIT=1
-####       eval "$(jenv init -)"
-####     fi
-####     command jenv "$@"
-####   else
-####     autoload -U jenv
-####     jenv "$@"
-####   fi
-#### }
+eval "$(brew shellenv)"
+export HOMEBREW_NO_ANALYTICS=1
 
 # rtx now called mise
 eval "$(mise activate zsh)"
@@ -134,7 +116,6 @@ export EDITOR="nvim"
 # export MANPAGER='nvim +Man! -c "colorscheme base16-pop"'
 export MANPAGER='nvim +Man!'
 
-export HOMEBREW_NO_ANALYTICS=1
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -159,11 +140,6 @@ alias cci="cd ~/src/crackinginterview"
 
 # google bundle tool
 alias bundletool="java -jar $HOME/Applications/bundletool.jar"
-# Base16 Shell
-# BASE16_SHELL="$HOME/.config/base16-shell/"
-# [ -n "$PS1" ] && \
-#     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-#         source "$BASE16_SHELL/profile_helper.sh"
 
 # The next two lines remove duplicate entries from path.
 # https://stackoverflow.com/questions/13058578/how-to-prevent-tmux-from-filling-up-the-global-path-variable-with-duplicated-pat
@@ -191,28 +167,6 @@ bindkey -s '^o' 'lfcd\n'  # zsh
 
 # edit command line in vim
 bindkey '^x^x' edit-command-line
-
-# source nvm
-#### export NVM_DIR="$HOME/.nvm"
-#### [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" --no-use # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-# lazy load nvm
-# nvm() {
-#   unset -f nvm
-#   if [[ -z "$NVM_DIR" ]]; then
-#     export NVM_DIR="$HOME/.nvm"
-#   fi
-#   if [[ -s "$NVM_DIR/nvm.sh" ]]; then
-#     . "$NVM_DIR/nvm.sh" --no-use
-#   fi
-#   if [[ -n "${functions[nvm]}" ]]; then
-#     command nvm "$@"
-#   else
-#     autoload -U nvm
-#     nvm "$@"
-#   fi
-# }
 
 source ~/.config/lf/icons.sh
 
