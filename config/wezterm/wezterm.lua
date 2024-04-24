@@ -4,7 +4,8 @@ local config = {}
 -- config.color_scheme = 'Batman'
 -- config.color_scheme = 'Ayu Dark (Gogh)'
 -- config.color_scheme = 'Ayu Mirage (Gogh)'
-config.color_scheme = 'Oceanic Next (Gogh)'
+-- config.color_scheme = 'Oceanic Next (Gogh)'
+config.color_scheme = 'Kanagawa (Gogh)'
 -- config.color_scheme = 'Azu (Gogh)'
 -- config.color_scheme = 'Oxocarbon Dark (Gogh)'
 -- config.color_scheme = 'Dark Pastel (Gogh)'
@@ -29,7 +30,7 @@ config.colors = {
 -- config.font = wezterm.font('Iosevka Fixed Extended')
 
 config.font_size = 14.0
-config.line_height = 1.2
+config.line_height = 1.1
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' } -- disable ligatures
 config.cursor_thickness = "3px"
 config.window_decorations = "RESIZE" -- remove title bar
