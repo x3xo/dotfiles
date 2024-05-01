@@ -26,16 +26,24 @@ config.colors = {
 }
 
 -- config.font = wezterm.font('Zed Mono Extended', { weight = 'Regular', italic = false })
+-- config.font = wezterm.font('Iosevka Term Extended', { weight = 'Medium', italic = false })
+-- config.font = wezterm.font('Iosevka Term', { weight="Medium", stretch="Expanded", italic=false })
+-- config.font = wezterm.font('Iosevka Term', { weight="Normal", stretch="Expanded", italic=false })
+-- {weight="Medium", stretch="Expanded", style="Normal"})
 -- config.font = wezterm.font('Zed Mono Extended')
 -- config.font = wezterm.font('Iosevka Fixed Extended')
+config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
 
-config.font_size = 14.0
+config.font_size = 15.0
 config.line_height = 1.1
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' } -- disable ligatures
 config.cursor_thickness = "3px"
+-- config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW" -- remove title bar
 config.window_decorations = "RESIZE" -- remove title bar
 config.use_fancy_tab_bar = false -- remove tab bar
 config.hide_tab_bar_if_only_one_tab = true -- remove tab bar
+-- config.enable_tab_bar = false
+-- config.tab_bar_at_bottom = true
 
 config.send_composed_key_when_left_alt_is_pressed = false -- make option behave as alt
 config.send_composed_key_when_right_alt_is_pressed = false -- make option behave as alt
@@ -46,7 +54,7 @@ config.window_padding = {
   top = 0,
   bottom = 0,
 }
-
+-- config.disable_default_mouse_bindings = true
 config.disable_default_key_bindings = true
 
 config.keys = {
