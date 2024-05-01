@@ -15,6 +15,7 @@ file_list=(
     "ranger"
     "alacritty"
     "ripgreprc"
+    "tmux"
 )
 
 check_and_create_directory() {
@@ -54,9 +55,9 @@ setupRestOfDotConfig() {
     done
 }
 
-setupTmux() {
-    check_and_create_symlink "${target_dotfiles_dir}/tmux.conf" "${HOME}/.tmux.conf"
-}
+# setupTmux() {
+#     check_and_create_symlink "${target_dotfiles_dir}/tmux.conf" "${HOME}/.tmux.conf"
+# }
 
 setupScreen() {
     check_and_create_symlink "${target_dotfiles_dir}/screenrc" "${HOME}/.screenrc"
@@ -74,7 +75,7 @@ main() {
     check_and_create_directory "$config_dir"
     setupEmacs
     setupRestOfDotConfig
-    setupTmux
+    # setupTmux
     setupScreen
     setupIdeavimrc
 }
