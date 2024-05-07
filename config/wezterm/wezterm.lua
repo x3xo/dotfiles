@@ -16,26 +16,32 @@ config.color_scheme = 'Kanagawa (Gogh)'
 -- config.color_scheme = 'Tokyo Night (Gogh)'
 
 config.colors = {
-  cursor_bg = '#52ad70',
+  -- cursor_bg = '#52ad70',
+  cursor_bg = '#ffcc66',
+  -- cursor_bg = '#de1373',
+
   -- Overrides the text color when the current cell is occupied by the cursor
   cursor_fg = 'black',
   -- Specifies the border color of the cursor when the cursor style is set to Block,
   -- or the color of the vertical or horizontal bar when the cursor style is set to
   -- Bar or Underline.
-  cursor_border = '#52ad70',
+  -- cursor_border = '#52ad70',
+  cursor_border = '#de1373',
 }
 
--- config.font = wezterm.font('Zed Mono Extended', { weight = 'Regular', italic = false })
+-- config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
+config.font = wezterm.font('Zed Mono Extended', { weight = 'Regular', italic = false })
+-- config.font = wezterm.font('Berkeley Mono Trial', { weight = 'Regular', italic = false })
+-- config.font = wezterm.font('Consolas', { weight = 'Regular', italic = false })
 -- config.font = wezterm.font('Iosevka Term Extended', { weight = 'Medium', italic = false })
 -- config.font = wezterm.font('Iosevka Term', { weight="Medium", stretch="Expanded", italic=false })
 -- config.font = wezterm.font('Iosevka Term', { weight="Normal", stretch="Expanded", italic=false })
 -- {weight="Medium", stretch="Expanded", style="Normal"})
 -- config.font = wezterm.font('Zed Mono Extended')
 -- config.font = wezterm.font('Iosevka Fixed Extended')
-config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
 
-config.font_size = 15.0
-config.line_height = 1.1
+config.font_size = 14.0
+config.line_height = 1.2
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' } -- disable ligatures
 config.cursor_thickness = "3px"
 -- config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW" -- remove title bar
@@ -134,6 +140,16 @@ config.keys = {
     action = wezterm.action{SendString="\x1b\x3a\x77\x0a"}, -- save in vim (esc :w<cr>)
   },
   {
+    key = 'a',
+    mods = 'CMD',
+    action = wezterm.action{SendString="\x1b\x3a\x77\x0a\x2c\x62"}, -- save in vim (esc :w<cr>) and run python file (,b)
+  },
+  {
+    key = 'b',
+    mods = 'CMD',
+    action = wezterm.action{SendString="\x1b\x3a\x77\x0a\x2c\x62"}, -- save in vim (esc :w<cr>) and run python file (,b)
+  },
+  {
     key = 'l',
     mods = 'CMD',
     action = wezterm.action{SendString="\x07\x6e"}, -- next tmux window
@@ -147,6 +163,21 @@ config.keys = {
     key = 'p',
     mods = 'CMD',
     action = wezterm.action{SendString="\x07\x70"}, -- prev tmux window
+  },
+  {
+    key = 'i',
+    mods = 'CMD',
+    action = wezterm.action{SendString="\x07\x57"}, -- comment in vim (,c)
+  },
+  {
+    key = 'o',
+    mods = 'CMD',
+    action = wezterm.action{SendString="\x07\x53"}, -- comment in vim (,c)
+  },
+  {
+    key = '/',
+    mods = 'CMD',
+    action = wezterm.action{SendString="\x2c\x63"}, -- comment in vim (,c)
   },
   {
     key = 'Enter',
