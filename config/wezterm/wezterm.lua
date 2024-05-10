@@ -31,7 +31,6 @@ config.colors = {
 
 -- config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
 config.font = wezterm.font('Zed Mono Extended', { weight = 'Regular', italic = false })
--- config.font = wezterm.font('Berkeley Mono Trial', { weight = 'Regular', italic = false })
 -- config.font = wezterm.font('Consolas', { weight = 'Regular', italic = false })
 -- config.font = wezterm.font('Iosevka Term Extended', { weight = 'Medium', italic = false })
 -- config.font = wezterm.font('Iosevka Term', { weight="Medium", stretch="Expanded", italic=false })
