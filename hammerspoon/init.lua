@@ -5,6 +5,10 @@ end
 
 hs.window.animationDuration = 0
 
+hs.console.darkMode(true)
+hs.console.outputBackgroundColor{ white = 0 }
+hs.console.consoleCommandColor{ white = 1 }
+
 my_wm = require("mywm")
 my_wm.bindMoveWindowLeft()
 my_wm.bindTileLeft()
