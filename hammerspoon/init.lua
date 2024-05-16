@@ -61,5 +61,16 @@ mouseEventTap:start()
 
 hs.hotkey.bind({ "alt", "ctrl" }, "R", function()
   hs.reload()
+
 end)
+
+local setResolutionTo1440p = function ()
+    local screens = hs.screen.allScreens()
+    for _, screen in ipairs(screens) do
+      screen:setMode(2560, 1440, 2, 60, 8)
+    end
+end
+
+setResolutionTo1440p()
+
 hs.alert.show("Config loaded")
