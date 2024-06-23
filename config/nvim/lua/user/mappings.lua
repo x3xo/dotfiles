@@ -92,3 +92,12 @@ keymap("n", "val", ":norm ^vg_<cr>", opts)
 keymap("n", "<leader>b", ":silent !tmux send-keys -t .bottom 'python3 ' % C-m<cr>", opts)
 
 
+-- cnoremap <silent><expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
+-- cnoremap <silent><expr> <C-k> pumvisible() ? "\<C-p>" : "\<C-k>"
+
+-- Move to the next item in the popup menu in command mode
+vim.api.nvim_set_keymap('c', '<C-j>', 'pumvisible() ? "\\<C-n>" : "\\<C-j>"', {expr = true})
+
+-- Move to the previous item in the popup menu in command mode
+vim.api.nvim_set_keymap('c', '<C-k>', 'pumvisible() ? "\\<C-p>" : "\\<C-k>"', {expr = true})
+
