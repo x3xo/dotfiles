@@ -8,7 +8,7 @@
 (tool-bar-mode -1)
 
 ;; keep menu bar
-(menu-bar-mode 1)
+(menu-bar-mode -1)
 
 ;; remove scroll bars
 (scroll-bar-mode 0)

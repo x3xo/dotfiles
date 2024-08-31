@@ -1012,9 +1012,10 @@ This enables drag and drop of images in org mode files.
 * fonts
 #+BEGIN_SRC emacs-lisp
 
-  (setq my-font-size 150)
+  (setq my-font-size 110)
   ;;(setq my-font-name "Source Code Pro")
-  (setq my-font-name "JetBrains Mono")
+  (setq my-font-name "Intel One Mono")
+  ;;(setq my-font-name "JetBrains Mono")
   ;;(setq my-font-name "Input")
   ;;(setq my-font-name "Iosevka Fixed")
   ;;(setq my-font-name "Consolas")

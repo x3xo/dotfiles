@@ -30,6 +30,16 @@ config.colors = {
 }
 
 -- config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
+config.font = wezterm.font_with_fallback {
+    {
+      -- family = 'Intel One Mono',
+      family = 'JetBrains Mono',
+      harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' },
+    },
+    { family = 'JetBrainsMonoNL Nerd Font Mono' },
+    'Noto Color Emoji',
+  }
+
 -- config.font = wezterm.font('Zed Mono Extended', { weight = 'Regular', italic = false })
 -- config.font = wezterm.font('Hack', { weight = 'Regular', italic = false })
 -- config.font = wezterm.font('Consolas', { weight = 'Regular', italic = false })
@@ -40,12 +50,12 @@ config.colors = {
 -- config.font = wezterm.font('Zed Mono Extended')
 -- config.font = wezterm.font('Iosevka Fixed Extended')
 
-config.font_size = 14.0
-config.line_height = 1.2
+config.font_size = 10.0
+config.line_height = 1.0
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' } -- disable ligatures
 config.cursor_thickness = "3px"
 -- config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW" -- remove title bar
-config.window_decorations = "RESIZE" -- remove title bar
+-- config.window_decorations = "RESIZE" -- remove title bar
 config.use_fancy_tab_bar = false -- remove tab bar
 config.hide_tab_bar_if_only_one_tab = true -- remove tab bar
 -- config.enable_tab_bar = false
