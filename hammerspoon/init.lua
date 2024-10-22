@@ -31,8 +31,9 @@ mydock.addItem(mydock.newItemWithKeybinding("k", "Emacs"))
 mydock.addItem(mydock.newItemWithKeybinding(";", "WezTerm", true))
 mydock.addItem(mydock.newItemWithKeybinding("h", "Vivaldi"))
 mydock.addItem(mydock.newItemWithKeybinding("i", "Brave Browser"))
+mydock.addItem(mydock.newItemWithKeybinding("f", "Firefox"))
 mydock.addItem(mydock.newItemWithKeybinding("s", "Sublime Text"))
-mydock.addItem(mydock.newItemWithKeybinding("f", "Finder", nil, displayFinder))
+mydock.addItem(mydock.newItemWithKeybinding("d", "Finder", nil, displayFinder))
 mydock.addItem(mydock.newBrightnessItem())
 -- mydock.addItem(mydock.newNightItem())
 -- mydock.addItem(mydock.newDayItem())
@@ -76,5 +77,7 @@ local setResolutionTo1440p = function ()
 end
 
 setResolutionTo1440p()
+
+hs.loadSpoon('ControlEscape'):start() -- Load Hammerspoon bits from https://github.com/jasonrudolph/ControlEscape.spoon
 
 hs.alert.show("Config loaded")
