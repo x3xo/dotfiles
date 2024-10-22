@@ -199,7 +199,8 @@
     (let ((file-name (buffer-file-name)))
       (if (and file-name (string-suffix-p ".java" file-name))
           (let* ((class-name (file-name-sans-extension (file-name-nondirectory file-name)))
-                 (command (format "javac %s && java %s" file-name class-name))
+                 ;;(command (format "javac %s && java %s" file-name class-name))
+                 (command (format "/Users/niko/.local/share/mise/installs/java/latest/bin/javac %s && /Users/niko/.local/share/mise/installs/java/latest/bin/java %s" file-name class-name))
                  (compilation-buffer-name-function (lambda (_) "*Java Compilation*")))
             (compile command)
             (add-hook 'compilation-filter-hook
@@ -434,8 +435,8 @@ https://ianyepan.github.io/posts/setting-up-use-package/#:~:text=Setting%20use-p
     ;;(set-face-attribute 'mode-line nil :background "#333843" :foreground "grey70" :box '(:line-width -1 :style released-button))
 
     ;; using these for ayu etc
-    ;; (set-face-attribute 'mode-line nil :background "#333843" :foreground "grey70" :box nil)
-    ;; (set-face-attribute 'mode-line-inactive nil :background "grey17" :foreground "grey70" :box nil)
+    (set-face-attribute 'mode-line nil :background "#333843" :foreground "grey70" :box nil)
+    (set-face-attribute 'mode-line-inactive nil :background "grey17" :foreground "grey70" :box nil)
 
     ;; fot ujelly
     ;(set-face-attribute 'mode-line nil :background "#454B5B" :foreground "grey70")
@@ -1010,11 +1011,16 @@ This enables drag and drop of images in org mode files.
 #+end_src
 
 * fonts
+
+To check current font
+C-u C-x =
+
 #+BEGIN_SRC emacs-lisp
 
-  (setq my-font-size 150)
+  (setq my-font-size 140)
   ;;(setq my-font-name "Source Code Pro")
   (setq my-font-name "JetBrains Mono")
+  ;;(setq my-font-name "Intel One Mono")
   ;;(setq my-font-name "Input")
   ;;(setq my-font-name "Iosevka Fixed")
   ;;(setq my-font-name "Consolas")
@@ -1027,7 +1033,9 @@ This enables drag and drop of images in org mode files.
     (set-face-attribute face nil :font my-font-name :height my-font-size))
 
   ; (set-face-attribute 'default nil :background "gray95")
-  ;(set-face-attribute 'org-block nil :background "#141a24")
+
+  ;; for ayu
+  (set-face-attribute 'org-block nil :background "#141a24")
 
 #+END_SRC
 
