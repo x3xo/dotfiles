@@ -2,10 +2,10 @@ local wezterm = require 'wezterm'
 local config = {}
 
 -- config.color_scheme = 'Batman'
--- config.color_scheme = 'Ayu Dark (Gogh)'
+config.color_scheme = 'Ayu Dark (Gogh)'
 -- config.color_scheme = 'Ayu Mirage (Gogh)'
 -- config.color_scheme = 'Oceanic Next (Gogh)'
-config.color_scheme = 'Kanagawa (Gogh)'
+-- config.color_scheme = 'Kanagawa (Gogh)'
 -- config.color_scheme = 'Azu (Gogh)'
 -- config.color_scheme = 'Oxocarbon Dark (Gogh)'
 -- config.color_scheme = 'Dark Pastel (Gogh)'
@@ -29,19 +29,23 @@ config.colors = {
   cursor_border = '#de1373',
 }
 
--- config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
+config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
+-- config.font = wezterm.font("Iosevka Fixed", {weight="DemiBold", stretch="Expanded", style="Normal"})
+-- config.font = wezterm.font("Iosevka Fixed", {weight="Regular", stretch="Expanded", style="Normal"})
+
+-- config.font = wezterm.font('Intel One Mono', { weight="Regular", italic=false })
+-- config.font = wezterm.font('IBM Plex Mono', { weight="Medium", italic=false })
+-- config.font = wezterm.font('Roboto Mono', { weight="Regular", italic=false })
+-- config.font = wezterm.font('JuliaMono', { weight="Regular", italic=false })
 -- config.font = wezterm.font('Zed Mono Extended', { weight = 'Regular', italic = false })
 -- config.font = wezterm.font('Hack', { weight = 'Regular', italic = false })
 -- config.font = wezterm.font('Consolas', { weight = 'Regular', italic = false })
 -- config.font = wezterm.font('Iosevka Term Extended', { weight = 'Medium', italic = false })
 -- config.font = wezterm.font('Iosevka Term', { weight="Medium", stretch="Expanded", italic=false })
--- config.font = wezterm.font('Iosevka Term', { weight="Normal", stretch="Expanded", italic=false })
--- {weight="Medium", stretch="Expanded", style="Normal"})
--- config.font = wezterm.font('Zed Mono Extended')
--- config.font = wezterm.font('Iosevka Fixed Extended')
+-- config.font = wezterm.font('Berkeley Mono', { weight="Bold", italic=false })
 
-config.font_size = 14.0
-config.line_height = 1.2
+config.font_size = 13.0
+config.line_height = 1.1
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' } -- disable ligatures
 config.cursor_thickness = "3px"
 -- config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW" -- remove title bar
