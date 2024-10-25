@@ -44,7 +44,7 @@ config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
 -- config.font = wezterm.font('Iosevka Term', { weight="Medium", stretch="Expanded", italic=false })
 -- config.font = wezterm.font('Berkeley Mono', { weight="Bold", italic=false })
 
-config.font_size = 13.0
+config.font_size = 14.0
 config.line_height = 1.1
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' } -- disable ligatures
 config.cursor_thickness = "3px"
