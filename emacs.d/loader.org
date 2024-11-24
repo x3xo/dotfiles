@@ -144,7 +144,8 @@
      (global-set-key (kbd "s-/") 'comment-dwim)
 
      ; kill buffer with cmd-w
-     (global-set-key (kbd "s-w") 'kill-this-buffer)
+     ;;(global-set-key (kbd "s-w") 'kill-this-buffer)
+     (global-set-key (kbd "s-w") 'kill-current-buffer)
 
      ; disable CMD-q for quitting by accident
      (global-unset-key (kbd "s-q"))
@@ -595,17 +596,6 @@ Displays colors
     :diminish
     :init
     (setq undo-tree-history-directory-alist '(("." . "~/.emacs.d/undo")))
-    
-   (defun my/save-buffer-and-switch-to-normal-state ()
-     "Switch to normal state and save the buffer."
-     (interactive)
-     (when (and (bound-and-true-p evil-mode)
-                (not (evil-normal-state-p)))
-       (evil-normal-state))
-     (save-buffer))
- 
-   (define-key evil-insert-state-map (kbd "s-s") 'my/save-buffer-and-switch-to-normal-state)
-
     :config
     (evil-set-undo-system 'undo-tree)
     (global-undo-tree-mode 1))
@@ -659,6 +649,19 @@ Displays colors
   ;    :init (setq evil-want-C-i-jump nil)
       :config
       (evil-mode 1)
+
+   (defun my/save-buffer-and-switch-to-normal-state ()
+     "Switch to normal state and save the buffer."
+     (interactive)
+     (when (and (bound-and-true-p evil-mode)
+                (not (evil-normal-state-p)))
+       (evil-normal-state))
+     (save-buffer))
+ 
+   (define-key evil-insert-state-map (kbd "s-s") 'my/save-buffer-and-switch-to-normal-state)
+     (global-unset-key (kbd "s-s"))
+     (global-set-key (kbd "s-s") 'my/save-buffer-and-switch-to-normal-state)
+
       ;; (setq evil-undo-system 'undo-tree)
       ;;(setq evil-undo-system 'undo-redo)
       (setq evil-insert-state-cursor '(bar . 2))
@@ -1017,7 +1020,7 @@ C-u C-x =
 
 #+BEGIN_SRC emacs-lisp
 
-  (setq my-font-size 140)
+  (setq my-font-size 110)
   ;;(setq my-font-name "Source Code Pro")
   (setq my-font-name "JetBrains Mono")
   ;;(setq my-font-name "Intel One Mono")
