@@ -74,7 +74,8 @@ return {
     require('mason').setup({})
     require('mason-lspconfig').setup({
       ensure_installed = {
-        'tsserver',
+        -- 'tsserver',
+        'ts_ls',
         'eslint',
         'clangd',
         'pyright',
@@ -116,8 +117,13 @@ return {
           }
 
         end,
-        tsserver = function()
-          lspconfig.tsserver.setup {
+        -- tsserver = function()
+        --   lspconfig.tsserver.setup {
+        --     on_attach = on_attach,
+        --   }
+        -- end,
+        ts_ls = function()
+          lspconfig.ts_ls.setup {
             on_attach = on_attach,
           }
         end,
