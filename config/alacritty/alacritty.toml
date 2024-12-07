@@ -1,7 +1,8 @@
 # import = ["/home/niko/.config/alacritty/rose-pine.toml"]
 # import = ["/home/niko/.config/alacritty/alacritty-ayu-dark.toml"] 
 # import = ["/Users/niko/.config/alacritty/rose-pine.toml"]
-general.import = ["~/.config/alacritty/alacritty-ayu-dark.toml"] 
+# general.import = ["~/.config/alacritty/alacritty-ayu-dark.toml"] 
+general.import = ["~/.config/alacritty/night_owl.toml"] 
 # general.import = ["~/.config/alacritty/everforest.toml"] 
 
 [cursor]
@@ -36,6 +37,17 @@ style = "Bold"
 [font.offset]
 x = 0
 y = 4
+
+
+[[keyboard.bindings]]
+action = "IncreaseFontSize"
+key = "="
+mods = "Command"
+
+[[keyboard.bindings]]
+action = "DecreaseFontSize"
+key = "-"
+mods = "Command"
 
 [[keyboard.bindings]]
 chars = "\u0007z"
