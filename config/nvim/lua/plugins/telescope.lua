@@ -60,15 +60,15 @@ return {
 
 
     keymap('n', '<leader>ff', builtin.find_files, {})
-    keymap('n', '<leader>fg', builtin.live_grep, {})
     keymap('n', '<leader>fb', builtin.buffers, {})
     keymap('n', '<leader>fs', builtin.oldfiles, {})
     keymap('n', '<leader>fh', builtin.help_tags, {})
     keymap('n', '<leader>fx', builtin.commands, {})
     keymap('n', '<leader>fm', builtin.marks, {})
+    keymap('n', '<leader>fg', builtin.live_grep, {})
     keymap('n', '<leader>F', builtin.live_grep, {})
-    keymap('n', '<M-x>', builtin.commands, {})
     keymap('n', '<M-f>', builtin.live_grep, {})
+    keymap('n', '<M-x>', builtin.commands, {})
     keymap('n', '<C-n>m', builtin.keymaps, {})
   end,
 }
