@@ -89,7 +89,7 @@ keymap("n", "<leader>gs", ":Git<cr>", opts)
 keymap("n", "val", ":norm ^vg_<cr>", opts)
 
 
-keymap("n", "<leader>b", ":silent !tmux send-keys -t .bottom 'python3 ' % C-m<cr>", opts)
+-- keymap("n", "<leader>b", ":silent !tmux send-keys -t .bottom 'python3 ' % C-m<cr>", opts)
 
 
 -- cnoremap <silent><expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"

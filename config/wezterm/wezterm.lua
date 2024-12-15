@@ -2,7 +2,9 @@ local wezterm = require 'wezterm'
 local config = {}
 
 -- config.color_scheme = 'Batman'
-config.color_scheme = 'Ayu Dark (Gogh)'
+-- config.color_scheme = 'Ayu Dark (Gogh)'
+config.color_scheme = 'Night Owl (Gogh)'
+
 -- config.color_scheme = 'Ayu Mirage (Gogh)'
 -- config.color_scheme = 'Oceanic Next (Gogh)'
 -- config.color_scheme = 'Kanagawa (Gogh)'
