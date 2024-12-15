@@ -65,6 +65,7 @@ return {
     keymap('n', '<leader>fh', builtin.help_tags, {})
     keymap('n', '<leader>fx', builtin.commands, {})
     keymap('n', '<leader>fm', builtin.marks, {})
+    keymap('n', '<leader>fr', builtin.resume, {})
     keymap('n', '<leader>fg', builtin.live_grep, {})
     keymap('n', '<leader>F', builtin.live_grep, {})
     keymap('n', '<M-f>', builtin.live_grep, {})
