@@ -1,7 +1,7 @@
 return {
   'oxfist/night-owl.nvim',
   name = 'nigh-owl',
-  enabled = true,
+  enabled = false,
   config = function()
     require('night-owl').setup({
       -- These are the default settings

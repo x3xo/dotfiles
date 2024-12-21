@@ -1,9 +1,15 @@
 return {
   'rose-pine/neovim',
   name = 'rose-pine',
+  enabled = false,
   config = function()
     require("rose-pine").setup({
       bold_vert_split = true,
+      styles = {
+        bold = false,
+        italic = false,
+        transparency = false,
+      },
       groups = {
         punctuation = 'pine',
       },
@@ -30,7 +36,7 @@ return {
       }
     })
 
-    -- vim.cmd('colorscheme rose-pine')
+    vim.cmd('colorscheme rose-pine')
     -- vim.cmd('colorscheme rose-pine-moon')
   end
 }
