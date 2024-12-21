@@ -77,7 +77,7 @@ return {
     opts = {
       -- char = '┊',
       indent = {
-        char = "│",
+        char = "▏",
       -- char = '┃',
       -- char = '│',
       },
