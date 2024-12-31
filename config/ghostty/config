@@ -37,6 +37,9 @@ keybind = cmd+e=text:\x2c\x66\x62
 # next tmux window
 keybind = cmd+l=text:\x07\x6e
 
+# prev tmux window
+keybind = cmd+h=text:\x07\x70
+
 # next tmux window
 keybind = cmd+n=text:\x07\x6e
 
