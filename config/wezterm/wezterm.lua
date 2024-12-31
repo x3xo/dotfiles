@@ -3,7 +3,8 @@ local config = {}
 
 -- config.color_scheme = 'Batman'
 -- config.color_scheme = 'Ayu Dark (Gogh)'
-config.color_scheme = 'Night Owl (Gogh)'
+-- config.color_scheme = 'Night Owl (Gogh)'
+-- config.color_scheme = 'One Dark'
 
 -- config.color_scheme = 'Ayu Mirage (Gogh)'
 -- config.color_scheme = 'Oceanic Next (Gogh)'
@@ -16,6 +17,8 @@ config.color_scheme = 'Night Owl (Gogh)'
 -- config.color_scheme = 'Royal (Gogh)'
 -- config.color_scheme = 'Rydgel (terminal.sexy)'
 -- config.color_scheme = 'Tokyo Night (Gogh)'
+-- config.color_scheme = 'One Dark (Gogh)'
+config.color_scheme = 'One Half Black (Gogh)'
 
 config.colors = {
   -- cursor_bg = '#52ad70',
@@ -31,7 +34,13 @@ config.colors = {
   cursor_border = '#de1373',
 }
 
-config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
+-- config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
+config.font = wezterm.font('Iosevka Custom', { weight="Medium", italic=false })
+config.underline_position = -8
+config.underline_thickness = 3
+-- config.font = wezterm.font('Iosevka Custom Wide', { weight="Medium", italic=false })
+-- config.font = wezterm.font('Input', { weight="Regular", italic=false })
+-- config.font = wezterm.font('SauceCodePro NF Medium', { weight="Regular", italic=false })
 -- config.font = wezterm.font("Iosevka Fixed", {weight="DemiBold", stretch="Expanded", style="Normal"})
 -- config.font = wezterm.font("Iosevka Fixed", {weight="Regular", stretch="Expanded", style="Normal"})
 
@@ -44,10 +53,10 @@ config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
 -- config.font = wezterm.font('Consolas', { weight = 'Regular', italic = false })
 -- config.font = wezterm.font('Iosevka Term Extended', { weight = 'Medium', italic = false })
 -- config.font = wezterm.font('Iosevka Term', { weight="Medium", stretch="Expanded", italic=false })
--- config.font = wezterm.font('Berkeley Mono', { weight="Bold", italic=false })
+-- config.font = wezterm.font('Berkeley Mono', { weight="Regular", italic=false })
 
 config.font_size = 14.0
-config.line_height = 1.1
+config.line_height = 1.3
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' } -- disable ligatures
 config.cursor_thickness = "3px"
 -- config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW" -- remove title bar
@@ -173,12 +182,12 @@ config.keys = {
   {
     key = 'i',
     mods = 'CMD',
-    action = wezterm.action{SendString="\x07\x57"}, -- comment in vim (,c)
+    action = wezterm.action{SendString="\x07\x57"},
   },
   {
     key = 'o',
     mods = 'CMD',
-    action = wezterm.action{SendString="\x07\x53"}, -- comment in vim (,c)
+    action = wezterm.action{SendString="\x07\x53"},
   },
   {
     key = '/',

@@ -1,0 +1,54 @@
+theme = "Banana Blueberry"
+macos-non-native-fullscreen = true
+window-decoration = false
+# macos-titlebar-style = hidden
+
+# font-family = JetBrains Mono
+font-family = Iosevka Custom Medium
+font-size = 14
+
+font-feature = -calt
+font-feature = -liga
+font-feature = -dlig
+adjust-underline-position = 6
+adjust-underline-thickness = 2
+
+adjust-cursor-thickness = 3
+adjust-cell-height = 5
+
+# save in vim (esc :w<cr>)
+keybind = cmd+s=text:\x1b\x3a\x77\x0a
+
+# new window (tab) in tmux
+keybind = cmd+t=text:\x07\x63
+
+# close pane in tmux
+keybind = cmd+w=text:\x1b\x77
+
+# find in tmux
+keybind = cmd+f=text:\x1b\x2f
+
+# toogle zoom pane in tmux
+keybind = cmd+d=text:\x07\x7a
+
+# show buffers in vim using telescope (vim mapping is <esc>,fb)
+keybind = cmd+e=text:\x2c\x66\x62
+
+# next tmux window
+keybind = cmd+l=text:\x07\x6e
+
+# next tmux window
+keybind = cmd+n=text:\x07\x6e
+
+# prev tmux window
+keybind = cmd+p=text:\x07\x70
+
+# jump to tmux window
+keybind = cmd+i=text:\x07\x57
+
+# jump to tmux session
+keybind = cmd+o=text:\x07\x53
+
+# comment in vim (,c)
+keybind = cmd+/=text:\x2c\x63
+

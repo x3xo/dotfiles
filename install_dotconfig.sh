@@ -12,6 +12,7 @@ file_list=(
     "lf"
     "nvim"
     "wezterm"
+    "ghostty"
     "ranger"
     "alacritty"
     "ripgreprc"
