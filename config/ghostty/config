@@ -5,16 +5,19 @@ window-decoration = false
 
 # font-family = JetBrains Mono
 font-family = Iosevka Custom Medium
+# font-family = JuliaMono
+# font-family = Source Code Pro Medium
 font-size = 14
 
 font-feature = -calt
 font-feature = -liga
 font-feature = -dlig
 adjust-underline-position = 6
-adjust-underline-thickness = 2
+adjust-underline-thickness = 1
 
 adjust-cursor-thickness = 3
-adjust-cell-height = 5
+adjust-cell-height = 10
+adjust-cursor-height = 10
 
 # save in vim (esc :w<cr>)
 keybind = cmd+s=text:\x1b\x3a\x77\x0a
@@ -38,7 +41,10 @@ keybind = cmd+e=text:\x2c\x66\x62
 keybind = cmd+l=text:\x07\x6e
 
 # prev tmux window
-keybind = cmd+h=text:\x07\x70
+keybind = cmd+j=text:\x07\x70
+
+# prev tmux window
+# keybind = cmd+h=text:\x07\x70
 
 # next tmux window
 keybind = cmd+n=text:\x07\x6e
