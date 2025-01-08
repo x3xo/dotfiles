@@ -13,7 +13,7 @@ return {
           -- other layout configuration here
         },
         -- other defaults configuration here
-        -- preview = false,
+        preview = false,
         mappings = {
           i = {
             ["<C-j>"] = actions.move_selection_next,
