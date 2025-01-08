@@ -1,10 +1,12 @@
-theme = "Banana Blueberry"
+# theme = "Banana Blueberry"
+theme = "tokyonight_night"
 macos-non-native-fullscreen = true
 window-decoration = false
 # macos-titlebar-style = hidden
 
-# font-family = JetBrains Mono
-font-family = Iosevka Custom Medium
+font-family = JetBrains Mono
+font-style = medium
+# font-family = Iosevka Custom Medium
 # font-family = JuliaMono
 # font-family = Source Code Pro Medium
 font-size = 14
@@ -18,6 +20,8 @@ adjust-underline-thickness = 1
 adjust-cursor-thickness = 3
 adjust-cell-height = 10
 adjust-cursor-height = 10
+cursor-color = "#ff006f"
+cursor-text = "#ffffff"
 
 # save in vim (esc :w<cr>)
 keybind = cmd+s=text:\x1b\x3a\x77\x0a
