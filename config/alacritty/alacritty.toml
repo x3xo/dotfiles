@@ -12,105 +12,34 @@ thickness = 0.25
 TERM = "xterm-256color"
 
 [font]
-size = 9.5
-
-[font.bold]
-family = "JetBrainsMonoNL Nerd Font Mono"
-style = "Bold"
-
-[font.bold_italic]
-family = "JetBrainsMonoNL Nerd Font Mono"
-style = "Bold"
-
-[font.glyph_offset]
-x = 0
-y = 2
-
-[font.italic]
-family = "JetBrainsMonoNL Nerd Font Mono"
-style = "Bold"
-
-[font.normal]
-family = "JetBrainsMonoNL Nerd Font Mono"
-style = "Bold"
-
-[font.offset]
-x = 0
-y = 4
+size = 12.0
+normal = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Regular"}
+italic = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Regular"}
+bold = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Regular"}
+bold_italic = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Regular"}
+glyph_offset = { x = 0, y = 4 }
+offset = { x = 0, y = 4 }
 
 
-[[keyboard.bindings]]
-action = "IncreaseFontSize"
-key = "="
-mods = "Command"
+[keyboard]
+bindings = [
+  { key = "=", mods = "Command", action = "IncreaseFontSize" },
+  { key = "-", mods = "Command", action = "DecreaseFontSize" },
+  { key = "D", mods = "Command", chars = "\u0007z" },
+  { key = "E", mods = "Command", chars = "\u001B,b" },
+  { key = "G", mods = "Command", chars = "\u0007\u0007" },
+  { key = "S", mods = "Command", chars = "\u001B:w\u000A" },
+  { key = "H", mods = "Command", chars = "\u0007p" },
+  { key = "L", mods = "Command", chars = "\u0007n" },
+  { key = "Q", mods = "Command", action = "Hide" },
+  { key = "N", mods = "Command", chars = "\u0007n" },
+  { key = "P", mods = "Command", chars = "\u0007p" },
+  { key = "T", mods = "Command", chars = "\u0007c" },
+  { key = "W", mods = "Command", chars = "\u001Bw" },
+  { key = "F", mods = "Command", chars = "\u001B/" },
+]
 
-[[keyboard.bindings]]
-action = "DecreaseFontSize"
-key = "-"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u0007z"
-key = "D"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u001B,b"
-key = "E"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u0007\u0007"
-key = "G"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = """
-\u001B:w
-"""
-key = "S"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u0007p"
-key = "H"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u0007n"
-key = "L"
-mods = "Command"
-
-[[keyboard.bindings]]
-action = "Hide"
-key = "Q"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u0007n"
-key = "N"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u0007p"
-key = "P"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u0007c"
-key = "T"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u001Bw"
-key = "W"
-mods = "Command"
-
-[[keyboard.bindings]]
-chars = "\u001B/"
-key = "F"
-mods = "Command"
 
 [window]
-# decorations = "None"
+decorations = "None"
 
