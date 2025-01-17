@@ -46,17 +46,14 @@ mydock.addItem(mydock.moveToOtherScreenItem())
 
 -- Define the function to be triggered when mouse button 12 is pressed
 local function mouseButton12Function()
-  -- print("Mouse button 12 pressed!")
   my_wm.hideAllApps()
 end
 
 -- Create a new event tap for raw mouse events
 mouseEventTap = hs.eventtap.new({ hs.eventtap.event.types.otherMouseUp }, function(event)
-  -- print('In mouse event callback')
   local rawEventData = event:getRawEventData()
   -- myInspect("raw data", rawEventData)
   if rawEventData.NSEventData.buttonNumber == 11 then
-    -- Call the defined function
     mouseButton12Function()
   end
 end)
