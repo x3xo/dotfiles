@@ -1,11 +1,23 @@
 # theme = "Banana Blueberry"
-theme = "tokyonight_night"
+# theme = "tokyonight_night"
+# theme = "Nocturnal Winter"
+# theme = "Calamity"
+theme = "kanagawabones"
+
+term = "xterm-256color"
+
+mouse-scroll-multiplier = 0.1
+
 macos-non-native-fullscreen = true
 window-decoration = false
 # macos-titlebar-style = hidden
 
 font-family = JetBrains Mono
 font-style = medium
+
+# font-family = Victor Mono
+# font-style = bold
+
 # font-family = Iosevka Custom Medium
 # font-family = JuliaMono
 # font-family = Source Code Pro Medium
@@ -22,6 +34,7 @@ adjust-cell-height = 10
 adjust-cursor-height = 10
 cursor-color = "#ff006f"
 cursor-text = "#ffffff"
+# background = "#2b2d3a"
 
 # save in vim (esc :w<cr>)
 keybind = cmd+s=text:\x1b\x3a\x77\x0a
