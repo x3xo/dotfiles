@@ -28,10 +28,12 @@ end
 
 mydock = require("dock")
 mydock.addItem(mydock.newItemWithKeybinding("k", "Emacs"))
-mydock.addItem(mydock.newItemWithKeybinding(";", "WezTerm", true))
-mydock.addItem(mydock.newItemWithKeybinding("h", "Vivaldi"))
-mydock.addItem(mydock.newItemWithKeybinding("i", "Brave Browser"))
-mydock.addItem(mydock.newItemWithKeybinding("f", "Firefox"))
+mydock.addItem(mydock.newItemWithKeybinding("l", "Visual Studio Code", true))
+mydock.addItem(mydock.newItemWithKeybinding(";", "Ghostty", true))
+mydock.addItem(mydock.newItemWithKeybinding("u", "Zen Browser", true))
+mydock.addItem(mydock.newItemWithKeybinding("h", "Vivaldi", true))
+mydock.addItem(mydock.newItemWithKeybinding("i", "Brave Browser", true))
+mydock.addItem(mydock.newItemWithKeybinding("f", "Firefox", true))
 mydock.addItem(mydock.newItemWithKeybinding("s", "Sublime Text"))
 mydock.addItem(mydock.newItemWithKeybinding("d", "Finder", nil, displayFinder))
 mydock.addItem(mydock.newBrightnessItem())
@@ -78,6 +80,14 @@ end
 
 setResolutionTo1440p()
 
-hs.loadSpoon('ControlEscape'):start() -- Load Hammerspoon bits from https://github.com/jasonrudolph/ControlEscape.spoon
+-- hs.loadSpoon('ControlEscape'):start() -- Load Hammerspoon bits from https://github.com/jasonrudolph/ControlEscape.spoon
+cherry = hs.loadSpoon('Cherry')
+cherry.duration = 30
+cherry:bindHotkeys({
+    start = {{"cmd", "control"}, "P"},
+    pause = {{"cmd", "alt"}, "P"},
+    reset = {{"cmd", "alt"}, "R"}
+})
+
 
 hs.alert.show("Config loaded")
