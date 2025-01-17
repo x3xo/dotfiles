@@ -60,7 +60,7 @@ function M.k:entered()
   hs.alert.show('Choose app:', true)
 
   for k, v in ipairs(M.apps) do
-    hs.alert.showWithImage(v.key .. ": " .. v.app .. "", v.image, true)
+    hs.alert.showWithImage(v.key .. " - " .. v.app .. "", v.image, true)
 
   end
 
