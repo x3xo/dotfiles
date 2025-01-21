@@ -62,6 +62,7 @@ keybind = cmd+j=text:\x07\x70
 
 # prev tmux window
 # keybind = cmd+h=text:\x07\x70
+keybind = cmd+h=toggle_visibility
 
 # next tmux window
 keybind = cmd+n=text:\x07\x6e
