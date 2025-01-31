@@ -1,10 +1,11 @@
+# zmodload zsh/zprof
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 # export PATH=$HOME/.nvm/versions/node/v19.5.0/bin:$HOME/bin:$HOME/scripts/dragon:$HOME/go/bin:$HOME/.jenv/bin:$PATH
-export PATH=$HOME/bin:$HOME/Library/Android/sdk/platform-tools:$HOME/scripts/dragon:/Applications/WezTerm.app/Contents/MacOS:$HOME/go/bin:/Applications/WebStorm.app/Contents/MacOS:$PATH
+export PATH=$HOME/bin:$HOME/.local/bin:$HOME/Library/Android/sdk/platform-tools:$HOME/scripts/dragon:/Applications/WezTerm.app/Contents/MacOS:$HOME/go/bin:/Applications/WebStorm.app/Contents/MacOS:$PATH
 
 # https://gpanders.com/blog/the-definitive-guide-to-using-tmux-256color-on-macos/
 # export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
@@ -48,7 +49,7 @@ zstyle ':omz:update' mode disabled  # disable automatic updates
 # DISABLE_LS_COLORS="true"
 
 # Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
+DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
 # ENABLE_CORRECTION="true"
@@ -80,7 +81,7 @@ zstyle ':omz:update' mode disabled  # disable automatic updates
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux)
+plugins=(zsh-lazyload git tmux fasd)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -96,8 +97,11 @@ export HOMEBREW_NO_ANALYTICS=1
 # rtx now called mise
 eval "$(mise activate zsh)"
 
+# lazyload nvm -- 'source ~/.nvm/nvm.sh'
+
 eval "$(fzf --zsh)"
 
+eval "$(fasd --init auto)"
 
 # User configuration
 
@@ -116,9 +120,19 @@ export EDITOR="nvim"
 # export MANPAGER='nvim +Man! -c "colorscheme base16-pop"'
 export MANPAGER='nvim +Man!'
 
+export FZF_DEFAULT_OPTS='--height 80% --layout=reverse --border'
+# export FZF_DEFAULT_OPTS='--height 80% --layout=reverse --color="hl+:9,hl:9,bg+:19,fg+:7"'
+# export FZF_DEFAULT_OPTS="--height 80% --layout=reverse --color='hl+:9,hl:9,bg+:19,fg+:7' --preview 'bat --style=numbers --theme=OneHalfDark --color=always {} | head -500'"
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
+
+# Use vim keys in tab complete menu:
+bindkey -M menuselect 'h' vi-backward-char
+bindkey -M menuselect 'j' vi-down-line-or-history
+bindkey -M menuselect 'k' vi-up-line-or-history
+bindkey -M menuselect 'l' vi-forward-char
+
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -137,18 +151,26 @@ alias v="nvim"
 alias nano="nvim"
 alias ls="ls -FG"
 alias py-makevenv="python3 -m venv .venv && source .venv/bin/activate"
-alias cci="cd ~/src/crackinginterview"
+
+alias gda="git diff -- . ':(exclude)build/app.js'"
+alias gdam="git diff origin/master -- . ':(exclude)build/app.js'"
+
+# sort branches by date descending
+alias gbsort="git for-each-ref --sort='-authordate:iso8601' --format=' %(authordate:relative)%09%(refname:short)' refs/heads"
+
 
 # google bundle tool
 alias bundletool="java -jar $HOME/Applications/bundletool.jar"
 
 # The next two lines remove duplicate entries from path.
-# https://stackoverflow.com/questions/13058578/how-to-prevent-tmux-from-filling-up-the-global-path-variable-with-duplicated-pat
+# https://stackoverflow.com/questions/13058578/how-to-prevent-tmux-from-filling-up-the-global-path-variable-with-duplicated-path
 # This works because zsh automatically sets up the $path variable as an array
 # that mirrors the content of $PATH. The -U option to typeset modifies
 # that variable so that the entries are unique.
 typeset -aU path
 # path=( $path /foo )
+
+
 
 
 lfcd() {
@@ -175,8 +197,66 @@ yy() {
 	rm -f -- "$tmp"
 }
 
+
+vv() {
+  local file
+  file="$(fasd -Rfl "$1" | fzf -1 -0 --no-sort +m)" && vim "${file}" || return 1
+}
+
+# open git diff in vim
+gdn() {
+  git diff -w "$@" | vim -R -
+}
+
+fcl() {
+  local branches branch
+  branches=$(git branch -vv) &&
+  branch=$(echo "$branches" | fzf +m) &&
+  git checkout $(echo "$branch" | awk '{print $1}' | sed "s/.* //")
+}
+
+# fco - checkout git branch/tag
+fcr() {
+  local tags branches target
+  tags=$(
+    git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
+  branches=$(
+    git branch --all | grep -v HEAD             |
+    sed "s/.* //"    | sed "s#remotes/[^/]*/##" |
+    sort -u          | awk '{print "\x1b[34;1mbranch\x1b[m\t" $1}') || return
+  target=$(
+    (echo "$tags"; echo "$branches") |
+    fzf-tmux -l50 -- --no-hscroll --ansi +m -d "\t" -n 2) || return
+  git checkout $(echo "$target" | awk '{print $2}')
+}
+
+ccd() {
+    local directory
+    directory="$(fasd -Rdl "$1" | fzf -1 -0 --no-sort +m)" && cd "${directory}" || return 1
+}
+
+tt() {
+  local tm_windows tm_window
+  tm_windows=$(tmux list-windows -F "#{window_name}") &&
+  tm_window=$(echo "$tm_windows" | fzf +m) &&
+  tmux select-window -t $(echo "$tm_window" | awk '{print $1}' | sed "s/.* //")
+}
+
+# find files using macos indexed files
+mm() {
+    if [ $# -eq 0 ]; then
+        echo "No arguments provided."
+        echo "Usage mm FILENAME"
+        return 1
+    else
+        local file
+        file="$(mdfind "$1" | fzf -1 -0 --no-sort +m)" && vim "${file}" || return 1
+    fi
+}
+
 # edit command line in vim
 bindkey '^x^x' edit-command-line
 
 source ~/.config/lf/icons.sh
 
+# zprof

@@ -1,6 +1,7 @@
 local wezterm = require 'wezterm'
 local config = {}
 
+-- config.color_scheme = 'Alabaster'
 -- config.color_scheme = 'Batman'
 -- config.color_scheme = 'Ayu Dark (Gogh)'
 -- config.color_scheme = 'Night Owl (Gogh)'
@@ -18,7 +19,7 @@ local config = {}
 -- config.color_scheme = 'Rydgel (terminal.sexy)'
 -- config.color_scheme = 'Tokyo Night (Gogh)'
 -- config.color_scheme = 'One Dark (Gogh)'
-config.color_scheme = 'One Half Black (Gogh)'
+-- config.color_scheme = 'One Half Black (Gogh)'
 
 config.colors = {
   -- cursor_bg = '#52ad70',
@@ -34,8 +35,8 @@ config.colors = {
   cursor_border = '#de1373',
 }
 
--- config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
-config.font = wezterm.font('Iosevka Custom', { weight="Medium", italic=false })
+config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
+-- config.font = wezterm.font('Iosevka Custom', { weight="Medium", italic=false })
 config.underline_position = -8
 config.underline_thickness = 3
 -- config.font = wezterm.font('Iosevka Custom Wide', { weight="Medium", italic=false })
