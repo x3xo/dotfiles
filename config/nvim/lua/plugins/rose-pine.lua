@@ -23,13 +23,20 @@ return {
       groups = {
         punctuation = 'pine',
       },
-      before_highlight = function(group, highlight, palette)
-        -- Change palette colour
-        if highlight.bg == palette.base then
-            highlight.bg = '#000000'
-            -- highlight.bg = 'none'
-        end
-      end,
+      -- before_highlight = function(group, highlight, palette)
+      --   -- Change palette colour
+      --   if highlight.bg == palette.base then
+      --       highlight.bg = '#000000'
+      --       -- highlight.bg = 'none'
+      --   end
+      -- end,
+      -- palette = {
+      --   not working Override the builtin palette per variant
+      --   main = {
+      --       base = '#440000',
+      --       overlay = '#363738',
+      --   },
+      -- },
       highlight_groups = {
         -- Normal = { bg = '#000000' },
         -- Normal = { bg = 'none' },
