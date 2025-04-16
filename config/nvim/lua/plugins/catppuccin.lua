@@ -39,16 +39,16 @@ return {
         flamingo = "#f2cdcd",
         pink = "#fb7da7", -- c
         mauve = "#fb7da7", -- c
-        red = "#dfdfdf", -- c
+        red = "#fb7da7", -- c
         maroon = "#fb7da7", -- c
         peach = "#fdad5d", -- c
         yellow = "#e3cf65", -- c
-        green = "#e3cf65", -- c
+        green = "#76c5a4", -- c
         teal = "#51c7da", -- c
         sky = "#89dceb",
         sapphire = "#51c7da",
-        blue = "#76c5a4", -- c
-        lavender = "#fb7da7", -- c
+        blue = "#51c7da", -- c
+        lavender = "#af98e6", -- c
         text = "#dfdfdf",
         subtext1 = "#bac2de",
         subtext0 = "#a6adc8",
@@ -58,13 +58,47 @@ return {
         surface2 = "#585b70",
         surface1 = "#45475a",
         surface0 = "#313244",
-        base = "#1a1d27",
-        mantle = "#181825",
-        crust = "#11111b",
+        -- base = "#1a1d27",
+        base = "#0d1017",
+        mantle = "#14161e",
+        crust = "#0e0f15",
 
 
         },
       },
+      -- color_overrides = {
+      --   mocha = {
+      --     -- base = "#131a26"
+      --   rosewater = "#f5e0dc",
+      --   flamingo = "#f2cdcd",
+      --   pink = "#fb7da7", -- c
+      --   mauve = "#fb7da7", -- c
+      --   red = "#dfdfdf", -- c
+      --   maroon = "#fb7da7", -- c
+      --   peach = "#fdad5d", -- c
+      --   yellow = "#e3cf65", -- c
+      --   green = "#e3cf65", -- c
+      --   teal = "#51c7da", -- c
+      --   sky = "#89dceb",
+      --   sapphire = "#51c7da",
+      --   blue = "#76c5a4", -- c
+      --   lavender = "#fb7da7", -- c
+      --   text = "#dfdfdf",
+      --   subtext1 = "#bac2de",
+      --   subtext0 = "#a6adc8",
+      --   overlay2 = "#9399b2",
+      --   overlay1 = "#7f849c",
+      --   overlay0 = "#6c7086",
+      --   surface2 = "#585b70",
+      --   surface1 = "#45475a",
+      --   surface0 = "#313244",
+      --   base = "#1a1d27",
+      --   mantle = "#181825",
+      --   crust = "#11111b",
+      --
+      --
+      --   },
+      -- },
       -- custom_highlights = {
       --   TelescopeMatching = { fg = "#ff0000" },
       --   TelescopeSelection = { bg = "#45475a", fg = "#ffffff" },
