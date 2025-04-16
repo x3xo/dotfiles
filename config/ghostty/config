@@ -1,8 +1,56 @@
 # theme = "Banana Blueberry"
+# theme = "SpaceGray Eighties"
+# theme = "Afterglow"
 # theme = "tokyonight_night"
 # theme = "Nocturnal Winter"
 # theme = "Calamity"
-theme = "kanagawabones"
+# theme = "kanagawabones"
+# theme = "xcodedark"
+# theme = "Builtin Solarized Dark"
+# theme = xcodedarkhc
+# theme = "ayu"
+# theme ="Dracula"
+# theme = "Github Dark"
+# theme = Horizon
+# theme = Peppermint
+# theme = Snazzy
+# theme = Subliminal
+
+
+# light theme
+# theme = "Belafonte Day"
+# theme = "AtomOneLight"
+# theme = "GruvboxLightHard"
+# theme = "Monokai Pro Light Sun"
+# theme = BlulocoLight
+# theme = AtomOneLight
+# theme = flexoki-light
+
+palette = 0=#272932
+palette = 1=#E85A84
+palette = 2=#94DD8E
+palette = 3=#E9D26C
+palette = 4=#7EB7E6
+palette = 5=#D895C7
+palette = 6=#89BEB7
+palette = 7=#CFD0D7
+palette = 8=#272932
+palette = 9=#E85A84
+palette = 10=#94DD8E
+palette = 11=#E9D26C
+palette = 12=#7EB7E6
+palette = 13=#D895C7
+palette = 14=#89BEB7
+palette = 15=#DFE0EA
+background = #0d1017
+# background = #000000 
+# background = #1B1D26 
+foreground = #DFE0EA 
+cursor-color = #DFE0EA
+cursor-text = #1B1D26 
+selection-foreground = #1A1B1F
+selection-background = #CFD0D7
+
 
 term = "xterm-256color"
 
@@ -12,16 +60,27 @@ macos-non-native-fullscreen = true
 window-decoration = false
 # macos-titlebar-style = hidden
 
-font-family = JetBrains Mono
-font-style = medium
+# font-family = JetBrains Mono
+# font-style = medium
+
+# font-family = SF Mono
+# font-family = Menlo
+# font-family = IBM Plex Mono
 
 # font-family = Victor Mono
 # font-style = bold
 
 # font-family = Iosevka Custom Medium
 # font-family = JuliaMono
+# font-family = Source Code Pro
 # font-family = Source Code Pro Medium
-font-size = 14
+# font-family = Office Code Pro D
+# font-family = Consolas
+font-family = Comic Code
+# font-family = Codelia
+# font-thicken = true
+font-size = 12
+# font-size = 14
 
 font-feature = -calt
 font-feature = -liga
@@ -32,6 +91,8 @@ adjust-underline-thickness = 1
 adjust-cursor-thickness = 3
 adjust-cell-height = 10
 adjust-cursor-height = 10
+# adjust-cell-height = 4
+# adjust-cursor-height = 4
 cursor-color = "#ff006f"
 cursor-text = "#ffffff"
 # background = "#2b2d3a"
