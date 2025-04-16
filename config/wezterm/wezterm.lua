@@ -57,7 +57,7 @@ config.underline_thickness = 3
 -- config.font = wezterm.font('Berkeley Mono', { weight="Regular", italic=false })
 
 config.font_size = 14.0
-config.line_height = 1.3
+config.line_height = 1.2
 config.harfbuzz_features = { 'calt=0', 'clig=0', 'liga=0' } -- disable ligatures
 config.cursor_thickness = "3px"
 -- config.window_decorations = "RESIZE|MACOS_FORCE_DISABLE_SHADOW" -- remove title bar
