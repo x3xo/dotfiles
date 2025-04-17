@@ -30,6 +30,7 @@ return {
         "bash",
         "yaml",
         "markdown",
+        "tsx",
         "swift"
       },
 
