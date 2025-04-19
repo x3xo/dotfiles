@@ -33,7 +33,7 @@ return {
       --   operators = {},
       -- },
       color_overrides = {
-        mocha = { -- oh lucy
+        latte = { -- oh lucy
           -- base = "#131a26"
           rosewater = "#f5e0dc",
           flamingo = "#f2cdcd",
@@ -171,7 +171,7 @@ return {
     })
 
     -- setup must be called before loading
-    vim.cmd.colorscheme "catppuccin"
+    vim.cmd.colorscheme "catppuccin-latte"
     -- vim.cmd "hi! default link CursorLineNr CursorLine"
 
   end

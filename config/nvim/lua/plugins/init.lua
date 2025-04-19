@@ -19,6 +19,7 @@ return {
   -- },
 
   'navarasu/onedark.nvim',
+  'nelstrom/vim-mac-classic-theme',
   'sainnhe/everforest',
   'christoomey/vim-tmux-navigator',
   -- 'preservim/nerdtree',
