@@ -2,7 +2,7 @@ return {
   'AlexvZyl/nordic.nvim',
   lazy = false,
   priority = 1000,
-  enabled = false,
+  enabled = true,
   config = function()
     -- require('nordic').load()
     require('nordic').setup({
@@ -11,7 +11,11 @@ return {
       -- This callback can be used to override the colors used in the extended palette.
       after_palette = function(palette) end,
       -- This callback can be used to override highlights before they are applied.
-      on_highlight = function(highlights, palette) end,
+      on_highlight = function(highlights, _palette)
+        for _, highlight in pairs(highlights) do
+          highlight.italic = false
+        end
+      end,
       -- Enable bold keywords.
       bold_keywords = false,
       -- Enable italic comments.
@@ -57,6 +61,6 @@ return {
         dark_background = true,
       }
     })
-    vim.cmd.colorscheme("nordic")
+    -- vim.cmd.colorscheme("nordic")
   end
 }

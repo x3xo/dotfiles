@@ -2,7 +2,7 @@ return {
   'rebelot/kanagawa.nvim',
   lazy = false,
   priority = 1000,
-  enabled = false,
+  enabled = true,
   config = function()
     require('kanagawa').setup({
       compile = false,             -- enable compiling the colorscheme
@@ -32,6 +32,6 @@ return {
       light = "lotus"
     },
   })
-    vim.cmd('colorscheme kanagawa')
+    -- vim.cmd('colorscheme kanagawa')
   end
 }
