@@ -28,6 +28,7 @@ local function keymap(mode, lhs, rhs, custom_opts)
   vim.keymap.set(mode, lhs, rhs, opts)
 end
 
+keymap("n", "<leader>;", ":", { silent = false, desc = "command mode" })
 
 keymap("n", "<C-d>", ":bnext<cr>", { desc = "next buffer" })
 keymap("n", "<C-s>", ":bprev<cr>", { desc = "previous buffer" })
