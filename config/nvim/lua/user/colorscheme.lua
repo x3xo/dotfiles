@@ -6,8 +6,15 @@ vim.cmd([[
 " set nocursorline
 "colorscheme habamax
 " this also sets color of Telescope current selection
-"hi Visual guibg=#475258 guifg=#ccc
-" colorscheme onedark
+" hi Visual guibg=#475258 guifg=#ccc
+
+" hi Visual guibg=#3b4252 guifg=#ccc
+" hi TelescopeSelection guifg=none guibg=#3b4252
+" hi TelescopeSelection guifg=#efd49f guibg=#3b4252
+" colorscheme onedark_vivid
+" colorscheme yorumi
+" colorscheme horizon
+" colorscheme xcode
 hi clear MatchParen
 hi MatchParen guibg=#61AFEF guifg=black
 " hi TelescopeMatching guifg=#f38ba8

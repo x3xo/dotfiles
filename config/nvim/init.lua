@@ -14,7 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 -- lazy bootstrap end
 
 -- lazy requires leader to be set before lazy setup
-vim.g.mapleader = ","
+vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 require("user.options")
@@ -33,7 +33,6 @@ require("lazy").setup('plugins', opts)
 -- setup lazy end
 
 require("user.mappings")
-require("user.everforest")
 require("user.highlightedyank")
 require("user.colorscheme")
 require("user.statusline")

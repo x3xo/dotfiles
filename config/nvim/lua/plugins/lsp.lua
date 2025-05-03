@@ -38,27 +38,35 @@ return {
       -- Mappings.
       -- See `:help vim.lsp.*` for documentation on any of the below functions
       local bufopts = { noremap = true, silent = true, buffer = bufnr }
-      vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, bufopts)
-      vim.keymap.set('n', 'gd', vim.lsp.buf.definition, bufopts)
-      vim.keymap.set('n', 'K', vim.lsp.buf.hover, bufopts)
-      vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, bufopts)
-      vim.keymap.set('n', 'gI', vim.diagnostic.open_float, bufopts)
-      vim.keymap.set('i', '<C-k>', vim.lsp.buf.signature_help, bufopts)
-      vim.keymap.set('n', '<leader><space>wa', vim.lsp.buf.add_workspace_folder, bufopts)
-      vim.keymap.set('n', '<leader><space>wr', vim.lsp.buf.remove_workspace_folder, bufopts)
-      vim.keymap.set('n', '<leader><space>wl', function()
+
+      -- Helper function to set keymaps with merged options
+      local function keymap(mode, lhs, rhs, custom_opts)
+        local opts = vim.tbl_extend("force", bufopts, custom_opts or {})
+        vim.keymap.set(mode, lhs, rhs, opts)
+      end
+
+      keymap('n', 'gD', vim.lsp.buf.declaration, { desc = "declarations" })
+      keymap('n', 'gd', vim.lsp.buf.definition, { desc = "definition" })
+      keymap('n', 'gt', vim.lsp.buf.type_definition, { desc = "type definition" })
+      keymap('n', 'K', vim.lsp.buf.hover, { desc = "hover" })
+      keymap('n', 'gi', vim.lsp.buf.implementation, { desc = "implementations" })
+      keymap('n', 'gI', vim.diagnostic.open_float, { desc = "diagnostic" })
+      keymap('i', '<C-k>', vim.lsp.buf.signature_help, { desc = "signature help" })
+      keymap('n', '<leader><space>wa', vim.lsp.buf.add_workspace_folder, { desc = "add workspace folder" })
+      keymap('n', '<leader><space>wr', vim.lsp.buf.remove_workspace_folder, { desc = "remove workspace folder" })
+      keymap('n', '<leader><space>wl', function()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-      end, bufopts)
-      vim.keymap.set('n', '<leader><space>D', vim.lsp.buf.type_definition, bufopts)
-      vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, bufopts)
-      vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, bufopts)
-      vim.keymap.set('n', 'gr', vim.lsp.buf.references, bufopts)
-      vim.keymap.set('n', '<leader><space>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+      end, { desc = "list workspace folders" })
+      keymap('n', '<leader><space>D', vim.lsp.buf.type_definition, { desc = "type definition" })
+      keymap('n', '<leader>rn', vim.lsp.buf.rename, { desc = "rename" })
+      keymap('n', '<leader>a', vim.lsp.buf.code_action, { desc = "code actions" })
+      keymap('n', 'gr', vim.lsp.buf.references, { desc = "references" })
+      keymap('n', '<leader><space>f', function() vim.lsp.buf.format { async = true } end, { desc = "format" })
 
       -- set inline diagnostics
-      vim.diagnostic.config({ virtual_text = true })
+      vim.diagnostic.config({ virtual_text = false })
 
-      print("attaching LSP...done")
+      -- print("attaching LSP...done")
     end
 
     local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()

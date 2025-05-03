@@ -60,7 +60,8 @@ end
 
 vim.cmd([[
 
-nnoremap <space> :
+" map space to :
+" nnoremap <space> :
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 

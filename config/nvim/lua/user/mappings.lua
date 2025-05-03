@@ -1,10 +1,10 @@
 -- vim.g.mapleader = ","
 -- vim.g.maplocalleader = ","
 
-local opts = { noremap = true, silent = true }
+-- local opts = { noremap = true, silent = true }
 -- local opts = { remap = false, silent = true }
 
-local keymap = vim.keymap.set
+-- local keymap = vim.keymap.set
 
 -- TODO: fix it. This doesn't work properly. It doesn't show : until I hit another key after.
 -- keymap("", "<space>", ":", opts)
@@ -20,27 +20,38 @@ local keymap = vim.keymap.set
 -- keymap("n", "<C-n>v", ":e $MYVIMRC<cr>", opts)
 -- keymap("n", "<C-n>h", ":Telescope help_tags<cr>", opts)
 
-keymap("n", "<C-d>", ":bnext<cr>", opts)
-keymap("n", "<C-s>", ":bprev<cr>", opts)
+local default_opts = { noremap = true, silent = true }
+
+-- Helper function to set keymaps with merged options
+local function keymap(mode, lhs, rhs, custom_opts)
+  local opts = vim.tbl_extend("force", default_opts, custom_opts or {})
+  vim.keymap.set(mode, lhs, rhs, opts)
+end
+
+
+keymap("n", "<C-d>", ":bnext<cr>", { desc = "next buffer" })
+keymap("n", "<C-s>", ":bprev<cr>", { desc = "previous buffer" })
 
 -- barbar
-keymap("n", "<A-m>", ":BufferPrevious<cr>", opts)
-keymap("n", "<A-,>", ":BufferNext<cr>", opts)
-keymap("n", "<A-p>", ":BufferPrevious<cr>", opts)
-keymap("n", "<A-n>", ":BufferNext<cr>", opts)
-keymap("n", "<A-g>", ":b#<cr>", opts)
+keymap("n", "<A-m>", ":BufferPrevious<cr>", { desc = "previous buffer" })
+keymap("n", "<A-,>", ":BufferNext<cr>", { desc = "next buffer" })
+keymap("n", "<A-p>", ":BufferPrevious<cr>", { desc = "previous buffer" })
+keymap("n", "<A-n>", ":BufferNext<cr>", { desc = "next buffer" })
+keymap("n", "<A-g>", ":b#<cr>", { desc = "alternate buffer" })
+keymap("n", "<A-a>", ":b#<cr>", { desc = "alternate buffer" })
 
 -- disable ZZ so I don't accidently hit it when running zz
-keymap("", "ZZ", "<nop>", opts)
+keymap("", "ZZ", "<nop>", { desc = "" })
 
-keymap("n", "<leader>l", ":nohlsearch<cr>", opts)
+keymap("n", "<leader>l", ":nohlsearch<cr>", { desc = "nohlsearch" })
 
-keymap({"n", "v"}, "<leader>c", ":TComment<cr>", opts)
+keymap({"n", "v"}, "<leader>c", ":TComment<cr>", { desc = "toggle comment" })
 
-keymap("n", "<leader>.", ":ColorizerToggle<cr>", opts)
+keymap("n", "<leader>.", ":ColorizerToggle<cr>", { desc = "toggle colorizer" })
 
--- keymap("n", "<leader>q", ":Bclose<cr>", opts)
-keymap("n", "<leader>q", ":BufferClose<cr>", opts)
+-- keymap("n", "<leader>q", ":Bclose<cr>", { desc = "" })
+keymap("n", "<leader>q", ":BufferClose<cr>", { desc = "close buffer" })
+keymap("n", "<leader>Q", ":q<cr>", { desc = "quit" })
 
 -- -- telescope
 -- local builtin = require('telescope.builtin')
@@ -80,16 +91,16 @@ keymap("n", "<leader>q", ":BufferClose<cr>", opts)
 -- keymap('n', '<C-n>m', builtin.keymaps, {})
 
 -- nerdtree settings. Trying neotree instead
--- keymap("", "<leader>t", ":NERDTreeToggle<cr>", opts)
+-- keymap("", "<leader>t", ":NERDTreeToggle<cr>", { desc = "" })
 
 -- fugitive
-keymap("n", "<leader>gs", ":Git<cr>", opts)
+keymap("n", "<leader>gs", ":Git<cr>", { desc = "git status" })
 
 -- select current line from first non-empty character till the end of line excluding new line character
-keymap("n", "val", ":norm ^vg_<cr>", opts)
+keymap("n", "val", ":norm ^vg_<cr>", { desc = "select line text" })
 
 
--- keymap("n", "<leader>b", ":silent !tmux send-keys -t .bottom 'python3 ' % C-m<cr>", opts)
+-- keymap("n", "<leader>b", ":silent !tmux send-keys -t .bottom 'python3 ' % C-m<cr>", { desc = "" })
 
 
 -- cnoremap <silent><expr> <C-j> pumvisible() ? "\<C-n>" : "\<C-j>"
