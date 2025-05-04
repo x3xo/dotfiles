@@ -50,10 +50,10 @@ return {
     local wk = require("which-key")
     wk.add({
       { "<leader>f", group = "file" }, -- group
-      { "<leader>b", group = "buffers", expand = function()
-        return require("which-key.extras").expand.buf()
-      end
-    },
+      -- { "<leader>b", group = "buffers", expand = function()
+      --   return require("which-key.extras").expand.buf()
+      -- end
+      -- },
     {
       -- Nested mappings are allowed and can be added in any order
       -- Most attributes can be inherited or overridden on any level

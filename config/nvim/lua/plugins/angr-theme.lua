@@ -1,3 +1,0 @@
-return {
-  'zacanger/angr.vim'
-}
