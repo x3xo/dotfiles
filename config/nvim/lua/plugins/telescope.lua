@@ -8,6 +8,7 @@ return {
     require('telescope').setup({
       defaults = {
         layout_strategy = 'vertical',
+        scroll_strategy = 'limit',
         layout_config = {
           vertical = { width = 0.7, height = 0.95 }
           -- other layout configuration here

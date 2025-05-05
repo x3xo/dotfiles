@@ -1,10 +1,4 @@
 vim.cmd([[
-" Add (Neo)Vim's native statusline support.
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline.
-
-" this breaks status line if I don't use airline
-
 " set statusline
 " set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
@@ -73,8 +67,9 @@ vim.cmd([[
 
 
 set statusline=
+set statusline+=\ %#Error#
 set statusline+=\ %f
-"set statusline+=\ %#Error#
+set statusline+=\%#StatusLine#
 set statusline+=%m
 "set statusline+=\%#StatusLine#
 " set statusline+=\ ℓ\ %4l/%L

@@ -6,7 +6,7 @@ return {
       options = {
         icons_enabled = false,
         -- theme = 'auto',
-        theme = 'onedark',
+        -- theme = 'onedark',
         component_separators = '|',
         -- component_separators = '│',
         -- component_separators = '┃',

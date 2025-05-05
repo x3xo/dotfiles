@@ -20,6 +20,13 @@ return {
       groups = {
         punctuation = 'pine',
       },
+      palette = {
+        -- Override the builtin palette per variant
+        -- moon = {
+        --       base = '#000000',
+        --       overlay = '#363738',
+        --   },
+        },
       -- before_highlight = function(group, highlight, palette)
       --   -- Change palette colour
       --   if highlight.bg == palette.base then
@@ -27,18 +34,12 @@ return {
       --       -- highlight.bg = 'none'
       --   end
       -- end,
-      -- palette = {
-      --   not working Override the builtin palette per variant
-      --   main = {
-      --       base = '#440000',
-      --       overlay = '#363738',
-      --   },
-      -- },
       highlight_groups = {
         -- Normal = { bg = '#000000' },
         -- Normal = { bg = 'none' },
         -- SignColumn = { bg = '#000000' },
         ColorColumn = { bg = 'rose' },
+        Comment = { fg = 'highlight_med' },
 
         -- Blend colours against the "base" background
         -- StatusLine = { bg = 'pine' , fg = '#000000' },
@@ -66,6 +67,11 @@ return {
     -- local options = require("rose-pine.config").options
     -- print(vim.inspect(options))
     -- vim.cmd('colorscheme rose-pine-main')
-    -- vim.cmd('colorscheme rose-pine-moon')
+    vim.cmd('colorscheme rose-pine-moon')
+    -- vim.api.nvim_set_hl(0, "@keyword.return", { fg = "#ff0000" })
+
+    local rose_pine_palette = require("rose-pine.palette")
+    -- print(vim.inspect(rose_pine_palette))
+    vim.api.nvim_set_hl(0, "@keyword.return", { fg = rose_pine_palette.love })
   end
 }
