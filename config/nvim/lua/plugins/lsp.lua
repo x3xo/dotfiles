@@ -10,25 +10,28 @@ return {
     { 'williamboman/mason.nvim' }, -- Optional
     { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
-    -- Autocompletion
-    { 'hrsh7th/nvim-cmp' }, -- Required
-    { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-    { 'hrsh7th/cmp-buffer' }, -- Optional
-    { 'hrsh7th/cmp-path' }, -- Optional
-    -- {'hrsh7th/cmp-cmdline'},         -- Optional
-    { 'saadparwaiz1/cmp_luasnip' }, -- Optional
-    { 'hrsh7th/cmp-nvim-lua' }, -- Optional
 
-    -- Snippets
-    { 'L3MON4D3/LuaSnip' }, -- Required
-    { 'rafamadriz/friendly-snippets' }, -- Optional
+
+
+--    -- Autocompletion
+--    { 'hrsh7th/nvim-cmp' }, -- Required
+--    { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+--    { 'hrsh7th/cmp-buffer' }, -- Optional
+--    { 'hrsh7th/cmp-path' }, -- Optional
+--    -- {'hrsh7th/cmp-cmdline'},         -- Optional
+--    { 'saadparwaiz1/cmp_luasnip' }, -- Optional
+--    { 'hrsh7th/cmp-nvim-lua' }, -- Optional
+--
+--    -- Snippets
+--    { 'L3MON4D3/LuaSnip' }, -- Required
+--    { 'rafamadriz/friendly-snippets' }, -- Optional
   },
   config = function()
 
     local neodev = require('neodev').setup()
 
     -- enable snippets
-    require("luasnip.loaders.from_vscode").lazy_load()
+    -- require("luasnip.loaders.from_vscode").lazy_load()
 
     local on_attach = function(_, bufnr)
       -- print("attaching LSP...")
@@ -69,7 +72,9 @@ return {
       -- print("attaching LSP...done")
     end
 
-    local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+    -- local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
+    local lsp_capabilities = {}
+    lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
 
     local lspconfig = require('lspconfig')
     local default_setup = function(server)
@@ -177,33 +182,33 @@ return {
       },
     })
 
-    local cmp = require('cmp')
-    cmp.setup({
-      sources = {
-          { name = 'nvim_lsp' },
-          { name = 'luasnip' },
-          { name = 'path' },
-        },
-      mapping = cmp.mapping.preset.insert({
-        -- Enter key confirms completion item
-        ['<CR>'] = cmp.mapping.confirm({select = true}),
-
-        -- Ctrl + space triggers completion menu
-        ['<C-Space>'] = cmp.mapping.complete(),
-        ['<tab>'] = cmp.mapping.select_next_item(),
-        ['<s-tab>'] = cmp.mapping.select_prev_item(),
-        ['<C-j>'] = cmp.mapping.select_next_item(),
-        ['<C-k>'] = cmp.mapping.select_prev_item(),
-        -- Scroll the documentation window [b]ack / [f]orward
-        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
-        ['<C-f>'] = cmp.mapping.scroll_docs(4),
-      }),
-      snippet = {
-        expand = function(args)
-          require('luasnip').lsp_expand(args.body)
-        end,
-      },
-    })
+--    local cmp = require('cmp')
+--    cmp.setup({
+--      sources = {
+--          { name = 'nvim_lsp' },
+--          { name = 'luasnip' },
+--          { name = 'path' },
+--        },
+--      mapping = cmp.mapping.preset.insert({
+--        -- Enter key confirms completion item
+--        ['<CR>'] = cmp.mapping.confirm({select = true}),
+--
+--        -- Ctrl + space triggers completion menu
+--        ['<C-Space>'] = cmp.mapping.complete(),
+--        ['<tab>'] = cmp.mapping.select_next_item(),
+--        ['<s-tab>'] = cmp.mapping.select_prev_item(),
+--        ['<C-j>'] = cmp.mapping.select_next_item(),
+--        ['<C-k>'] = cmp.mapping.select_prev_item(),
+--        -- Scroll the documentation window [b]ack / [f]orward
+--        ['<C-b>'] = cmp.mapping.scroll_docs(-4),
+--        ['<C-f>'] = cmp.mapping.scroll_docs(4),
+--      }),
+--      snippet = {
+--        expand = function(args)
+--          require('luasnip').lsp_expand(args.body)
+--        end,
+--      },
+--    })
 
     lspconfig.sourcekit.setup {
       on_attach = on_attach,

@@ -17,9 +17,6 @@ return {
         italic = false,
         transparency = false,
       },
-      bla = {
-        sometihng = "test"
-      },
       groups = {
         punctuation = 'pine',
       },
@@ -69,7 +66,6 @@ return {
     -- local options = require("rose-pine.config").options
     -- print(vim.inspect(options))
     -- vim.cmd('colorscheme rose-pine-main')
-
     -- vim.cmd('colorscheme rose-pine-moon')
   end
 }

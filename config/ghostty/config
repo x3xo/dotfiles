@@ -7,8 +7,6 @@
 # theme = "kanagawabones"
 # theme = "nordfox"
 
-# this is a downloaded theme in .config/ghostty/themes
-# theme = "nordic"
 
 # theme = "xcodedark"
 # theme = "Builtin Solarized Dark"
@@ -16,7 +14,7 @@
 # theme = "ayu"
 # theme ="Dracula"
 # theme = "Github Dark"
-theme = Horizon
+# theme = Horizon
 # theme = Peppermint
 # theme = Snazzy
 # theme = Subliminal
@@ -30,6 +28,10 @@ theme = Horizon
 # theme = BlulocoLight
 # theme = AtomOneLight
 # theme = flexoki-light
+
+# downloaded themes in .config/ghostty/themes
+# theme = "nordic"
+theme = yorumi-abyss
 
 #### palette = 0=#272932
 #### palette = 1=#E85A84
@@ -82,11 +84,11 @@ window-decoration = false
 # font-family = Source Code Pro Medium
 # font-family = Office Code Pro D
 # font-family = Consolas
-font-family = Maple Mono NL
+# font-family = Maple Mono NL
 # font-family = Comic Code
 # font-family = Comic Code Medium
 # font-family = Comic Code Semibold
-# font-family = Codelia
+font-family = Codelia
 # font-family = Monaspace Neon Var
 # font-family = MonoLisa
 font-thicken = true
@@ -110,8 +112,10 @@ adjust-cursor-thickness = 3
 adjust-cell-height = 4
 adjust-cursor-height = 4
 
-cursor-color = "#ff006f"
+cursor-color = "#e95378"
 cursor-text = "#000000"
+# cursor-color = "#ff006f"
+# cursor-text = "#000000"
 # cursor-text = "#ffffff"
 # background = "#2b2d3a"
 

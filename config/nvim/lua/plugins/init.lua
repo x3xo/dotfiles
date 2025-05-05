@@ -23,25 +23,6 @@ return {
   --   "olimorris/onedarkpro.nvim",
   --   priority = 1000, -- Ensure it loads first
   -- },
-  'yorumicolors/yorumi.nvim',
-  'mellow-theme/mellow.nvim',
-  'liuchengxu/space-vim-theme',
-  'lunacookies/vim-colors-xcode',
-  'Rigellute/rigel',
-  'Yazeed1s/oh-lucy.nvim',
-  'nelstrom/vim-mac-classic-theme',
-  {
-    "thesimonho/kanagawa-paper.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = {},
-    config = function ()
-      require('kanagawa-paper').setup({})
-      -- vim.cmd('colorscheme kanagawa-paper')
-      -- vim.cmd('colorscheme kanagawa-paper-canvas')
-    end
-  },
-  'sainnhe/everforest',
   'christoomey/vim-tmux-navigator',
   -- 'preservim/nerdtree',
   'ryanoasis/vim-devicons',
