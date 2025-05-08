@@ -14,7 +14,7 @@ return {
           -- other layout configuration here
         },
         -- other defaults configuration here
-        preview = false,
+        preview = true,
         mappings = {
           i = {
             ["<C-j>"] = actions.move_selection_next,

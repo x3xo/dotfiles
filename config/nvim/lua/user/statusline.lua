@@ -67,9 +67,9 @@ vim.cmd([[
 
 
 set statusline=
-set statusline+=\ %#Error#
+"set statusline+=\ %#Error#
 set statusline+=\ %f
-set statusline+=\%#StatusLine#
+"set statusline+=\%#StatusLine#
 set statusline+=%m
 "set statusline+=\%#StatusLine#
 " set statusline+=\ ℓ\ %4l/%L

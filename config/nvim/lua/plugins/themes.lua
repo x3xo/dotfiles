@@ -19,20 +19,6 @@ if enabled then
       end,
     },
     {
-      'yorumicolors/yorumi.nvim',
-      enabled = false,
-      config = function ()
-        vim.cmd("colorscheme yorumi")
-        vim.cmd([[
-        hi Pmenu guibg=#343742
-        hi PmenuKind guibg=#343742
-        hi PmenuSel guibg=#4e0e0e
-
-        ]])
-      end
-
-    },
-    {
       "2giosangmitom/nightfall.nvim",
       lazy = false,
       priority = 1000,

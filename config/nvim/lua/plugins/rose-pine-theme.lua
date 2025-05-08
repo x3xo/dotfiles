@@ -1,7 +1,7 @@
 return {
   'rose-pine/neovim',
   name = 'rose-pine',
-  enabled = false,
+  enabled = true,
   config = function()
     require("rose-pine").setup({
       variant = "main", -- auto, main, moon, or dawn
@@ -66,8 +66,8 @@ return {
     -- print(vim.inspect(palette))
     -- local options = require("rose-pine.config").options
     -- print(vim.inspect(options))
-    -- vim.cmd('colorscheme rose-pine-main')
-    vim.cmd('colorscheme rose-pine-moon')
+    vim.cmd('colorscheme rose-pine-main')
+    -- vim.cmd('colorscheme rose-pine-moon')
     -- vim.api.nvim_set_hl(0, "@keyword.return", { fg = "#ff0000" })
 
     local rose_pine_palette = require("rose-pine.palette")

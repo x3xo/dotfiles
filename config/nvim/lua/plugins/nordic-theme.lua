@@ -2,7 +2,7 @@ return {
   'AlexvZyl/nordic.nvim',
   lazy = false,
   priority = 1000,
-  enabled = true,
+  enabled = false,
   config = function()
     -- require('nordic').load()
     require('nordic').setup({
@@ -61,6 +61,6 @@ return {
         dark_background = true,
       }
     })
-    -- vim.cmd.colorscheme("nordic")
+    vim.cmd.colorscheme("nordic")
   end
 }
