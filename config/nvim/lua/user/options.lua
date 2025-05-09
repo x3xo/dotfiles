@@ -41,7 +41,7 @@ end
 -- local my_insert_mode_cursor_color = "#e95378"
 -- vim.api.nvim_set_hl(0, 'MyCursor', { fg = '#e95378', bg = '#0000ff' })
 -- setting fg doesn't seem to do anything
-vim.api.nvim_set_hl(0, 'MyCursor', {  bg = '#0000ff' })
+vim.api.nvim_set_hl(0, 'MyCursor', {  bg = '#e95378' })
 
 -- replace vertical bar cursor in insert mode with a different color block cursor
 vim.opt.guicursor = {

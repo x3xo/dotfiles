@@ -74,5 +74,11 @@ return {
     local rose_pine_palette = require("rose-pine.palette")
     -- print(vim.inspect(rose_pine_palette))
     vim.api.nvim_set_hl(0, "@keyword.return", { fg = rose_pine_palette.love })
+
+    vim.cmd([[
+      hi BlinkCmpSignatureHelpActiveParameter guibg=#31748f
+      hi BlinkCmpSignatureHelp guibg=#332d41
+    ]])
+
   end
 }
