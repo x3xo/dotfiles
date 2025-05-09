@@ -73,8 +73,7 @@ return {
     end
 
     -- local lsp_capabilities = require('cmp_nvim_lsp').default_capabilities()
-    local lsp_capabilities = {}
-    lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
+    local lsp_capabilities = require('blink.cmp').get_lsp_capabilities()
 
     local lspconfig = require('lspconfig')
     local default_setup = function(server)
@@ -86,6 +85,7 @@ return {
 
     require('mason').setup({})
     require('mason-lspconfig').setup({
+      automatic_enable = true,
       ensure_installed = {
         -- 'tsserver',
         'ts_ls',

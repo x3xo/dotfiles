@@ -47,6 +47,7 @@ return {
         CursorLine = { bg = 'foam', blend = 10 },
         -- Pmenu = { fg = 'love', bg = 'highlight_low' },
         PmenuSel = { fg = 'base', bg = 'pine' },
+        Search = { fg = 'base', bg = 'pine', blend = 100 },
 
         TelescopeBorder = { fg = "highlight_high", bg = "none" },
         TelescopeNormal = { bg = "none" },
