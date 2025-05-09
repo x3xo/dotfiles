@@ -6,6 +6,9 @@
 # theme = "Calamity"
 # theme = "kanagawabones"
 # theme = "nordfox"
+# theme = "duskfox"
+# theme = "rose-pine-moon"
+theme = "rose-pine"
 
 
 # theme = "xcodedark"
@@ -18,6 +21,7 @@
 # theme = Peppermint
 # theme = Snazzy
 # theme = Subliminal
+# theme = "SpaceGray Eighties Dull"
 
 
 # light theme
@@ -31,32 +35,7 @@
 
 # downloaded themes in .config/ghostty/themes
 # theme = "nordic"
-theme = yorumi-abyss
-
-#### palette = 0=#272932
-#### palette = 1=#E85A84
-#### palette = 2=#94DD8E
-#### palette = 3=#E9D26C
-#### palette = 4=#7EB7E6
-#### palette = 5=#D895C7
-#### palette = 6=#89BEB7
-#### palette = 7=#CFD0D7
-#### palette = 8=#272932
-#### palette = 9=#E85A84
-#### palette = 10=#94DD8E
-#### palette = 11=#E9D26C
-#### palette = 12=#7EB7E6
-#### palette = 13=#D895C7
-#### palette = 14=#89BEB7
-#### palette = 15=#DFE0EA
-#### # background = #000000 
-#### background = #0d1017
-#### # background = #1B1D26 
-#### foreground = #DFE0EA 
-#### # cursor-color = #DFE0EA
-#### # cursor-text = #1B1D26 
-#### selection-foreground = #1A1B1F
-#### selection-background = #CFD0D7
+# theme = yorumi-abyss
 
 
 term = "xterm-256color"
@@ -74,9 +53,10 @@ window-decoration = false
 # font-family = Menlo
 # font-family = IBM Plex Mono
 
+# font-family = Victor Mono SemiBold
 # font-family = Victor Mono
 # font-style = bold
-# font-family = Fira Code cv02 ss05 zero
+
 # font-family = Fira Code
 # font-family = Iosevka Custom Medium
 # font-family = JuliaMono
@@ -85,13 +65,14 @@ window-decoration = false
 # font-family = Office Code Pro D
 # font-family = Consolas
 # font-family = Maple Mono NL
-# font-family = Comic Code
+font-family = Comic Code
 # font-family = Comic Code Medium
 # font-family = Comic Code Semibold
-font-family = Codelia
+# font-family = Codelia
 # font-family = Monaspace Neon Var
 # font-family = MonoLisa
-font-thicken = true
+# font-family = Terminess Nerd Font
+# font-thicken = true
 font-size = 12
 # font-size = 14
 
@@ -109,15 +90,16 @@ adjust-cursor-thickness = 3
 
 # adjust-cell-height = 10
 # adjust-cursor-height = 10
-adjust-cell-height = 4
-adjust-cursor-height = 4
+adjust-cell-height = 6
+adjust-cursor-height = 6
 
-cursor-color = "#e95378"
+# cursor-color = "#e95378"
 cursor-text = "#000000"
 # cursor-color = "#ff006f"
 # cursor-text = "#000000"
 # cursor-text = "#ffffff"
 # background = "#2b2d3a"
+# background = "#191724" # rose pine
 
 # save in vim (esc :w<cr>)
 keybind = cmd+s=text:\x1b\x3a\x77\x0a
@@ -138,10 +120,10 @@ keybind = cmd+d=text:\x07\x7a
 keybind = cmd+e=text:\x2c\x66\x62
 
 # next tmux window
-keybind = cmd+l=text:\x07\x6e
+# keybind = cmd+l=text:\x07\x6e
 
 # prev tmux window
-keybind = cmd+j=text:\x07\x70
+# keybind = cmd+j=text:\x07\x70
 
 # prev tmux window
 # keybind = cmd+h=text:\x07\x70
