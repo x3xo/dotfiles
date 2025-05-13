@@ -1,8 +1,9 @@
-# import = ["/home/niko/.config/alacritty/rose-pine.toml"]
+# general.import = ["/home/niko/.config/alacritty/rose-pine.toml"]
+general.import = ["/home/niko/.config/alacritty/yorumi-abyss.toml"]
 # import = ["/home/niko/.config/alacritty/alacritty-ayu-dark.toml"] 
-# import = ["/Users/niko/.config/alacritty/rose-pine.toml"]
+# general.import = ["/Users/niko/.config/alacritty/rose-pine.toml"]
 # general.import = ["~/.config/alacritty/alacritty-ayu-dark.toml"] 
-general.import = ["~/.config/alacritty/night_owl.toml"] 
+# general.import = ["~/.config/alacritty/night_owl.toml"] 
 # general.import = ["~/.config/alacritty/everforest.toml"] 
 
 [cursor]
@@ -13,10 +14,10 @@ TERM = "xterm-256color"
 
 [font]
 size = 9.5
-normal = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Medium"}
-italic = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Medium"}
-bold = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Medium"}
-bold_italic = { family = "JetBrainsMonoNL Nerd Font Mono", style = "Medium"}
+normal = { family = "Comic Code SemiBold", style = "Medium"}
+italic = { family = "Comic Code SemiBold", style = "Medium"}
+bold = { family = "Comic Code SemiBold", style = "Medium"}
+bold_italic = { family = "Comic Code SemiBold", style = "Medium"}
 glyph_offset = { x = 0, y = 2 }
 offset = { x = 0, y = 4 }
 

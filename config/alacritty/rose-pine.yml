@@ -2,12 +2,12 @@ colors:
   primary:
     background: "0x191724"
     foreground: "0xe0def4"
-  # cursor:
-  #   text: "0xe0def4"
-  #   cursor: "0x524f67"
   cursor:
-    text: '#000000'
-    cursor: '#ff5289'
+    text: "0xe0def4"
+    cursor: "0x524f67"
+  # cursor:
+    # text: '#000000'
+    # cursor: '#ff5289'
   vi_mode_cursor:
     text: "0xe0def4"
     cursor: "0x524f67"
