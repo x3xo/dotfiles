@@ -31,6 +31,7 @@ return {
       ['<C-k>'] = { 'select_prev', 'fallback' },
       ['<C-j>'] = { 'select_next', 'fallback' },
       ['<tab>'] = { 'accept', 'fallback' },
+      ['<cr>'] = { 'accept', 'fallback' },
     },
 
     appearance = {
