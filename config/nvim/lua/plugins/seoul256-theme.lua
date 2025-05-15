@@ -1,5 +1,6 @@
 return {
   'junegunn/seoul256.vim',
+  enabled = false,
   config = function ()
     vim.cmd([[
     " seoul256 (dark):
@@ -8,7 +9,8 @@ return {
     " let g:seoul256_background = 236
 
     " let g:seoul256_background = 237
-    " colo seoul256
+    let g:seoul256_background = 235
+    colorscheme seoul256
     ]])
   end
 }

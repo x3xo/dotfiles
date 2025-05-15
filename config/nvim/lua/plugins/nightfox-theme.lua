@@ -1,6 +1,7 @@
 return {
   "EdenEast/nightfox.nvim",
-  enabled = false,
+  enabled = true,
+  priority = 1000,
   config = function ()
     -- vim.cmd.colorscheme "nightfox"
     -- vim.cmd.colorscheme "terafox"

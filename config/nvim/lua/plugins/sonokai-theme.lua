@@ -2,7 +2,7 @@ return {
   "sainnhe/sonokai",
   lazy = false,
   priority = 1000,
-  enabled = true,
+  enabled = false,
   config = function()
     -- both of these options have to be set in order to disable italics
     vim.g.sonokai_style = 'andromeda'

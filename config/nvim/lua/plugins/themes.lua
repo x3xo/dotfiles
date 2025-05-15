@@ -3,22 +3,7 @@ local enabled = false
 if enabled then
   return {
     {
-      'AlessandroYorba/Despacio',
-      lazy = false,
-      config = function()
-        -- vim.cmd.colorscheme "despacio"
-        vim.cmd([[
-        let g:despacio_Sunset = 1
-        " let g:despacio_Twilight = 1
-        " let g:despacio_Midnight = 1
-        " let g:despacio_Pitch = 1
 
-        " colorscheme despacio
-        " hi Visual guifg=#5f8787
-        ]])
-      end,
-    },
-    {
       "2giosangmitom/nightfall.nvim",
       lazy = false,
       priority = 1000,
@@ -69,11 +54,6 @@ if enabled then
     },
     {
       'hercules261188/cosmic_latte'
-    },
-    {
-      "scottmckendry/cyberdream.nvim",
-      lazy = false,
-      priority = 1000,
     },
     {
       'rakr/vim-two-firewatch'
