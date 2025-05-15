@@ -37,6 +37,7 @@ theme = "duskfox"
 # downloaded themes in .config/ghostty/themes
 # theme = "nordic"
 # theme = yorumi-abyss
+theme = oh-lucy
 
 
 term = "xterm-256color"
