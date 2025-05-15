@@ -1,14 +1,15 @@
 # theme = "Banana Blueberry"
 # theme = "SpaceGray Eighties"
-# theme = "Afterglow"
 # theme = "tokyonight_night"
 # theme = "Nocturnal Winter"
 # theme = "Calamity"
 # theme = "kanagawabones"
 # theme = "nordfox"
-# theme = "duskfox"
+theme = "duskfox"
+# theme = "Afterglow"
 # theme = "rose-pine-moon"
-theme = "rose-pine"
+# theme = "rose-pine"
+# theme = "GruvboxDarkHard"
 
 
 # theme = "xcodedark"
@@ -88,10 +89,10 @@ adjust-underline-thickness = 1
 
 adjust-cursor-thickness = 3
 
-# adjust-cell-height = 10
-# adjust-cursor-height = 10
-adjust-cell-height = 6
-adjust-cursor-height = 6
+adjust-cell-height = 10
+adjust-cursor-height = 10
+# adjust-cell-height = 4
+# adjust-cursor-height = 4
 
 # cursor-color = "#e95378"
 cursor-text = "#000000"

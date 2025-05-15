@@ -17,9 +17,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-require("user.options")
--- setup lazy start
--- load lua/plugins
 
 local opts = {
     change_detection = {
@@ -36,3 +33,4 @@ require("user.mappings")
 require("user.highlightedyank")
 require("user.colorscheme")
 require("user.statusline")
+require("user.options")
