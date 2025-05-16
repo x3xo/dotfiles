@@ -98,7 +98,7 @@ keymap("n", "<leader>Q", ":q<cr>", { desc = "quit" })
 keymap("n", "<leader>gs", ":Git<cr>", { desc = "git status" })
 
 -- select current line from first non-empty character till the end of line excluding new line character
-keymap("n", "val", ":norm ^vg_<cr>", { desc = "select line text" })
+keymap("v", "al", ":norm ^vg_<cr>", { desc = "select line text" })
 
 
 -- keymap("n", "<leader>b", ":silent !tmux send-keys -t .bottom 'python3 ' % C-m<cr>", { desc = "" })
