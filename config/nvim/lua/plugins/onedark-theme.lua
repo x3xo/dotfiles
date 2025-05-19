@@ -4,12 +4,12 @@ return {
   enabled = false,
   config = function()
     require('onedark').setup {
-      -- style = 'dark'
+      style = 'dark' -- the default
       -- style = 'darker'
       -- style = 'cool'
       -- style = 'deep'
       -- style = 'warm'
-      style = 'warmer'
+      -- style = 'warmer'
     }
     -- Enable theme
     require('onedark').load()

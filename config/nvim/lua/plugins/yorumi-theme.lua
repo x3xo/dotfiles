@@ -1,6 +1,6 @@
 return {
   'yorumicolors/yorumi.nvim',
-  enabled = false,
+  enabled = true,
   config = function ()
     vim.cmd("colorscheme yorumi")
     vim.cmd([[

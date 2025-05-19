@@ -5,11 +5,12 @@
 # theme = "Calamity"
 # theme = "kanagawabones"
 # theme = "nordfox"
-theme = "duskfox"
+# theme = "duskfox"
 # theme = "Afterglow"
 # theme = "rose-pine-moon"
 # theme = "rose-pine"
 # theme = "GruvboxDarkHard"
+# theme = "GruvboxDark"
 
 
 # theme = "xcodedark"
@@ -37,7 +38,7 @@ theme = "duskfox"
 # downloaded themes in .config/ghostty/themes
 # theme = "nordic"
 # theme = yorumi-abyss
-theme = oh-lucy
+theme = "oh-lucy"
 
 
 term = "xterm-256color"
@@ -59,7 +60,10 @@ window-decoration = false
 # font-family = Victor Mono
 # font-style = bold
 
+# font-family = Input
 # font-family = Fira Code
+# font-family = Zed Mono Extended
+font-family = Iosevka Custom
 # font-family = Iosevka Custom Medium
 # font-family = JuliaMono
 # font-family = Source Code Pro
@@ -67,7 +71,7 @@ window-decoration = false
 # font-family = Office Code Pro D
 # font-family = Consolas
 # font-family = Maple Mono NL
-font-family = Comic Code
+# font-family = Comic Code
 # font-family = Comic Code Medium
 # font-family = Comic Code Semibold
 # font-family = Codelia
