@@ -3,14 +3,41 @@ return {
   enabled = false,
   priority = 1000,
   config = function ()
+    require('nightfox').setup({
+      options = {
+        transparent = false,
+        styles = {               -- Style to be applied to different syntax groups
+          comments = "NONE",     -- Value is any valid attr-list value `:help attr-list`
+          conditionals = "NONE",
+          constants = "NONE",
+          functions = "NONE",
+          keywords = "NONE",
+          numbers = "NONE",
+          operators = "NONE",
+          strings = "NONE",
+          types = "NONE",
+          variables = "NONE",
+        },
+      },
+    })
+
     -- vim.cmd.colorscheme "nightfox"
     -- vim.cmd.colorscheme "terafox"
-    vim.cmd.colorscheme "duskfox"
+    vim.cmd.colorscheme "carbonfox"
+    -- vim.cmd.colorscheme "duskfox"
+    -- vim.cmd.colorscheme "nordfox"
 
     vim.cmd([[
-      hi BufferCurrent guibg=#373354
-      hi BufferCurrentSign guibg=#373354
-      hi BufferCurrentMod guibg=#373354
+      hi BlinkCmpSignatureHelpActiveParameter guibg=#31748f
+      hi BlinkCmpSignatureHelp guibg=#332d41
+    ]])
+
+    vim.cmd([[
+
+      " duskfox mods
+      "hi BufferCurrent guibg=#373354
+      "hi BufferCurrentSign guibg=#373354
+      "hi BufferCurrentMod guibg=#373354
 
       " list of all current buffer highlights for barbar
       " hi BufferCurrent guibg=#ff0000

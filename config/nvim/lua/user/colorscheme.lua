@@ -15,6 +15,7 @@ vim.cmd([[
 " colorscheme yorumi
 " colorscheme horizon
 " colorscheme xcode
+" colorscheme wildcharm
 
 hi clear MatchParen
 hi MatchParen guibg=#61AFEF guifg=black

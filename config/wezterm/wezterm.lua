@@ -35,7 +35,8 @@ config.colors = {
   cursor_border = '#de1373',
 }
 
-config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
+-- config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
+config.font = wezterm.font('Monaspace Neon Var', { weight="Medium", italic=false })
 -- config.font = wezterm.font('Iosevka Custom', { weight="Medium", italic=false })
 config.underline_position = -8
 config.underline_thickness = 3
