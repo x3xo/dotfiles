@@ -10,7 +10,7 @@ return {
     vim.g.sonokai_disable_italic_comment = true
     -- vim.g.sonokai_transparent_background = 1
 
-    -- vim.cmd.colorscheme('sonokai')
+    vim.cmd.colorscheme('sonokai')
   end
 }
 

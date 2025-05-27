@@ -1,6 +1,6 @@
 return {
   "catppuccin/nvim", name = "catppuccin",
-  enabled = false,
+  enabled = true,
   config = function()
     require("catppuccin").setup({
       flavour = "mocha", -- latte, frappe, macchiato, mocha
@@ -8,7 +8,7 @@ return {
         light = "latte",
         dark = "mocha",
       },
-      transparent_background = false,
+      transparent_background = true,
       show_end_of_buffer = false, -- show the '~' characters after the end of buffers
       term_colors = false,
       dim_inactive = {
@@ -33,7 +33,7 @@ return {
       --   operators = {},
       -- },
       color_overrides = {
-        latte = { -- oh lucy
+        mocha = { -- oh lucy
           -- base = "#131a26"
           rosewater = "#f5e0dc",
           flamingo = "#f2cdcd",
@@ -121,6 +121,38 @@ return {
           mantle = "#11111a",
           crust = "#191926",
         },
+        -- mocha = {
+        --       base = "#1d1f21",     -- background
+        --       mantle = "#282a2e",   -- line
+        --       crust = "#4d5057",    -- window
+        --
+        --       text = "#c5c8c6",     -- foreground
+        --       subtext1 = "#969896", -- comment
+        --       subtext0 = "#969896", -- comment fallback
+        --
+        --       surface2 = "#373b41", -- selection
+        --       surface1 = "#282a2e", -- line (reused)
+        --       surface0 = "#1d1f21", -- background (reused)
+        --
+        --       overlay2 = "#c5c8c6", -- general overlay matching text
+        --       overlay1 = "#c5c8c6",
+        --       overlay0 = "#c5c8c6",
+        --
+        --       rosewater = "#f0c674", -- loosely matches yellow (semantic mismatch)
+        --       flamingo = "#de935f",  -- orange
+        --       pink = "#b294bb",      -- purple
+        --       mauve = "#b294bb",     -- purple
+        --       red = "#cc6666",       -- red
+        --       maroon = "#cc6666",    -- red (alt)
+        --       peach = "#de935f",     -- orange
+        --       yellow = "#f0c674",    -- yellow
+        --       green = "#b5bd68",     -- green
+        --       teal = "#8abeb7",      -- aqua
+        --       blue = "#81a2be",      -- blue
+        --       sky = "#81a2be",       -- blue (reused)
+        --       sapphire = "#81a2be",  -- blue (reused)
+        --       lavender = "#b294bb",  -- purple (reused)
+        -- }
       },
       -- color_overrides = {
       --   mocha = {
@@ -171,7 +203,7 @@ return {
     })
 
     -- setup must be called before loading
-    -- vim.cmd.colorscheme "catppuccin"
+    vim.cmd.colorscheme "catppuccin"
     -- vim.cmd.colorscheme "catppuccin-latte"
     -- vim.cmd.colorscheme "catppuccin-macchiato"
     -- vim.cmd "hi! default link CursorLineNr CursorLine"

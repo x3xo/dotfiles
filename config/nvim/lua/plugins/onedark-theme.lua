@@ -4,10 +4,11 @@ return {
   enabled = false,
   config = function()
     require('onedark').setup {
-      style = 'dark' -- the default
+      transparent = true,
+      -- style = 'dark' -- the default
       -- style = 'darker'
       -- style = 'cool'
-      -- style = 'deep'
+      style = 'deep'
       -- style = 'warm'
       -- style = 'warmer'
     }
