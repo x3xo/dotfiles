@@ -43,4 +43,4 @@ bindings = [
 
 [window]
 decorations = "None"
-
+opacity = 0.85
