@@ -48,7 +48,7 @@ keymap("n", "<leader>l", ":nohlsearch<cr>", { desc = "nohlsearch" })
 
 keymap({"n", "v"}, "<leader>c", ":TComment<cr>", { desc = "toggle comment" })
 
-keymap("n", "<leader>.", ":ColorizerToggle<cr>", { desc = "toggle colorizer" })
+keymap("n", "<leader>k", ":ColorizerToggle<cr>", { desc = "toggle colorizer" })
 
 -- keymap("n", "<leader>q", ":Bclose<cr>", { desc = "" })
 keymap("n", "<leader>q", ":BufferClose<cr>", { desc = "close buffer" })
