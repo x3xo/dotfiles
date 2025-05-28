@@ -4,7 +4,7 @@ return {
   priority = 1000,
   enabled = false,
   config = function()
-    vim.cmd("colorscheme midnight") -- Choose from: nightfall, deeper-night, maron, nord
+    vim.cmd("colorscheme midnight")
     vim.cmd([[
       hi Normal guibg=NONE
       hi LineNr guibg=NONE ctermbg=NONE

@@ -1,7 +1,7 @@
 return {
   'rose-pine/neovim',
   name = 'rose-pine',
-  enabled = false,
+  enabled = true,
   config = function()
     require("rose-pine").setup({
       variant = "main", -- auto, main, moon, or dawn
@@ -15,7 +15,7 @@ return {
       styles = {
         bold = false,
         italic = false,
-        transparency = false,
+        transparency = true,
       },
       groups = {
         punctuation = 'pine',

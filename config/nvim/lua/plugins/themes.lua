@@ -1,4 +1,4 @@
-local enabled = false
+local enabled = true
 
 if enabled then
   return {
@@ -7,11 +7,25 @@ if enabled then
       "2giosangmitom/nightfall.nvim",
       lazy = false,
       priority = 1000,
-      opts = {}, -- Add custom configuration here
+      enabled = false,
+      opts = {
+        transparent = true,
+      }, -- Add custom configuration here
       config = function(_, opts)
-        -- require("nightfall").setup(opts)
-        -- vim.cmd("colorscheme nightfall") -- Choose from: nightfall, deeper-night, maron, nord
+        require("nightfall").setup(opts)
+        vim.cmd("colorscheme nightfall") -- Choose from: nightfall, deeper-night, maron, nord
       end,
+    },
+    {
+      "zootedb0t/citruszest.nvim",
+      lazy = false,
+      priority = 1000,
+    },
+    {
+      "srcery-colors/srcery-vim"
+    },
+    {
+      "phha/zenburn.nvim"
     },
     {
       "killitar/obscure.nvim",
@@ -19,7 +33,6 @@ if enabled then
       priority = 1000,
       opts = {}
     },
-    'mellow-theme/mellow.nvim',
     'liuchengxu/space-vim-theme',
     'lunacookies/vim-colors-xcode',
     'Rigellute/rigel',
@@ -70,10 +83,6 @@ if enabled then
     },
     {
       'cocopon/iceberg.vim'
-    },
-    {
-      'dasupradyumna/midnight.nvim', lazy = false, priority = 1000 
-      -- `lazy` and `priority` are only needed if this is your primary colorscheme to load it first
     },
     {
       "bluz71/vim-moonfly-colors",
