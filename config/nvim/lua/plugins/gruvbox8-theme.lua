@@ -3,7 +3,7 @@ return {
   branch = "neovim",
   lazy = false,
   priority = 1000,
-  enabled = true,
+  enabled = false,
   config = function()
   end,
 }

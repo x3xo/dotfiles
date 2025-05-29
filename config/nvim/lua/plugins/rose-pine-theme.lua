@@ -15,7 +15,7 @@ return {
       styles = {
         bold = false,
         italic = false,
-        transparency = true,
+        transparency = false,
       },
       groups = {
         punctuation = 'pine',
@@ -39,7 +39,8 @@ return {
         -- Normal = { bg = 'none' },
         -- SignColumn = { bg = '#000000' },
         ColorColumn = { bg = 'rose' },
-        Comment = { fg = 'highlight_med' },
+        -- Comment = { fg = 'highlight_med' },
+        Comment = { fg = 'highlight_high' },
 
         -- Blend colours against the "base" background
         -- StatusLine = { bg = 'pine' , fg = '#000000' },
@@ -67,8 +68,8 @@ return {
     -- print(vim.inspect(palette))
     -- local options = require("rose-pine.config").options
     -- print(vim.inspect(options))
-    vim.cmd('colorscheme rose-pine-main')
-    -- vim.cmd('colorscheme rose-pine-moon')
+    -- vim.cmd('colorscheme rose-pine-main')
+    vim.cmd('colorscheme rose-pine-moon')
     -- vim.api.nvim_set_hl(0, "@keyword.return", { fg = "#ff0000" })
 
     local rose_pine_palette = require("rose-pine.palette")

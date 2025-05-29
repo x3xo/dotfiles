@@ -17,11 +17,6 @@ if enabled then
       end,
     },
     {
-      "zootedb0t/citruszest.nvim",
-      lazy = false,
-      priority = 1000,
-    },
-    {
       "srcery-colors/srcery-vim"
     },
     {
@@ -100,9 +95,6 @@ if enabled then
         -- vim.cmd([[ colorscheme neofusion ]])
       end,
       opts = {}
-    },
-    {
-      "elvessousa/sobrio",
     },
     {
       'KabbAmine/yowish.vim'

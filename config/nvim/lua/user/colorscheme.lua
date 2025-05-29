@@ -20,6 +20,7 @@ vim.cmd([[
 hi clear MatchParen
 hi MatchParen guibg=#61AFEF guifg=black
 
+
 "let g:zenburn_high_Contrast=1
 " let g:zenburn_transparent = 1
 "colors zenburn

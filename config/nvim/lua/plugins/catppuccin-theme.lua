@@ -8,7 +8,7 @@ return {
         light = "latte",
         dark = "mocha",
       },
-      transparent_background = true,
+      transparent_background = false,
       show_end_of_buffer = false, -- show the '~' characters after the end of buffers
       term_colors = false,
       dim_inactive = {
@@ -18,51 +18,37 @@ return {
       },
       no_italic = true, -- Force no italic
       no_bold = false, -- Force no bold
-      -- styles = {
-      --   comments = { "italic" },
-      --   conditionals = { "italic" },
-      --   loops = {},
-      --   functions = {},
-      --   keywords = {},
-      --   strings = {},
-      --   variables = {},
-      --   numbers = {},
-      --   booleans = {},
-      --   properties = {},
-      --   types = {},
-      --   operators = {},
-      -- },
       color_overrides = {
-        mocha = { -- oh lucy
-          -- base = "#131a26"
-          rosewater = "#f5e0dc",
-          flamingo = "#f2cdcd",
-          pink = "#fb7da7", -- c
-          mauve = "#fb7da7", -- c
-          red = "#fb7da7", -- c
-          maroon = "#fb7da7", -- c
-          peach = "#fdad5d", -- c
-          yellow = "#e3cf65", -- c
-          green = "#76c5a4", -- c
-          teal = "#51c7da", -- c
-          sky = "#89dceb",
-          sapphire = "#51c7da",
-          blue = "#51c7da", -- c
-          lavender = "#af98e6", -- c
-          text = "#dfdfdf",
-          subtext1 = "#bac2de",
-          subtext0 = "#a6adc8",
-          overlay2 = "#9399b2",
-          overlay1 = "#7f849c",
-          overlay0 = "#6c7086",
-          surface2 = "#585b70",
-          surface1 = "#45475a",
-          surface0 = "#313244",
-          base = "#1a1d27",
-          -- base = "#0d1017",
-          mantle = "#14161e",
-          crust = "#0e0f15",
-        },
+        -- mocha = { -- oh lucy
+        --   -- base = "#131a26"
+        --   rosewater = "#f5e0dc",
+        --   flamingo = "#f2cdcd",
+        --   pink = "#fb7da7", -- c
+        --   mauve = "#fb7da7", -- c
+        --   red = "#fb7da7", -- c
+        --   maroon = "#fb7da7", -- c
+        --   peach = "#fdad5d", -- c
+        --   yellow = "#e3cf65", -- c
+        --   green = "#76c5a4", -- c
+        --   teal = "#51c7da", -- c
+        --   sky = "#89dceb",
+        --   sapphire = "#51c7da",
+        --   blue = "#51c7da", -- c
+        --   lavender = "#af98e6", -- c
+        --   text = "#dfdfdf",
+        --   subtext1 = "#bac2de",
+        --   subtext0 = "#a6adc8",
+        --   overlay2 = "#9399b2",
+        --   overlay1 = "#7f849c",
+        --   overlay0 = "#6c7086",
+        --   surface2 = "#585b70",
+        --   surface1 = "#45475a",
+        --   surface0 = "#313244",
+        --   base = "#1a1d27",
+        --   -- base = "#0d1017",
+        --   mantle = "#14161e",
+        --   crust = "#0e0f15",
+        -- },
         frappe = { -- material
           rosewater = "#FF5370", -- or use this for red if you want
           flamingo  = "#FF5370", -- red
@@ -121,72 +107,7 @@ return {
           mantle = "#11111a",
           crust = "#191926",
         },
-        -- mocha = {
-        --       base = "#1d1f21",     -- background
-        --       mantle = "#282a2e",   -- line
-        --       crust = "#4d5057",    -- window
-        --
-        --       text = "#c5c8c6",     -- foreground
-        --       subtext1 = "#969896", -- comment
-        --       subtext0 = "#969896", -- comment fallback
-        --
-        --       surface2 = "#373b41", -- selection
-        --       surface1 = "#282a2e", -- line (reused)
-        --       surface0 = "#1d1f21", -- background (reused)
-        --
-        --       overlay2 = "#c5c8c6", -- general overlay matching text
-        --       overlay1 = "#c5c8c6",
-        --       overlay0 = "#c5c8c6",
-        --
-        --       rosewater = "#f0c674", -- loosely matches yellow (semantic mismatch)
-        --       flamingo = "#de935f",  -- orange
-        --       pink = "#b294bb",      -- purple
-        --       mauve = "#b294bb",     -- purple
-        --       red = "#cc6666",       -- red
-        --       maroon = "#cc6666",    -- red (alt)
-        --       peach = "#de935f",     -- orange
-        --       yellow = "#f0c674",    -- yellow
-        --       green = "#b5bd68",     -- green
-        --       teal = "#8abeb7",      -- aqua
-        --       blue = "#81a2be",      -- blue
-        --       sky = "#81a2be",       -- blue (reused)
-        --       sapphire = "#81a2be",  -- blue (reused)
-        --       lavender = "#b294bb",  -- purple (reused)
-        -- }
       },
-      -- color_overrides = {
-      --   mocha = {
-      --     -- base = "#131a26"
-      --   rosewater = "#f5e0dc",
-      --   flamingo = "#f2cdcd",
-      --   pink = "#fb7da7", -- c
-      --   mauve = "#fb7da7", -- c
-      --   red = "#dfdfdf", -- c
-      --   maroon = "#fb7da7", -- c
-      --   peach = "#fdad5d", -- c
-      --   yellow = "#e3cf65", -- c
-      --   green = "#e3cf65", -- c
-      --   teal = "#51c7da", -- c
-      --   sky = "#89dceb",
-      --   sapphire = "#51c7da",
-      --   blue = "#76c5a4", -- c
-      --   lavender = "#fb7da7", -- c
-      --   text = "#dfdfdf",
-      --   subtext1 = "#bac2de",
-      --   subtext0 = "#a6adc8",
-      --   overlay2 = "#9399b2",
-      --   overlay1 = "#7f849c",
-      --   overlay0 = "#6c7086",
-      --   surface2 = "#585b70",
-      --   surface1 = "#45475a",
-      --   surface0 = "#313244",
-      --   base = "#1a1d27",
-      --   mantle = "#181825",
-      --   crust = "#11111b",
-      --
-      --
-      --   },
-      -- },
       -- custom_highlights = {
       --   TelescopeMatching = { fg = "#ff0000" },
       --   TelescopeSelection = { bg = "#45475a", fg = "#ffffff" },

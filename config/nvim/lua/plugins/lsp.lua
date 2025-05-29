@@ -67,7 +67,7 @@ return {
       keymap('n', '<leader><space>f', function() vim.lsp.buf.format { async = true } end, { desc = "format" })
 
       -- set inline diagnostics
-      vim.diagnostic.config({ virtual_text = false })
+      vim.diagnostic.config({ virtual_text = true })
 
       -- print("attaching LSP...done")
     end
