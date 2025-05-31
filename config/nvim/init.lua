@@ -26,6 +26,7 @@ local opts = {
   },
 }
 
+require("user.options")
 require("lazy").setup('plugins', opts)
 -- setup lazy end
 
@@ -33,4 +34,3 @@ require("user.mappings")
 require("user.highlightedyank")
 require("user.colorscheme")
 require("user.statusline")
-require("user.options")
