@@ -3,6 +3,10 @@ local enabled = true
 if enabled then
   return {
     {
+      'p00f/alabaster.nvim'
+    },
+    { 'datsfilipe/vesper.nvim' },
+    {
 
       "2giosangmitom/nightfall.nvim",
       lazy = false,
@@ -17,18 +21,11 @@ if enabled then
       end,
     },
     {
-      "srcery-colors/srcery-vim"
-    },
-    {
-      "phha/zenburn.nvim"
-    },
-    {
       "killitar/obscure.nvim",
       lazy = false,
       priority = 1000,
       opts = {}
     },
-    'liuchengxu/space-vim-theme',
     'lunacookies/vim-colors-xcode',
     'Rigellute/rigel',
     'Yazeed1s/oh-lucy.nvim',
@@ -44,7 +41,6 @@ if enabled then
         -- vim.cmd('colorscheme kanagawa-paper-canvas')
       end
     },
-    'sainnhe/everforest',
     {
       "vv9k/bogster"
     },
@@ -67,17 +63,10 @@ if enabled then
       'rakr/vim-two-firewatch'
     },
     {
-      "nuvic/flexoki-nvim",
-      name = "flexoki"
-    },
-    {
       "akinsho/horizon.nvim", version = "*",
       config = function ()
         -- vim.cmd.colorscheme "horizon"
       end
-    },
-    {
-      'cocopon/iceberg.vim'
     },
     {
       "bluz71/vim-moonfly-colors",

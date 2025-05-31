@@ -36,7 +36,8 @@ config.colors = {
 }
 
 -- config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
-config.font = wezterm.font('Monaspace Neon Var', { weight="Medium", italic=false })
+-- config.font = wezterm.font('Monaspace Neon Var', { weight="Medium", italic=false })
+config.font = wezterm.font('Comic Code Medium', { weight="Medium", italic=false })
 -- config.font = wezterm.font('Iosevka Custom', { weight="Medium", italic=false })
 config.underline_position = -8
 config.underline_thickness = 3
