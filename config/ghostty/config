@@ -11,6 +11,7 @@
 # theme = "rose-pine"
 # theme = "GruvboxDarkHard"
 # theme = "GruvboxDark"
+# theme = "Oceanic-Next"
 
 
 # theme = "xcodedark"
@@ -37,8 +38,8 @@
 
 # downloaded themes in .config/ghostty/themes
 # theme = "nordic"
-# theme = yorumi-abyss
-theme = "oh-lucy"
+theme = yorumi-abyss
+# theme = "oh-lucy"
 
 
 term = "xterm-256color"
@@ -48,6 +49,7 @@ mouse-scroll-multiplier = 0.1
 macos-non-native-fullscreen = true
 window-decoration = false
 # macos-titlebar-style = hidden
+# background-opacity = 0.96
 
 # font-family = JetBrains Mono
 # font-style = medium
@@ -63,14 +65,18 @@ window-decoration = false
 # font-family = Input
 # font-family = Fira Code
 # font-family = Zed Mono Extended
-font-family = Iosevka Custom
+# font-family = Iosevka Fixed
+# font-family = Iosevka Fixed Medium Extended
+# font-family = Iosevka Custom
 # font-family = Iosevka Custom Medium
 # font-family = JuliaMono
 # font-family = Source Code Pro
 # font-family = Source Code Pro Medium
+# font-family = Source Code Pro Semibold
 # font-family = Office Code Pro D
 # font-family = Consolas
-# font-family = Maple Mono NL
+font-family = Maple Mono NF
+# font-family = Maple Mono NF Light
 # font-family = Comic Code
 # font-family = Comic Code Medium
 # font-family = Comic Code Semibold
@@ -94,12 +100,12 @@ adjust-underline-thickness = 1
 
 adjust-cursor-thickness = 3
 
-adjust-cell-height = 10
-adjust-cursor-height = 10
-# adjust-cell-height = 4
-# adjust-cursor-height = 4
+# adjust-cell-height = 10
+# adjust-cursor-height = 10
+adjust-cell-height = 4
+adjust-cursor-height = 4
 
-# cursor-color = "#e95378"
+cursor-color = "#e95378"
 cursor-text = "#000000"
 # cursor-color = "#ff006f"
 # cursor-text = "#000000"
