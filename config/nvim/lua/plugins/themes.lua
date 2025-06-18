@@ -27,7 +27,12 @@ if enabled then
       opts = {}
     },
     'lunacookies/vim-colors-xcode',
-    'Rigellute/rigel',
+    {
+      'Rigellute/rigel',
+      config = function(_, opts)
+        -- vim.cmd("colorscheme rigel") -- Choose from: nightfall, deeper-night, maron, nord
+      end,
+    },
     'Yazeed1s/oh-lucy.nvim',
     'nelstrom/vim-mac-classic-theme',
     {
@@ -42,7 +47,10 @@ if enabled then
       end
     },
     {
-      "vv9k/bogster"
+      "vv9k/bogster",
+      config = function(_, opts)
+        -- vim.cmd("colorscheme bogster") -- Choose from: nightfall, deeper-night, maron, nord
+      end,
     },
     {
       "nyoom-engineering/oxocarbon.nvim"
