@@ -13,34 +13,34 @@ thickness = 0.25
 TERM = "xterm-256color"
 
 [font]
-size = 9.5
-normal = { family = "Comic Code SemiBold", style = "Medium"}
-italic = { family = "Comic Code SemiBold", style = "Medium"}
-bold = { family = "Comic Code SemiBold", style = "Medium"}
-bold_italic = { family = "Comic Code SemiBold", style = "Medium"}
+size = 10
+normal = { family = "Maple Mono NF", style = "Medium"}
+italic = { family = "Maple Mono NF", style = "Medium"}
+bold = { family = "Maple Mono NF", style = "Medium"}
+bold_italic = { family = "Maple Mono NF", style = "Medium"}
 glyph_offset = { x = 0, y = 2 }
 offset = { x = 0, y = 4 }
 
 
 [keyboard]
 bindings = [
-  { key = "=", mods = "Command", action = "IncreaseFontSize" },
-  { key = "-", mods = "Command", action = "DecreaseFontSize" },
+  # { key = "=", mods = "Command", action = "IncreaseFontSize" },
+  # { key = "-", mods = "Command", action = "DecreaseFontSize" },
   { key = "D", mods = "Command", chars = "\u0007z" },
-  { key = "E", mods = "Command", chars = "\u001B,b" },
+  # { key = "E", mods = "Command", chars = "\u001B,b" },
   { key = "G", mods = "Command", chars = "\u0007\u0007" },
   { key = "S", mods = "Command", chars = "\u001B:w\u000A" },
-  { key = "H", mods = "Command", chars = "\u0007p" },
-  { key = "L", mods = "Command", chars = "\u0007n" },
-  { key = "Q", mods = "Command", action = "Hide" },
-  { key = "N", mods = "Command", chars = "\u0007n" },
-  { key = "P", mods = "Command", chars = "\u0007p" },
-  { key = "T", mods = "Command", chars = "\u0007c" },
-  { key = "W", mods = "Command", chars = "\u001Bw" },
+  # { key = "H", mods = "Command", chars = "\u0007p" },
+  # { key = "L", mods = "Command", chars = "\u0007n" },
+  # { key = "Q", mods = "Command", action = "Hide" },
+  # { key = "N", mods = "Command", chars = "\u0007n" },
+  # { key = "P", mods = "Command", chars = "\u0007p" },
+  # { key = "T", mods = "Command", chars = "\u0007c" },
+  # { key = "W", mods = "Command", chars = "\u001Bw" },
   { key = "F", mods = "Command", chars = "\u001B/" },
 ]
 
 
 [window]
 decorations = "None"
-opacity = 0.85
+opacity = 1.0
