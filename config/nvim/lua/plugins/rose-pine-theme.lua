@@ -15,7 +15,7 @@ return {
       styles = {
         bold = false,
         italic = false,
-        transparency = false,
+        transparency = true,
       },
       groups = {
         punctuation = 'pine',
@@ -68,8 +68,8 @@ return {
     -- print(vim.inspect(palette))
     -- local options = require("rose-pine.config").options
     -- print(vim.inspect(options))
-    -- vim.cmd('colorscheme rose-pine-main')
-    vim.cmd('colorscheme rose-pine-moon')
+    vim.cmd('colorscheme rose-pine-main')
+    -- vim.cmd('colorscheme rose-pine-moon')
     -- vim.api.nvim_set_hl(0, "@keyword.return", { fg = "#ff0000" })
 
     local rose_pine_palette = require("rose-pine.palette")
