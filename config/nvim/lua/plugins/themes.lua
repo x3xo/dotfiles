@@ -2,6 +2,7 @@ local enabled = true
 
 if enabled then
   return {
+    'nvimdev/zephyr-nvim',
     {
       'p00f/alabaster.nvim'
     },
