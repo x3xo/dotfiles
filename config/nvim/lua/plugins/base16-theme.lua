@@ -14,10 +14,12 @@ return {
     " hi DiffRemoved guifg=#000000
     " hi! default link CursorLineNr CursorLine
 
-      " colorscheme base16-classic-dark
+      colorscheme base16-classic-dark
+      " colorscheme base16-gruvbox-dark-soft
+      " colorscheme base16-gruvbox-dark-hard
       " colorscheme base16-default-dark
       " colorscheme base16-oceanicnext
-      colorscheme base16-espresso
+      "" colorscheme base16-espresso
       hi clear PmenuSel
       hi PmenuSel guibg=#31748f
       hi PmenuSel guibg=#31748f

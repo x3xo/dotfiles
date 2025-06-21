@@ -18,7 +18,7 @@ local config = {}
 -- config.color_scheme = 'Royal (Gogh)'
 -- config.color_scheme = 'Rydgel (terminal.sexy)'
 -- config.color_scheme = 'Tokyo Night (Gogh)'
--- config.color_scheme = 'One Dark (Gogh)'
+config.color_scheme = 'One Dark (Gogh)'
 -- config.color_scheme = 'One Half Black (Gogh)'
 
 config.colors = {
@@ -37,7 +37,8 @@ config.colors = {
 
 -- config.font = wezterm.font('JetBrains Mono', { weight="Medium", italic=false })
 -- config.font = wezterm.font('Monaspace Neon Var', { weight="Medium", italic=false })
-config.font = wezterm.font('Comic Code Medium', { weight="Medium", italic=false })
+-- config.font = wezterm.font('Comic Code Medium', { weight="Medium", italic=false })
+config.font = wezterm.font('Maple Mono NF', { weight="Medium", italic=false })
 -- config.font = wezterm.font('Iosevka Custom', { weight="Medium", italic=false })
 config.underline_position = -8
 config.underline_thickness = 3
