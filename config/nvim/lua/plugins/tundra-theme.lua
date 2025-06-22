@@ -1,6 +1,6 @@
 return {
   'sam4llis/nvim-tundra',
-  enabled = true,
+  enabled = false,
   config = function ()
     require('nvim-tundra').setup({
       transparent_background = false,
