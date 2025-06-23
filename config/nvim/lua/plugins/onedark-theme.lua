@@ -8,7 +8,7 @@ return {
       -- style = 'dark' -- the default
       -- style = 'darker'
       -- style = 'cool'
-      style = 'deep'
+      -- style = 'deep'
       -- style = 'warm'
       -- style = 'warmer'
     }
