@@ -1,5 +1,6 @@
 # general.import = ["/home/niko/.config/alacritty/rose-pine.toml"]
-general.import = ["/home/niko/.config/alacritty/yorumi-abyss.toml"]
+# general.import = ["/home/niko/.config/alacritty/yorumi-abyss.toml"]
+general.import = ["/home/niko/.config/alacritty/onedark.toml"]
 # import = ["/home/niko/.config/alacritty/alacritty-ayu-dark.toml"] 
 # general.import = ["/Users/niko/.config/alacritty/rose-pine.toml"]
 # general.import = ["~/.config/alacritty/alacritty-ayu-dark.toml"] 
@@ -26,7 +27,7 @@ offset = { x = 0, y = 4 }
 bindings = [
   # { key = "=", mods = "Command", action = "IncreaseFontSize" },
   # { key = "-", mods = "Command", action = "DecreaseFontSize" },
-  { key = "D", mods = "Command", chars = "\u0007z" },
+  # { key = "D", mods = "Command", chars = "\u0007z" },
   # { key = "E", mods = "Command", chars = "\u001B,b" },
   { key = "G", mods = "Command", chars = "\u0007\u0007" },
   { key = "S", mods = "Command", chars = "\u001B:w\u000A" },
@@ -43,4 +44,4 @@ bindings = [
 
 [window]
 # decorations = "None"
-opacity = 0.8
+opacity = 1.0
