@@ -5,7 +5,12 @@ if enabled then
     {
       'p00f/alabaster.nvim'
     },
-    { 'datsfilipe/vesper.nvim' },
+    {
+      'datsfilipe/vesper.nvim',
+      config = function()
+        -- vim.cmd("colorscheme vesper")
+      end,
+    },
     {
 
       "2giosangmitom/nightfall.nvim",
@@ -33,7 +38,12 @@ if enabled then
         -- vim.cmd("colorscheme rigel") -- Choose from: nightfall, deeper-night, maron, nord
       end,
     },
-    'Yazeed1s/oh-lucy.nvim',
+    {
+      'Yazeed1s/oh-lucy.nvim',
+      config = function ()
+        -- vim.cmd('colorscheme oh-lucy-evening')
+      end
+    },
     'nelstrom/vim-mac-classic-theme',
     {
       "thesimonho/kanagawa-paper.nvim",

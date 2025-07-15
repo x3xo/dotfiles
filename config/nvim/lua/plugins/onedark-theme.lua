@@ -1,18 +1,18 @@
 return {
   "navarasu/onedark.nvim",
   priority = 1000, -- make sure to load this before all the other start plugins
-  enabled = true,
+  enabled = false,
   config = function()
     require('onedark').setup {
-      transparent = false,
+      transparent = true,
       -- style = 'dark' -- the default
       -- style = 'darker'
       -- style = 'cool'
       -- style = 'deep',
-      -- style = 'warm'
-      style = 'warmer'
+      -- style = 'warm',
+      -- style = 'warmer',
 
-      -- colors = {
+      colors = {
         -- bright_orange = "#ff8800",    -- define a new color
 
         -- bg1 = '#1a2337',            -- cusorline
@@ -45,7 +45,7 @@ return {
         -- diff_delete = "#382b2c",
         -- diff_change = "#1c3448",
         -- diff_text = "#2c5372",
-      -- },
+      },
 
     }
     -- Enable theme
