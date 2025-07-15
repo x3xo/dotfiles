@@ -97,6 +97,10 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "b", function()
 end)
 
 
+-- extra binding to launch alfred
+hs.hotkey.bind({ "cmd" }, ";", function() hs.application.launchOrFocus("Alfred 5") end)
+
+
 -- hs.loadSpoon('ControlEscape'):start() -- Load Hammerspoon bits from https://github.com/jasonrudolph/ControlEscape.spoon
 cherry = hs.loadSpoon('Cherry')
 cherry.duration = 30
