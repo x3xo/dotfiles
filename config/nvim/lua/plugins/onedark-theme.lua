@@ -5,9 +5,9 @@ return {
   config = function()
     require('onedark').setup {
       transparent = true,
-      -- style = 'dark' -- the default
-      -- style = 'darker'
-      -- style = 'cool'
+      style = 'dark', -- the default
+      -- style = 'darker',
+      -- style = 'cool',
       -- style = 'deep',
       -- style = 'warm',
       -- style = 'warmer',

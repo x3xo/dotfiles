@@ -1,7 +1,7 @@
 # general.import = ["/home/niko/.config/alacritty/rose-pine.toml"]
-general.import = ["/home/niko/.config/alacritty/yorumi-abyss.toml"]
+# general.import = ["/home/niko/.config/alacritty/yorumi-abyss.toml"]
 # general.import = ["/home/niko/.config/alacritty/onedark.toml"]
-# general.import = ["/home/niko/.config/alacritty/cooldark.toml"]
+general.import = ["/home/niko/.config/alacritty/cooldark.toml"]
 # import = ["/home/niko/.config/alacritty/alacritty-ayu-dark.toml"] 
 # general.import = ["/Users/niko/.config/alacritty/rose-pine.toml"]
 # general.import = ["~/.config/alacritty/alacritty-ayu-dark.toml"] 
@@ -16,12 +16,45 @@ TERM = "xterm-256color"
 
 [font]
 size = 10
-normal = { family = "Maple Mono NF", style = "Medium"}
-italic = { family = "Maple Mono NF", style = "Medium"}
-bold = { family = "Maple Mono NF", style = "Medium"}
-bold_italic = { family = "Maple Mono NF", style = "Medium"}
-glyph_offset = { x = 0, y = 2 }
-offset = { x = 0, y = 4 }
+
+
+# normal = { family = "JetBrainsMono Nerd Font Mono", style = "Light"}
+# italic = { family = "JetBrainsMono Nerd Font Mono", style = "Light"}
+# bold = { family = "JetBrainsMono Nerd Font Mono", style = "Light"}
+# bold_italic = { family = "JetBrainsMono Nerd Font Mono", style = "Light"}
+
+
+# normal = { family = "Comic Code Medium", style = "Medium"}
+# italic = { family = "Comic Code Medium", style = "Medium"}
+# bold = { family = "Comic Code Medium", style = "Medium"}
+# bold_italic = { family = "Comic Code Medium", style = "Medium"}
+
+# normal = { family = "Maple Mono NF", style = "Medium"}
+# italic = { family = "Maple Mono NF", style = "Medium"}
+# bold = { family = "Maple Mono NF", style = "Medium"}
+# bold_italic = { family = "Maple Mono NF", style = "Medium"}
+
+normal = { family = "Maple Mono NF", style = "Regular"}
+italic = { family = "Maple Mono NF", style = "Regular"}
+bold = { family = "Maple Mono NF", style = "Regular"}
+bold_italic = { family = "Maple Mono NF", style = "Regular"}
+
+
+# normal = { family = "Ioskeley Mono", style = "Medium"}
+# italic = { family = "Ioskeley Mono", style = "Medium"}
+# bold = { family = "Ioskeley Mono", style = "Medium"}
+# bold_italic = { family = "Ioskeley Mono", style = "Medium"}
+
+
+# normal = { family = "Berkeley Mono", style = "Regular"}
+# italic = { family = "Berkeley Mono", style = "Regular"}
+# bold = { family = "Berkeley Mono", style = "Regular"}
+# bold_italic = { family = "Berkeley Mono", style = "Regular"}
+
+
+# uncomment those for line height adjustments
+# glyph_offset = { x = 0, y = 2 }
+# offset = { x = 0, y = 4 }
 
 
 [keyboard]
@@ -45,4 +78,4 @@ bindings = [
 
 [window]
 # decorations = "None"
-opacity = 1.0
+# opacity = 1.0

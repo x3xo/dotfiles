@@ -17,8 +17,8 @@ vim.cmd([[
 " colorscheme xcode
 " colorscheme wildcharm
 
-hi clear MatchParen
-hi MatchParen guibg=#61AFEF guifg=black
+"hi clear MatchParen
+" hi MatchParen guibg=#61AFEF guifg=black
 
 
 "let g:zenburn_high_Contrast=1
