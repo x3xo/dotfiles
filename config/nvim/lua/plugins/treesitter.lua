@@ -31,6 +31,7 @@ return {
         "yaml",
         "markdown",
         "tsx",
+        "qmljs",
         "swift"
       },
 

@@ -2,6 +2,7 @@ vim.cmd([[
 
 
 " colorscheme onedark
+" colorscheme afterglow
 " colorscheme darkblue
 " set nocursorline
 "colorscheme habamax
