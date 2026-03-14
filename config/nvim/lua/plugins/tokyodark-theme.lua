@@ -2,7 +2,7 @@ return {
   "tiagovla/tokyodark.nvim",
   lazy = false,
   priority = 1000, -- recommended if you use tairiki as your default theme
-  enabled = false,
+  enabled = true,
   opts = {
     -- custom options here
   },

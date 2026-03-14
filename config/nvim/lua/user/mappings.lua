@@ -34,10 +34,10 @@ keymap("n", "<C-d>", ":bnext<cr>", { desc = "next buffer" })
 keymap("n", "<C-s>", ":bprev<cr>", { desc = "previous buffer" })
 
 -- barbar
-keymap("n", "<A-m>", ":BufferPrevious<cr>", { desc = "previous buffer" })
-keymap("n", "<A-,>", ":BufferNext<cr>", { desc = "next buffer" })
-keymap("n", "<A-p>", ":BufferPrevious<cr>", { desc = "previous buffer" })
-keymap("n", "<A-n>", ":BufferNext<cr>", { desc = "next buffer" })
+-- keymap("n", "<A-m>", ":BufferPrevious<cr>", { desc = "previous buffer" })
+-- keymap("n", "<A-,>", ":BufferNext<cr>", { desc = "next buffer" })
+-- keymap("n", "<A-p>", ":BufferPrevious<cr>", { desc = "previous buffer" })
+-- keymap("n", "<A-n>", ":BufferNext<cr>", { desc = "next buffer" })
 keymap("n", "<A-g>", ":b#<cr>", { desc = "alternate buffer" })
 keymap("n", "<A-a>", ":b#<cr>", { desc = "alternate buffer" })
 
@@ -50,8 +50,8 @@ keymap({"n", "v"}, "<leader>c", ":TComment<cr>", { desc = "toggle comment" })
 
 keymap("n", "<leader>k", ":ColorizerToggle<cr>", { desc = "toggle colorizer" })
 
--- keymap("n", "<leader>q", ":Bclose<cr>", { desc = "" })
-keymap("n", "<leader>q", ":BufferClose<cr>", { desc = "close buffer" })
+keymap("n", "<leader>q", ":Bclose<cr>", { desc = "" })
+-- keymap("n", "<leader>q", ":BufferClose<cr>", { desc = "close buffer" })
 keymap("n", "<leader>Q", ":q<cr>", { desc = "quit" })
 
 -- -- telescope

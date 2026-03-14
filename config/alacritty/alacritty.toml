@@ -1,7 +1,8 @@
 # general.import = ["/home/niko/.config/alacritty/rose-pine.toml"]
 # general.import = ["/home/niko/.config/alacritty/yorumi-abyss.toml"]
 # general.import = ["/home/niko/.config/alacritty/onedark.toml"]
-general.import = ["/home/niko/.config/alacritty/cooldark.toml"]
+# general.import = ["/home/niko/.config/alacritty/cooldark.toml"]
+general.import = ["/home/niko/.config/alacritty/tokyodark.toml"]
 # import = ["/home/niko/.config/alacritty/alacritty-ayu-dark.toml"] 
 # general.import = ["/Users/niko/.config/alacritty/rose-pine.toml"]
 # general.import = ["~/.config/alacritty/alacritty-ayu-dark.toml"] 
@@ -15,8 +16,12 @@ thickness = 0.25
 TERM = "xterm-256color"
 
 [font]
-size = 10
+size = 9.0
 
+# normal = { family = "JetBrains Mono", style = "Regular"}
+# italic = { family = "JetBrains Mono", style = "Regular"}
+# bold = { family = "JetBrains Mono", style = "Regular"}
+# bold_italic = { family = "JetBrains Mono", style = "Regular"}
 
 # normal = { family = "JetBrainsMono Nerd Font Mono", style = "Light"}
 # italic = { family = "JetBrainsMono Nerd Font Mono", style = "Light"}
@@ -29,15 +34,26 @@ size = 10
 # bold = { family = "Comic Code Medium", style = "Medium"}
 # bold_italic = { family = "Comic Code Medium", style = "Medium"}
 
-# normal = { family = "Maple Mono NF", style = "Medium"}
-# italic = { family = "Maple Mono NF", style = "Medium"}
-# bold = { family = "Maple Mono NF", style = "Medium"}
-# bold_italic = { family = "Maple Mono NF", style = "Medium"}
+normal = { family = "Maple Mono NF", style = "Medium"}
+italic = { family = "Maple Mono NF", style = "Medium"}
+bold = { family = "Maple Mono NF", style = "Medium"}
+bold_italic = { family = "Maple Mono NF", style = "Medium"}
 
-normal = { family = "Maple Mono NF", style = "Regular"}
-italic = { family = "Maple Mono NF", style = "Regular"}
-bold = { family = "Maple Mono NF", style = "Regular"}
-bold_italic = { family = "Maple Mono NF", style = "Regular"}
+# normal = { family = "Maple Mono NF", style = "Regular"}
+# italic = { family = "Maple Mono NF", style = "Regular"}
+# bold = { family = "Maple Mono NF", style = "Regular"}
+# bold_italic = { family = "Maple Mono NF", style = "Regular"}
+
+
+# normal = { family = "Intel One Mono", style = "Regular"}
+# italic = { family = "Intel One Mono", style = "Regular"}
+# bold = { family = "Intel One Mono", style = "Regular"}
+# bold_italic = { family = "Intel One Mono", style = "Regular"}
+
+# normal = { family = "Fira Code", style = "Regular"}
+# italic = { family = "Fira Code", style = "Regular"}
+# bold = { family = "Fira Code", style = "Regular"}
+# bold_italic = { family = "Fira Code", style = "Regular"}
 
 
 # normal = { family = "Ioskeley Mono", style = "Medium"}

@@ -1,7 +1,7 @@
 -- buffers as tabs. Replacing vem-tabline
 return {
   'romgrk/barbar.nvim',
-  enabled = true,
+  enabled = false,
   dependencies = 'nvim-tree/nvim-web-devicons',
   init = function() vim.g.barbar_auto_setup = false end,
   opts = {

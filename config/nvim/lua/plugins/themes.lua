@@ -73,7 +73,10 @@ if enabled then
       'danilo-augusto/vim-afterglow'
     },
     {
-      'challenger-deep-theme/vim'
+      'challenger-deep-theme/vim',
+      config = function ()
+        -- vim.cmd('colorscheme challenger_deep')
+      end
     },
     {
       'hercules261188/cosmic_latte'
