@@ -23,8 +23,9 @@
     yellow = '#d7a65f'
 
 [colors.cursor]
-    cursor = '#a0a8cd'
+    cursor = "#ff5289"
     text = '#11121d'
+    # cursor = '#a0a8cd'
 
 [colors.selection]
     background = '#11121d'
