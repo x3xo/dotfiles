@@ -1,6 +1,7 @@
 vim.cmd([[
 
 
+" colorscheme retrobox
 " colorscheme onedark
 " colorscheme afterglow
 " colorscheme darkblue

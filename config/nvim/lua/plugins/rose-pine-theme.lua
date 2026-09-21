@@ -15,7 +15,7 @@ return {
       styles = {
         bold = false,
         italic = false,
-        transparency = true,
+        transparency = false,
       },
       groups = {
         punctuation = 'pine',

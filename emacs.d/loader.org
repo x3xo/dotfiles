@@ -3,6 +3,10 @@
 #+TAGS: emacs
 #+STARTUP: overview
 #+CATEGORIES: editing
+* lexical binding
+#+BEGIN_SRC emacs-lisp
+;; -*- lexical-binding: t; -*-
+#+END_SRC
 
 * user info
 #+BEGIN_SRC emacs-lisp
@@ -1025,6 +1029,7 @@ C-u C-x =
   ;;(setq my-font-name "Source Code Pro")
   ;;(setq my-font-name "Comic Code")
   (setq my-font-name "Maple Mono NF")
+  ;(setq my-font-name "Maple Mono NF")
   ;(setq my-font-name "JetBrains Mono")
   ;;(setq my-font-name "Intel One Mono")
   ;;(setq my-font-name "Input")
@@ -1063,8 +1068,10 @@ C-u C-x =
         (set-face-attribute face nil :height (+ (face-attribute 'default :height) delta)))
   )
 
-  (global-set-key (kbd "s-=") (lambda () (interactive) (change-font-height +10)))
-  (global-set-key (kbd "s--") (lambda () (interactive) (change-font-height -10)))
+  ;;(global-set-key (kbd "s-=") (lambda () (interactive) (change-font-height +10)))
+  ;;(global-set-key (kbd "s--") (lambda () (interactive) (change-font-height -10)))
+  (global-set-key (kbd "C-M-=") (lambda () (interactive) (change-font-height +10)))
+  (global-set-key (kbd "C-M--") (lambda () (interactive) (change-font-height -10)))
   ;;  (global-set-key (kbd "s-0") '(lambda () (interactive) (set-face-attribute 'default nil :height 140)))
 
   ;(global-set-key (kbd "s-0") '(lambda () (interactive) (set-face-attribute 'default nil :height my-font-size)))

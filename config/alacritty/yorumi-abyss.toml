@@ -1,7 +1,8 @@
 # yorumi abyss
 
 [colors]
-cursor = { text = "#060914", cursor = "#BDBFCB" }
+# cursor = { text = "#060914", cursor = "#BDBFCB" }
+cursor = { cursor = "#ff5289", text = '#11121d' }
 vi_mode_cursor = { text = "#060914", cursor = "#D7E1B7" }
 line_indicator = { foreground = "#BDBFCB", background = "#121520" }
 footer_bar = { foreground = "#BDBFCB", background = "#121520" }

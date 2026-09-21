@@ -1,8 +1,9 @@
 # general.import = ["/home/niko/.config/alacritty/rose-pine.toml"]
-# general.import = ["/home/niko/.config/alacritty/yorumi-abyss.toml"]
+general.import = ["/home/niko/.config/alacritty/yorumi-abyss.toml"]
 # general.import = ["/home/niko/.config/alacritty/onedark.toml"]
 # general.import = ["/home/niko/.config/alacritty/cooldark.toml"]
-general.import = ["/home/niko/.config/alacritty/tokyodark.toml"]
+# general.import = ["/home/niko/.config/alacritty/tokyodark.toml"]
+# general.import = ["/home/niko/.config/alacritty/gruvbox-material-alacritty.toml"]
 # import = ["/home/niko/.config/alacritty/alacritty-ayu-dark.toml"] 
 # general.import = ["/Users/niko/.config/alacritty/rose-pine.toml"]
 # general.import = ["~/.config/alacritty/alacritty-ayu-dark.toml"] 
@@ -93,5 +94,6 @@ bindings = [
 
 
 [window]
-# decorations = "None"
+decorations = "None"
 # opacity = 1.0
+opacity = 0.96

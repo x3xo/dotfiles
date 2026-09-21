@@ -13,6 +13,11 @@ if enabled then
       end,
     },
     {
+      "webhooked/kanso.nvim",
+      lazy = false,
+      priority = 1000,
+    },
+    {
 
       "2giosangmitom/nightfall.nvim",
       lazy = false,

@@ -2,9 +2,10 @@ return {
   "tiagovla/tokyodark.nvim",
   lazy = false,
   priority = 1000, -- recommended if you use tairiki as your default theme
-  enabled = true,
+  enabled = false,
   opts = {
     -- custom options here
+    transparent_background = true,
   },
   config = function(_, opts)
     require("tokyodark").setup(opts) -- calling setup is optional
@@ -22,6 +23,7 @@ return {
       hi BufferCurrent guifg=#a0a8cd guibg=#0e293f
       hi BufferCurrentSign guifg=#a0a8cd guibg=#0e293f
       hi BufferCurrentMod guifg=#a0a8cd guibg=#0e293f
+      hi Visual guibg=#475258 guifg=#ffffff
       
     ]])
 
