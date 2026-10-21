@@ -95,5 +95,5 @@ bindings = [
 
 [window]
 decorations = "None"
-# opacity = 1.0
-opacity = 0.96
+opacity = 1.0
+# opacity = 0.96
