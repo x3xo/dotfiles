@@ -44,7 +44,7 @@ theme = yorumi-abyss
 
 term = "xterm-256color"
 
-mouse-scroll-multiplier = 0.1
+# mouse-scroll-multiplier = 0.1
 
 macos-non-native-fullscreen = true
 window-decoration = false
