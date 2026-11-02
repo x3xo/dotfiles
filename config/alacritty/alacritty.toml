@@ -80,7 +80,7 @@ bindings = [
   # { key = "-", mods = "Command", action = "DecreaseFontSize" },
   # { key = "D", mods = "Command", chars = "\u0007z" },
   # { key = "E", mods = "Command", chars = "\u001B,b" },
-  { key = "G", mods = "Command", chars = "\u0007\u0007" },
+  # { key = "G", mods = "Command", chars = "\u0007\u0007" },
   { key = "S", mods = "Command", chars = "\u001B:w\u000A" },
   # { key = "H", mods = "Command", chars = "\u0007p" },
   # { key = "L", mods = "Command", chars = "\u0007n" },
