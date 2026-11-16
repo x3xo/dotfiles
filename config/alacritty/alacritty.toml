@@ -18,6 +18,7 @@ TERM = "xterm-256color"
 
 [font]
 size = 9.0
+# size = 11.0
 
 # normal = { family = "JetBrains Mono", style = "Regular"}
 # italic = { family = "JetBrains Mono", style = "Regular"}
@@ -40,6 +41,13 @@ italic = { family = "Maple Mono NF", style = "Medium"}
 bold = { family = "Maple Mono NF", style = "Medium"}
 bold_italic = { family = "Maple Mono NF", style = "Medium"}
 
+# normal = { family = "IoskeleyMonoTerm Nerd Font", style = "Medium"}
+# italic = { family = "IoskeleyMonoTerm Nerd Font", style = "Medium"}
+# bold = { family = "IoskeleyMonoTerm Nerd Font", style = "Medium"}
+# bold_italic = { family = "IoskeleyMonoTerm Nerd Font", style = "Medium"}
+
+
+
 # normal = { family = "Maple Mono NF", style = "Regular"}
 # italic = { family = "Maple Mono NF", style = "Regular"}
 # bold = { family = "Maple Mono NF", style = "Regular"}
@@ -56,11 +64,6 @@ bold_italic = { family = "Maple Mono NF", style = "Medium"}
 # bold = { family = "Fira Code", style = "Regular"}
 # bold_italic = { family = "Fira Code", style = "Regular"}
 
-
-# normal = { family = "Ioskeley Mono", style = "Medium"}
-# italic = { family = "Ioskeley Mono", style = "Medium"}
-# bold = { family = "Ioskeley Mono", style = "Medium"}
-# bold_italic = { family = "Ioskeley Mono", style = "Medium"}
 
 
 # normal = { family = "Berkeley Mono", style = "Regular"}
